@@ -1,0 +1,48 @@
+// COLORS
+$color-primary-dark: #47b2f5;
+$color-primary-light: #65b4f6;
+$color-secondary-light: #fc689a;
+
+$color-completed-light-1: #c9ffe5;
+$color-completed-dark-1: #98ff98;
+$color-completed-dark-2: #00eb0c;
+
+$color-date-due: #757d82;
+$color-date-overdue: #ff396a;
+
+$color-white: #FFF;
+$color-black: #000000;
+
+$color-error: #ff3b33;
+$color-warning: #FF7730;
+$color-green: #0ce100;
+
+$color-grey-light-1: #F5F5F5;
+$color-grey-light-2: #D7DADB;
+$color-grey-light-3: #bfc2c3;
+$color-grey-dark-1: #646869;
+$color-grey-dark-2: #1e2223;
+
+$color-start: #63ea67;
+$color-stop: #ff4d52;
+
+// BORDERS
+$border-grey-light: #e1e1e1;
+
+// BOX SHADOWS
+$box-shadow-bottom: 0 .2rem .2rem rgba($color-grey-dark-1, .3);
+$box-shadow-right: .2rem 0 .2rem rgba($color-grey-dark-1, .3);
+$box-shadow-all: .2rem .2rem .2rem rgba($color-grey-dark-1, .3);
+
+// FONTS
+$default-font-family: 'Muli', sans-serif;
+$default-font-size: 1.3rem;
+$default-font-color: $color-grey-dark-1;
+$default-header-font-size: 1.4rem;
+
+// PROJECT COLORS
+$project-color-1: rgb(253, 97, 44);
+$project-color-2: rgb(232, 56, 79);
+$project-color-3: rgb(98, 210, 111);
+$project-color-4: rgb(65, 134, 224);
+$project-color-5: rgb(234, 78, 157);
