@@ -3,6 +3,7 @@ import classes from './TopToolbar.module.scss'
 import {NavLink} from "react-router-dom";
 
 const topToolbar = (props) => {
+    const profile = props.profile;
     return (
         <div className={classes.Navigation}>
             <div className={classes.Logo}>
@@ -42,7 +43,7 @@ const topToolbar = (props) => {
             </div>
             <div className={classes.UserNavigation}>
                 <div className={classes.Profile}>
-                    <p className={classes.ProfileName}>Jean-Frederic Mainville</p>
+                    <p className={classes.ProfileName}>{profile.name}</p>
                 </div>
                 <div className={classes.Settings}>
                     <button className={classes.SettingsButton}>
