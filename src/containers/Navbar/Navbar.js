@@ -5,6 +5,10 @@ import {withRouter} from "react-router";
 
 
 class Navbar extends Component {
+    state = {
+        profile: {name: "Jean-Frederic Mainville"}
+    };
+
     componentDidMount() {
 
     }
@@ -13,7 +17,7 @@ class Navbar extends Component {
         return (
             <Auxiliary>
                 <TopToolbar
-
+                    profile={this.state.profile}
                 />
             </Auxiliary>
         )
