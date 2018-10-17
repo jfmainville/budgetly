@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "chart.js": "^2.7.3",
     "node-sass": "^4.9.4",
     "popper.js": "^1.14.4",
     "prop-types": "^15.6.2",
