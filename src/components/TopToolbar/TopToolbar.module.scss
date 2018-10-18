@@ -5,9 +5,9 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  height: 4rem;
+  height: 5rem;
   flex: 0 0 100%;
-  background-color: $color-grey-light-1;
+  background-color: $color-green;
   box-shadow: $box-shadow-bottom;
   margin-bottom: 2rem;
   font-family: $default-font-family;
@@ -19,11 +19,12 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-family: $default-font-family;
-  font-size: 1.9rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: $color-green;
+  font-family: $logo-font-family;
+  font-size: $logo-font-size;
+  padding-bottom: 1rem;
+  margin-left: 1rem;
+  letter-spacing: 2px;
+  color: $color-white;
 }
 
 .NavigationItems {
@@ -39,26 +40,38 @@
     .NavigationItem {
       display: flex;
       flex-direction: row;
-      font-weight: 600;
-      letter-spacing: 1px;
+      align-items: center;
+      justify-content: center;
+      font-family: $default-font-family;
+      font-size: 1.7rem;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      margin: 0 1rem 0 1rem;
+      background-color: transparent;
+      height: 5rem;
 
       .NavigationItemLink {
-        color: $color-grey-light-3;
+        color: $color-white;
+        padding: 0 1rem 0 1rem;
 
         &:hover {
-          color: $color-grey-light-2;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          color: $color-green;
+          background-color: $color-white;
+          height: 5rem;
         }
       }
 
       .NavigationItemLinkActive {
-        border-bottom: 2px solid $color-grey-light-3;
-        padding-bottom: .5rem;
-
-        &:hover {
-          color: $color-grey-light-3;
-        }
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        color: $color-green;
+        background-color: $color-white;
+        height: 5rem;
       }
     }
   }
@@ -73,35 +86,46 @@
   .Profile {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
 
     .ProfileName {
       font-family: $default-font-family;
       font-size: $default-font-size;
-      font-weight: 600;
-      color: $color-grey-light-3;
+      color: $color-white;
     }
   }
 
   .Settings {
     display: flex;
     flex-direction: row;
-    margin: 0 1rem 0 1rem;
 
     .SettingsButton {
-      width: 100%;
-      height: 100%;
+      width: 5rem;
+      height: 5rem;
       border: none;
       background-color: transparent;
       outline: none;
       cursor: pointer;
 
+      &:hover {
+        background-color: $color-white;
+      }
+
       .SettingsIcon {
-        width: 2rem;
-        height: 2rem;
-        fill: $color-grey-light-3;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 3rem;
+        height: 3rem;
+        padding: 1rem;
+        fill: $color-white;
+        background-color: transparent;
 
         &:hover {
-          fill: $color-grey-light-2;
+          fill: $color-green;
         }
       }
     }
