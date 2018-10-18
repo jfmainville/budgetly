@@ -1,0 +1,73 @@
+@import "../../../sass/variables";
+
+.TableRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $color-grey-light-3;
+  }
+
+  .TableSelectRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5%;
+    font-family: $default-font-family;
+    font-size: $default-font-size;
+    color: $color-grey-dark-1;
+    height: 5rem;
+
+    .TableCheckboxInput {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  .TableDateRow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 10%;
+    font-family: $default-font-family;
+    font-size: $default-font-size;
+    color: $color-grey-dark-1;
+    height: 5rem;
+  }
+
+  .TableEnterpriseRow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 55%;
+    font-family: $default-font-family;
+    font-size: $default-font-size;
+    color: $color-grey-dark-1;
+    height: 5rem;
+  }
+
+  .TableCategoryRow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 20%;
+    font-family: $default-font-family;
+    font-size: $default-font-size;
+    color: $color-grey-dark-1;
+    height: 5rem;
+  }
+
+  .TableTotalRow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 10%;
+    font-family: $default-font-family;
+    font-size: $default-font-size;
+    color: $color-grey-dark-1;
+    height: 5rem;
+  }
+}
