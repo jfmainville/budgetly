@@ -12,8 +12,11 @@ $color-grey-light-3: #bfc2c3;
 $color-grey-dark-1: #646869;
 $color-grey-dark-2: #1e2223;
 
-$color-start: #63ea67;
-$color-stop: #ff4d52;
+$color-green-light: #58d75c;
+$color-green-dark: #55c359;
+
+$color-blue-light: #47b2f5;
+$color-blue-dark: #3ea7e1;
 
 // BORDERS
 $border-grey-light: #e1e1e1;
@@ -25,6 +28,6 @@ $box-shadow-all: .2rem .2rem .2rem rgba($color-grey-dark-1, .3);
 
 // FONTS
 $default-font-family: 'Muli', sans-serif;
-$default-font-size: 1.3rem;
+$default-font-size: 1.5rem;
 $default-font-color: $color-grey-dark-1;
 $default-header-font-size: 1.4rem;
