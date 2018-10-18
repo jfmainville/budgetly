@@ -1,0 +1,165 @@
+@import "../../sass/variables";
+
+.Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 100%;
+  height: 100%;
+}
+
+.ActionButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 95%;
+  margin-bottom: 1rem;
+
+  .ButtonAddAccount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 12rem;
+    height: 4rem;
+    margin-right: 1rem;
+    border: none;
+    background-color: $color-green-dark;
+    color: $color-white;
+    font-family: $default-font-family;
+    font-size: $default-font-size;
+    border-radius: 6px;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-green-light;
+    }
+
+  }
+
+  .ButtonExportCSV {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 12rem;
+    height: 4rem;
+    border: none;
+    background-color: $color-blue-dark;
+    color: $color-white;
+    font-family: $default-font-family;
+    font-size: $default-font-size;
+    border-radius: 6px;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-blue-light;
+    }
+  }
+}
+
+.TableHeaders {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  background-color: $color-green;
+  box-shadow: $box-shadow-all;
+
+  .TableSelectColumn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5%;
+    font-family: $default-font-family;
+    font-size: $default-font-size;
+    font-weight: 600;
+    color: $color-white;
+    height: 5rem;
+
+    .TableCheckboxInput {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  .TableDateColumn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 10%;
+    font-family: $default-font-family;
+    font-size: $default-font-size;
+    font-weight: 600;
+    color: $color-white;
+    height: 5rem;
+  }
+
+  .TableEnterpriseColumn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 55%;
+    font-family: $default-font-family;
+    font-size: $default-font-size;
+    font-weight: 600;
+    color: $color-white;
+    height: 5rem;
+  }
+
+  .TableCategoryColumn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 20%;
+    font-family: $default-font-family;
+    font-size: $default-font-size;
+    font-weight: 600;
+    color: $color-white;
+    height: 5rem;
+  }
+
+  .TableTotalColumn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 10%;
+    font-family: $default-font-family;
+    font-size: $default-font-size;
+    font-weight: 600;
+    color: $color-white;
+    height: 5rem;
+  }
+}
+
+.TableRows {
+  display: flex;
+  width: 95%;
+  max-height: 80vh;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+  overflow-y: visible;
+  background-color: $color-white;
+  box-shadow: $box-shadow-all;
+  margin-bottom: 2rem;
+
+  &::-webkit-scrollbar {
+    width: .5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $color-grey-light-3;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: $color-grey-light-2;
+  }
+}
