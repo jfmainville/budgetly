@@ -13,9 +13,6 @@ const accountCard = (props) => {
                     type="checkbox"
                 />
             </div>
-            <div className={classes.TableDateRow}>
-                {account.date}
-            </div>
             <div className={classes.TableEnterpriseRow}>
                 {account.enterprise}
             </div>

@@ -27,22 +27,11 @@
     }
   }
 
-  .TableDateRow {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 10%;
-    font-family: $default-font-family;
-    font-size: $default-font-size;
-    color: $color-grey-dark-1;
-    height: 5rem;
-  }
-
   .TableEnterpriseRow {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 55%;
+    width: 65%;
     font-family: $default-font-family;
     font-size: $default-font-size;
     color: $color-grey-dark-1;
