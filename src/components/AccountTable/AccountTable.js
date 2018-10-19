@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classes from './AccountTable.module.scss';
 import AccountCard from "./AccountCard/AccountCard";
+import AccountCategoryDropdown from "./AccountCategoryDropdown/AccountCategoryDropdown";
+import AccountEnterpriseInput from "./AccountEnterpriseInput/AccountEnterpriseInput";
 
 
 const accountTable = (props) => {
@@ -12,23 +14,20 @@ const accountTable = (props) => {
                 <button className={classes.ButtonAddAccount}>Add Account</button>
                 <button className={classes.ButtonExportCSV}>Export to CSV</button>
             </div>
-            <div className={classes.TableHeaders}>
-                <div className={classes.TableSelectColumn}>
+            <div className={classes.TableHeader}>
+                <div className={classes.TableHeaderSelectColumn}>
                     <input
-                        className={classes.TableCheckboxInput}
+                        className={classes.TableHeaderCheckboxInput}
                         type="checkbox"
                     />
                 </div>
-                <div className={classes.TableDateColumn}>
-                    Date
-                </div>
-                <div className={classes.TableEnterpriseColumn}>
+                <div className={classes.TableHeaderEnterpriseColumn}>
                     Enterprise
                 </div>
-                <div className={classes.TableCategoryColumn}>
+                <div className={classes.TableHeaderCategoryColumn}>
                     Category
                 </div>
-                <div className={classes.TableTotalColumn}>
+                <div className={classes.TableHeaderTotalColumn}>
                     Total
                 </div>
             </div>
