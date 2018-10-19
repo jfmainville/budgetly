@@ -32,6 +32,35 @@ class AccountPanel extends Component {
             {id: 24, date: "2018-10-15", enterprise: "Garage S & M", category: "Automobile", total: 1000.66}
         ]
     };
+
+    handleShowCategoryDropdown = () => {
+        this.setState({
+            showCategoryDropdown: !this.state.showCategoryDropdown
+        })
+    };
+
+    handleCategorySearch = (event) => {
+        const categorySearchInput = event.target.value;
+        this.setState({
+            showCategoryDropdown: true,
+            categorySearchInput: categorySearchInput
+        })
+    };
+
+    handleClearCategorySearch = () => {
+        this.setState({
+            showCategoryDropdown: false,
+            categorySearchInput: ''
+        })
+    };
+
+    handleCategorySearchSelection = (category) => {
+        this.setState({
+            categorySearchInput: category.title,
+            showCategoryDropdown: false
+        })
+    };
+
     componentDidMount() {
 
     }
@@ -41,6 +70,14 @@ class AccountPanel extends Component {
             <Auxiliary>
                 <AccountTable
                     accounts={this.state.accounts}
+                    categories={this.state.categories}
+                    categorySearchInput={this.state.categorySearchInput}
+                    showCategoryDropdown={this.state.showCategoryDropdown}
+                    handleShowCategoryDropdown={this.handleShowCategoryDropdown}
+                    handleCategorySearch={this.handleCategorySearch}
+                    handleClearCategorySearch={this.handleClearCategorySearch}
+                    handleCategorySearchSelection={this.handleCategorySearchSelection}
+
                 />
             </Auxiliary>
         )
