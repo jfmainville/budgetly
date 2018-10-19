@@ -10,9 +10,20 @@ const accountTable = (props) => {
     const accounts = props.accounts;
     return (
         <div className={classes.Container}>
-            <div className={classes.ActionButtons}>
-                <button className={classes.ButtonAddAccount}>Add Account</button>
-                <button className={classes.ButtonExportCSV}>Export to CSV</button>
+            <div className={classes.AccountCategoryDropdown}>
+                <AccountEnterpriseInput
+
+                />
+                <AccountCategoryDropdown
+                    categories={categories}
+                    categorySearchInput={props.categorySearchInput}
+                    showCategoryDropdown={props.showCategoryDropdown}
+                    handleCategorySearch={props.handleCategorySearch}
+                    handleClearCategorySearch={props.handleClearCategorySearch}
+                    handleShowCategoryDropdown={props.handleShowCategoryDropdown}
+                    handleCategorySearchSelection={props.handleCategorySearchSelection}
+                />
+                <button className={classes.NewAccountSectionButtonSave}>Add Account</button>
             </div>
             <div className={classes.TableHeader}>
                 <div className={classes.TableHeaderSelectColumn}>
