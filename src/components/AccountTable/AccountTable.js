@@ -7,7 +7,12 @@ import AccountEnterpriseInput from "./AccountEnterpriseInput/AccountEnterpriseIn
 
 
 const accountTable = (props) => {
-    const accounts = props.accounts;
+    const accounts = props.accounts.sort((a, b) => {
+        const textA = a.enterprise.toLowerCase();
+        const textB = b.enterprise.toLowerCase();
+        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+    });
+    const categories = props.categories;
     return (
         <div className={classes.Container}>
             <div className={classes.AccountCategoryDropdown}>
