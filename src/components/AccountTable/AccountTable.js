@@ -61,7 +61,14 @@ const accountTable = (props) => {
 
 accountTable.propTypes = {
     accounts: PropTypes.array,
-    account: PropTypes.object
+    account: PropTypes.object,
+    categories: PropTypes.array,
+    categorySearchInput: PropTypes.string,
+    showCategoryDropdown: PropTypes.bool,
+    handleCategorySearch: PropTypes.func,
+    handleClearCategorySearch: PropTypes.func,
+    handleShowCategoryDropdown: PropTypes.func,
+    handleCategorySearchSelection: PropTypes.func,
 };
 
 export default accountTable;
