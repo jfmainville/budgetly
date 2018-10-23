@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import AccountTable from "../../components/AccountTable/AccountTable";
 
@@ -103,5 +104,16 @@ class AccountPanel extends Component {
         )
     }
 }
+
+AccountPanel.propTypes = {
+    accounts: PropTypes.array,
+    categories: PropTypes.array,
+    categorySearchInput: PropTypes.string,
+    showCategoryDropdown: PropTypes.bool,
+    handleShowCategoryDropdown: PropTypes.func,
+    handleCategorySearch: PropTypes.func,
+    handleClearCategorySearch: PropTypes.func,
+    handleCategorySearchSelection: PropTypes.func
+};
 
 export default AccountPanel;
