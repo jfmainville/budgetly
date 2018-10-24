@@ -16,6 +16,9 @@ const accountCard = (props) => {
             <div className={classes.TableEnterpriseRow}>
                 {account.enterprise}
             </div>
+            <div className={classes.TableTypeRow}>
+                {account.type}
+            </div>
             <div className={classes.TableCategoryRow}>
                 {account.category}
             </div>

@@ -31,7 +31,18 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 65%;
+    width: 45%;
+    font-family: $default-font-family;
+    font-size: $default-font-size;
+    color: $color-grey-dark-1;
+    height: 5rem;
+  }
+
+  .TableTypeRow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 20%;
     font-family: $default-font-family;
     font-size: $default-font-size;
     color: $color-grey-dark-1;
