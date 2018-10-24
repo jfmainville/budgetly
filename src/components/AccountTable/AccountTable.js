@@ -4,6 +4,7 @@ import classes from './AccountTable.module.scss';
 import AccountCard from "./AccountCard/AccountCard";
 import AccountCategoryDropdown from "./AccountCategoryDropdown/AccountCategoryDropdown";
 import AccountEnterpriseInput from "./AccountEnterpriseInput/AccountEnterpriseInput";
+import AccountTypeDropdown from "./AccountTypeDropdown/AccountTypeDropdown";
 
 
 const accountTable = (props) => {
@@ -24,6 +25,15 @@ const accountTable = (props) => {
                 </button>
                 <AccountEnterpriseInput
 
+                />
+                <AccountTypeDropdown
+                    accounts={accounts}
+                    typeSearchInput={props.typeSearchInput}
+                    showTypeDropdown={props.showTypeDropdown}
+                    handleShowTypeDropdown={props.handleShowTypeDropdown}
+                    handleTypeSearch={props.handleTypeSearch}
+                    handleClearTypeSearch={props.handleClearTypeSearch}
+                    handleTypeSearchSelection={props.handleTypeSearchSelection}
                 />
                 <AccountCategoryDropdown
                     categories={categories}
