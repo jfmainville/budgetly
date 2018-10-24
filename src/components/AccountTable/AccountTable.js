@@ -57,6 +57,9 @@ const accountTable = (props) => {
                     Enterprise
                 </div>
                 <div className={classes.TableHeaderCategoryColumn}>
+                    Type
+                </div>
+                <div className={classes.TableHeaderCategoryColumn}>
                     Category
                 </div>
                 <div className={classes.TableHeaderTotalColumn}>
