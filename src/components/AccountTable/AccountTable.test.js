@@ -5,6 +5,7 @@ import AccountTable from "./AccountTable";
 import AccountEnterpriseInput from "./AccountEnterpriseInput/AccountEnterpriseInput";
 import AccountCategoryDropdown from "./AccountCategoryDropdown/AccountCategoryDropdown";
 import AccountCard from "./AccountCard/AccountCard";
+import AccountTypeDropdown from "./AccountTypeDropdown/AccountTypeDropdown";
 
 
 configure({adapter: new Adapter()});
@@ -27,7 +28,13 @@ describe('<AccountTable/>', () => {
         handleCategorySearch: jest.fn(),
         handleClearCategorySearch: jest.fn(),
         handleShowCategoryDropdown: jest.fn(),
-        handleCategorySearchSelection: jest.fn()
+        handleCategorySearchSelection: jest.fn(),
+        typeSearchInput: "",
+        showTypeDropdown: false,
+        handleShowTypeDropdown: jest.fn(),
+        handleTypeSearch: jest.fn(),
+        handleClearTypeSearch: jest.fn(),
+        handleTypeSearchSelection: jest.fn(),
     };
     const location = {pathname: '/accounts'};
     let wrapper;
@@ -40,6 +47,17 @@ describe('<AccountTable/>', () => {
     });
     it('should contain the categories array', () => {
         expect(props.categories).toEqual(expect.arrayContaining(props.categories));
+    });
+    it('should contain the required props in the <AccountTypeDropdown/> component', () => {
+        expect(wrapper.find(AccountTypeDropdown).props()).toEqual({
+            accounts: props.accounts,
+            typeSearchInput: props.typeSearchInput,
+            showTypeDropdown: props.showTypeDropdown,
+            handleShowTypeDropdown: props.handleShowTypeDropdown,
+            handleTypeSearch: props.handleTypeSearch,
+            handleClearTypeSearch: props.handleClearTypeSearch,
+            handleTypeSearchSelection: props.handleTypeSearchSelection
+        })
     });
     it('should contain the required props in the <AccountCategoryDropdown/> component', () => {
         expect(wrapper.find(AccountCategoryDropdown).props()).toEqual({
@@ -54,6 +72,9 @@ describe('<AccountTable/>', () => {
     });
     it('should show one <AccountEnterpriseInput/> component', () => {
         expect(wrapper.find(AccountEnterpriseInput)).toHaveLength(1);
+    });
+    it('should show one <AccountTypeDropdown/> component', () => {
+        expect(wrapper.find(AccountTypeDropdown)).toHaveLength(1);
     });
     it('should show one <AccountCategoryDropdown/> component', () => {
         expect(wrapper.find(AccountCategoryDropdown)).toHaveLength(1);
