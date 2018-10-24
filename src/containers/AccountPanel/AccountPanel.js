@@ -51,7 +51,9 @@ class AccountPanel extends Component {
             {id: 16, title: "Automobile"},
         ],
         categorySearchInput: '',
-        showCategoryDropdown: false
+        showCategoryDropdown: false,
+        typeSearchInput: '',
+        showTypeDropdown: false
     };
 
     handleShowCategoryDropdown = () => {
@@ -82,6 +84,34 @@ class AccountPanel extends Component {
         })
     };
 
+    handleShowTypeDropdown = () => {
+        this.setState({
+            showTypeDropdown: !this.state.showTypeDropdown
+        })
+    };
+
+    handleTypeSearch = (event) => {
+        const typeSearchInput = event.target.value;
+        this.setState({
+            showTypeDropdown: true,
+            typeSearchInput: typeSearchInput
+        })
+    };
+
+    handleClearTypeSearch = () => {
+        this.setState({
+            showTypeDropdown: false,
+            typeSearchInput: ''
+        })
+    };
+
+    handleTypeSearchSelection = (type) => {
+        this.setState({
+            typeSearchInput: type,
+            showTypeDropdown: false
+        })
+    };
+
     componentDidMount() {
 
     }
@@ -94,10 +124,16 @@ class AccountPanel extends Component {
                     categories={this.state.categories}
                     categorySearchInput={this.state.categorySearchInput}
                     showCategoryDropdown={this.state.showCategoryDropdown}
+                    typeSearchInput={this.state.typeSearchInput}
+                    showTypeDropdown={this.state.showTypeDropdown}
                     handleShowCategoryDropdown={this.handleShowCategoryDropdown}
                     handleCategorySearch={this.handleCategorySearch}
                     handleClearCategorySearch={this.handleClearCategorySearch}
                     handleCategorySearchSelection={this.handleCategorySearchSelection}
+                    handleShowTypeDropdown={this.handleShowTypeDropdown}
+                    handleTypeSearch={this.handleTypeSearch}
+                    handleClearTypeSearch={this.handleClearTypeSearch}
+                    handleTypeSearchSelection={this.handleTypeSearchSelection}
 
                 />
             </Auxiliary>
@@ -110,10 +146,16 @@ AccountPanel.propTypes = {
     categories: PropTypes.array,
     categorySearchInput: PropTypes.string,
     showCategoryDropdown: PropTypes.bool,
+    typeSearchInput: PropTypes.string,
+    showTypeDropdown: PropTypes.bool,
     handleShowCategoryDropdown: PropTypes.func,
     handleCategorySearch: PropTypes.func,
     handleClearCategorySearch: PropTypes.func,
-    handleCategorySearchSelection: PropTypes.func
+    handleCategorySearchSelection: PropTypes.func,
+    handleShowTypeDropdown: PropTypes.func,
+    handleTypeSearch: PropTypes.func,
+    handleClearTypeSearch: PropTypes.func,
+    handleTypeSearchSelection: PropTypes.func,
 };
 
 export default AccountPanel;
