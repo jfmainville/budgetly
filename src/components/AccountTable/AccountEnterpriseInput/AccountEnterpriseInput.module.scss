@@ -1,0 +1,23 @@
+@import "../../../sass/variables";
+
+.NewAccountSectionFields {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 45%;
+
+  .NewAccountSectionEnterpriseInput {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: $default-font-family;
+    font-size: $default-font-size;
+    color: $color-black;
+    border: 1px solid $color-white;
+    width: 100%;
+    height: 4rem;
+    margin-right: 4rem;
+    padding-left: 1rem;
+    outline: none;
+  }
+}
