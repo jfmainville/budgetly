@@ -5,10 +5,7 @@ import {Manager, Reference, Popper} from 'react-popper';
 
 
 const accountTypeDropdown = (props) => {
-    const accounts = props.accounts;
-    let types = [];
-    accounts.map(account => types.push(account.type));
-    types = [...new Set(types)];
+    let types = ["Expense", "Income"];
     return (
         <Manager>
             <div className={classes.TypeDropdown}>

@@ -8,11 +8,7 @@ configure({adapter: new Adapter()});
 
 describe('<AccountTypeDropdown/>', () => {
     const props = {
-        accounts: [
-            {id: 1, enterprise: "Tim Hortons", type: "Restaurant", total: 920.24},
-            {id: 2, enterprise: "McDonalds", type: "Restaurant", total: 1200.24},
-            {id: 3, enterprise: "Burger King", type: "Restaurant", total: 120.24}
-        ],
+        types: ["Expense", "Income"],
         typeSearchInput: "",
         showTypeDropdown: false,
         handleShowTypeDropdown: jest.fn(),
@@ -26,6 +22,9 @@ describe('<AccountTypeDropdown/>', () => {
         wrapper = mount(<AccountTypeDropdown {...props} location={location}/>);
     });
 
+    it('should contain the types props', () => {
+        expect(wrapper.props().types).toEqual(["Expense", "Income"])
+    });
     it('should execute the handleShowTypeDropdown function on click', () => {
         wrapper.find('.TypeDropdownButton').simulate('click');
         expect(props.handleShowTypeDropdown).toHaveBeenCalledTimes(1);
