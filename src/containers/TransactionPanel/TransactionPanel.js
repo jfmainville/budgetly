@@ -1,4 +1,8 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import moment from 'moment';
+import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
+import TransactionTable from "../../components/TransactionTable/TransactionTable";
 
 
 class TransactionPanel extends Component {
@@ -8,9 +12,14 @@ class TransactionPanel extends Component {
 
     render() {
         return (
-            <div>
-                <p>Transaction Panel</p>
-            </div>
+            <Auxiliary>
+                <TransactionTable
+                    transactions={this.state.transactions}
+                    activeMonth={this.state.activeMonth}
+                    handleMonthSelectionPrevious={this.handleMonthSelectionPrevious}
+                    handleMonthSelectionNext={this.handleMonthSelectionNext}
+                />
+            </Auxiliary>
         )
     }
 }
