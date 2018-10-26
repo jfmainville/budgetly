@@ -15,4 +15,11 @@ class TransactionPanel extends Component {
     }
 }
 
+TransactionPanel.propTypes = {
+    transactions: PropTypes.array,
+    activeMonth: PropTypes.string,
+    handleMonthSelectionPrevious: PropTypes.func,
+    handleMonthSelectionNext: PropTypes.func
+};
+
 export default TransactionPanel;
