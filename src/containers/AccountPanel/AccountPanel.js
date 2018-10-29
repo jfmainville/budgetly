@@ -2,36 +2,12 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import AccountTable from "../../components/AccountTable/AccountTable";
+import * as actions from "../../store/actions";
+import {connect} from "react-redux";
 
 
-class AccountPanel extends Component {
+export class AccountPanel extends Component {
     state = {
-        accounts: [
-            {id: 1, enterprise: "Tim Hortons", type: "Expense", category: "Restaurant", recurrent: true, recurrence: 1, payment_date: "2018-11-01", payment_amount: 100},
-            {id: 2, enterprise: "McDonalds", type: "Expense", category: "Restaurant", recurrent: true, recurrence: 2, payment_date: "2019-11-01", payment_amount: 500},
-            {id: 3, enterprise: "Burger King", type: "Expense", category: "Restaurant", recurrent: false, recurrence: null, payment_date: null, payment_amount: null},
-            {id: 4, enterprise: "Netflix", type: "Expense", category: "Entertainment", recurrent: false, recurrence: null, payment_date: null, payment_amount: null},
-            {id: 5, enterprise: "Metro", type: "Expense", category: "Grocery", recurrent: false, recurrence: null, payment_date: null, payment_amount: null},
-            {id: 6, enterprise: "IGA", type: "Expense", category: "Grocery", recurrent: false, recurrence: null, payment_date: null, payment_amount: null},
-            {id: 7, enterprise: "Pacini", type: "Expense", category: "Restaurant", recurrent: false, recurrence: null, payment_date: null, payment_amount: null},
-            {id: 8, enterprise: "Cineplex Odeon", type: "Expense", category: "Entertainment", recurrent: false, recurrence: null, payment_date: null, payment_amount: null},
-            {id: 9, enterprise: "Desjardins", type: "Expense", category: "Bank", recurrent: false, recurrence: null, payment_date: null, payment_amount: null},
-            {id: 10, enterprise: "Services Conseils Franc-Jeu", type: "Income", category: "Revenue", recurrent: false, recurrence: null, payment_date: null, payment_amount: null},
-            {id: 11, enterprise: "STM", type: "Expense", category: "Transport", recurrent: false, recurrence: null, payment_date: null, payment_amount: null},
-            {id: 12, enterprise: "Nissan", type: "Expense", category: "Automobile", recurrent: false, recurrence: null, payment_date: null, payment_amount: null},
-            {id: 13, enterprise: "Cinema Guzzo", type: "Expense", category: "Entertainment", recurrent: false, recurrence: null, payment_date: null, payment_amount: null},
-            {id: 14, enterprise: "Maxi", type: "Expense", category: "Grocery", recurrent: false, recurrence: null, payment_date: null, payment_amount: null},
-            {id: 15, enterprise: "Couche Tard", type: "Expense", category: "Grocery", recurrent: false, recurrence: null, payment_date: null, payment_amount: null},
-            {id: 16, enterprise: "Pizza Pizza", type: "Expense", category: "Restaurant", recurrent: false, recurrence: null, payment_date: null, payment_amount: null},
-            {id: 17, enterprise: "Pizza Hut", type: "Expense", category: "Restaurant", recurrent: false, recurrence: null, payment_date: null, payment_amount: null},
-            {id: 18, enterprise: "Decathlon", type: "Expense", category: "Sport", recurrent: false, recurrence: null, payment_date: null, payment_amount: null},
-            {id: 19, enterprise: "Forever 21", type: "Expense", category: "Fashion", recurrent: false, recurrence: null, payment_date: null, payment_amount: null},
-            {id: 20, enterprise: "Amazon", type: "Expense", category: "Technology", recurrent: false, recurrence: null, payment_date: null, payment_amount: null},
-            {id: 21, enterprise: "Newegg", type: "Expense", category: "Technology", recurrent: false, recurrence: null, payment_date: null, payment_amount: null},
-            {id: 22, enterprise: "H & M", type: "Expense", category: "Fashion", recurrent: false, recurrence: null, payment_date: null, payment_amount: null},
-            {id: 23, enterprise: "Wal-Mart", type: "Expense", category: "Grocery", recurrent: false, recurrence: null, payment_date: null, payment_amount: null},
-            {id: 24, enterprise: "Garage S & M", type: "Expense", category: "Automobile", recurrent: false, recurrence: null, payment_date: null, payment_amount: null}
-        ],
         categories: [
             {id: 1, title: "Entertainment"},
             {id: 2, title: "Technology"},
@@ -120,7 +96,7 @@ class AccountPanel extends Component {
         return (
             <Auxiliary>
                 <AccountTable
-                    accounts={this.state.accounts}
+                    accounts={this.props.accounts}
                     categories={this.state.categories}
                     categorySearchInput={this.state.categorySearchInput}
                     showCategoryDropdown={this.state.showCategoryDropdown}
@@ -158,4 +134,21 @@ AccountPanel.propTypes = {
     handleTypeSearchSelection: PropTypes.func,
 };
 
-export default AccountPanel;
+const mapStateToProps = (state) => {
+    return {
+        accounts: state.account.accounts,
+        transactions: state.transaction.transactions
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchAccounts: () => dispatch(actions.fetchAccounts()),
+        fetchTransactions: () => dispatch(actions.fetchTransactions()),
+        createAccount: (data) => dispatch(actions.createAccount(data)),
+        updateAccount: (data) => dispatch(actions.updateAccount(data)),
+        deleteAccount: (data) => dispatch(actions.deleteAccount(data))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AccountPanel);

@@ -1,7 +1,7 @@
 import React from 'react';
 import {configure, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import AccountPanel from "./AccountPanel";
+import {AccountPanel} from "./AccountPanel";
 import AccountTable from "../../components/AccountTable/AccountTable";
 import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 
