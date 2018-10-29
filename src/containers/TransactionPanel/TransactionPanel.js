@@ -3,46 +3,12 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import TransactionTable from "../../components/TransactionTable/TransactionTable";
+import * as actions from "../../store/actions";
+import {connect} from "react-redux";
 
 
-class TransactionPanel extends Component {
+export class TransactionPanel extends Component {
     state = {
-        transactions: [
-            {
-                id: 1,
-                date: "2018-10-11",
-                enterprise: "Tim Hortons",
-                type: "Expense",
-                category: "Restaurant",
-                total: 1000.24
-            },
-            {
-                id: 2,
-                date: "2018-09-11",
-                enterprise: "McDonalds",
-                type: "Expense",
-                category: "Restaurant",
-                total: 1000.24
-            },
-            {
-                id: 3,
-                date: "2018-08-11",
-                enterprise: "Burger King",
-                type: "Expense",
-                category: "Restaurant",
-                total: 1000.24
-            },
-            {
-                id: 4,
-                date: "2018-10-11",
-                enterprise: "Netflix",
-                type: "Expense",
-                category: "Entertainment",
-                total: 1000.24
-            },
-            {id: 5, date: "2018-10-11", enterprise: "Metro", type: "Expense", category: "Grocery", total: 1000.24},
-            {id: 6, date: "2018-10-11", enterprise: "IGA", type: "Expense", category: "Grocery", total: 1000.24},
-        ],
         activeMonth: moment().format("YYYY-MM")
     };
 
@@ -68,7 +34,7 @@ class TransactionPanel extends Component {
         return (
             <Auxiliary>
                 <TransactionTable
-                    transactions={this.state.transactions}
+                    transactions={this.props.transactions}
                     activeMonth={this.state.activeMonth}
                     handleMonthSelectionPrevious={this.handleMonthSelectionPrevious}
                     handleMonthSelectionNext={this.handleMonthSelectionNext}
@@ -85,4 +51,21 @@ TransactionPanel.propTypes = {
     handleMonthSelectionNext: PropTypes.func
 };
 
-export default TransactionPanel;
+const mapStateToProps = (state) => {
+    return {
+        accounts: state.account.accounts,
+        transactions: state.transaction.transactions
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchAccounts: () => dispatch(actions.fetchAccounts()),
+        fetchTransactions: () => dispatch(actions.fetchTransactions()),
+        createTransaction: (data) => dispatch(actions.createTransaction(data)),
+        updateTransaction: (data) => dispatch(actions.updateTransaction(data)),
+        deleteTransaction: (data) => dispatch(actions.deleteTransaction(data))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TransactionPanel);

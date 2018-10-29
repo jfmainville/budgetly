@@ -1,7 +1,7 @@
 import React from 'react';
 import {configure, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import TransactionPanel from './TransactionPanel';
+import {TransactionPanel} from './TransactionPanel';
 import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import TransactionTable from "../../components/TransactionTable/TransactionTable";
 import moment from "moment";
@@ -13,10 +13,6 @@ describe('<TransactionPanel/>', () => {
     let wrapper;
     beforeEach(() => {
         wrapper = shallow(<TransactionPanel/>);
-    });
-
-    it('should have the transactions initial state', () => {
-        expect(wrapper.state().transactions).toBeDefined();
     });
     it('should have the activeMonth initial state', () => {
         expect(wrapper.state().activeMonth).toBeDefined();
