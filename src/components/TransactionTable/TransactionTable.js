@@ -8,12 +8,18 @@ import TransactionCard from "./TransactionCard/TransactionCard";
 const transactionTable = (props) => {
     const transactions = props.transactions;
     const activeMonth = props.activeMonth;
-    const filteredTransactions = transactions.filter(transaction => moment(transaction.date, "YYYY-MM-DD").format("YYYY-MM") === activeMonth);
+    let filteredTransactions = [];
     let totalFilteredTransactions = [];
-    if (filteredTransactions.length > 0) {
-        totalFilteredTransactions = filteredTransactions.map(transaction => transaction.total)
-            .reduce((accumulator, currentValue) => accumulator + currentValue);
-        totalFilteredTransactions = new Intl.NumberFormat('en-CA', {style: 'currency', currency: 'CAD'}).format(totalFilteredTransactions);
+    if (transactions) {
+        filteredTransactions = transactions.filter(transaction => moment(transaction.date, "YYYY-MM-DD").format("YYYY-MM") === activeMonth);
+        if (filteredTransactions.length > 0) {
+            totalFilteredTransactions = filteredTransactions.map(transaction => transaction.total)
+                .reduce((accumulator, currentValue) => accumulator + currentValue);
+            totalFilteredTransactions = new Intl.NumberFormat('en-CA', {
+                style: 'currency',
+                currency: 'CAD'
+            }).format(totalFilteredTransactions);
+        }
     }
     else {
     }
