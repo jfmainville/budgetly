@@ -1,13 +1,13 @@
 // COLORS
-$color-white: #FFF;
+$color-white: #fff;
 $color-black: #000000;
 
 $color-error: #ff3b33;
-$color-warning: #FF7730;
+$color-warning: #ff7730;
 $color-green: #28b045;
 
-$color-grey-light-1: #F5F5F5;
-$color-grey-light-2: #D7DADB;
+$color-grey-light-1: #f5f5f5;
+$color-grey-light-2: #d7dadb;
 $color-grey-light-3: #bfc2c3;
 $color-grey-dark-1: #646869;
 $color-grey-dark-2: #1e2223;
@@ -22,14 +22,14 @@ $color-blue-dark: #3ea7e1;
 $border-grey-light: #e1e1e1;
 
 // BOX SHADOWS
-$box-shadow-bottom: 0 .2rem .2rem rgba($color-grey-dark-1, .3);
-$box-shadow-right: .2rem 0 .2rem rgba($color-grey-dark-1, .3);
-$box-shadow-all: .2rem .2rem .2rem rgba($color-grey-dark-1, .3);
+$box-shadow-bottom: 0 0.2rem 0.2rem rgba($color-grey-dark-1, 0.3);
+$box-shadow-right: 0.2rem 0 0.2rem rgba($color-grey-dark-1, 0.3);
+$box-shadow-all: 0.2rem 0.2rem 0.2rem rgba($color-grey-dark-1, 0.3);
 
 // FONTS
-$logo-font-family: 'Pacifico', sans-serif;
+$logo-font-family: "Pacifico", sans-serif;
 $logo-font-size: 2.7rem;
-$default-font-family: 'Roboto', sans-serif;
+$default-font-family: "Roboto", sans-serif;
 $default-font-size: 1.6rem;
 $default-font-color: $color-grey-dark-1;
 $default-header-font-size: 1.4rem;
