@@ -63,6 +63,9 @@ const transactionTable = (props) => {
                     Total
                 </div>
             </div>
+            <div className={classes.TotalColumnTotal}>
+                <h2 className={classes.TotalColumnTotalText}>{totalFilteredTransactions}</h2>
+            </div>
             <div className={classes.TableRows}>
                 {filteredTransactions.map(transaction =>
                     <TransactionCard
@@ -71,8 +74,13 @@ const transactionTable = (props) => {
                     />
                 )}
             </div>
-            <div className={classes.TotalColumnTotal}>
-                <h2 className={classes.TotalColumnTotalText}>{totalFilteredTransactions}</h2>
+            <div className={classes.NewTransactionSection}>
+                <button
+                    onClick={props.handleNewTransactionBottomRow}
+                    className={classes.NewTransactionButton}
+                >
+                    Add Transactions
+                </button>
             </div>
         </div>
     )
