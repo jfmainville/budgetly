@@ -9,7 +9,8 @@ import {connect} from "react-redux";
 
 export class TransactionPanel extends Component {
     state = {
-        activeMonth: moment().format("YYYY-MM")
+        activeMonth: moment().format("YYYY-MM"),
+        newTransactionBottomRowId: null
     };
 
     handleMonthSelectionPrevious = () => {
@@ -26,6 +27,24 @@ export class TransactionPanel extends Component {
         })
     };
 
+    handleNewTransactionBottomRow = () => {
+        const transactions = [...this.props.transactions];
+        if (transactions) {
+            let rowId = transactions.length;
+            let transactionId =
+                Math.max.apply(
+                    null,
+                    transactions.map(transaction => {
+                        return transaction.id;
+                    })
+                ) + 1;
+            this.props.createTransactionRow(rowId, transactionId);
+            this.setState({
+                newTransactionBottomRowId: rowId
+            });
+        }
+    };
+
     componentDidMount() {
 
     }
@@ -36,8 +55,10 @@ export class TransactionPanel extends Component {
                 <TransactionTable
                     transactions={this.props.transactions}
                     activeMonth={this.state.activeMonth}
+                    newTransactionBottomRowId={this.state.newTransactionBottomRowId}
                     handleMonthSelectionPrevious={this.handleMonthSelectionPrevious}
                     handleMonthSelectionNext={this.handleMonthSelectionNext}
+                    handleNewTransactionBottomRow={this.handleNewTransactionBottomRow}
                 />
             </Auxiliary>
         )
@@ -47,8 +68,10 @@ export class TransactionPanel extends Component {
 TransactionPanel.propTypes = {
     transactions: PropTypes.array,
     activeMonth: PropTypes.string,
+    newTransactionBottomRowId: PropTypes.number,
     handleMonthSelectionPrevious: PropTypes.func,
-    handleMonthSelectionNext: PropTypes.func
+    handleMonthSelectionNext: PropTypes.func,
+    handleNewTransactionBottomRow: PropTypes.func
 };
 
 const mapStateToProps = (state) => {
@@ -64,7 +87,8 @@ const mapDispatchToProps = (dispatch) => {
         fetchTransactions: () => dispatch(actions.fetchTransactions()),
         createTransaction: (data) => dispatch(actions.createTransaction(data)),
         updateTransaction: (data) => dispatch(actions.updateTransaction(data)),
-        deleteTransaction: (data) => dispatch(actions.deleteTransaction(data))
+        deleteTransaction: (data) => dispatch(actions.deleteTransaction(data)),
+        createTransactionRow: (rowId, transactionId) => dispatch(actions.createTransactionRow(rowId, transactionId))
     }
 };
 
