@@ -108,7 +108,7 @@ export function createTransactionRowLoad(state, action) {
 
 export function createTransactionRowSuccess(state, action) {
     const transactions = [...state.transactions];
-    transactions.splice(action.rowId, 0, {id: action.transactionId, name: ""});
+    transactions.splice(action.rowId, 0, {id: action.transactionId, date: "2018-10-10", enterprise: "Zulu"});
     return updateObject(state, {
         transactions: transactions
     })
