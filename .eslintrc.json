@@ -2,9 +2,11 @@
 	"env": {
 		"browser": true,
 		"es6": true,
-		"node": true
+		"node": true,
+		"jest": true
 	},
 	"extends": ["eslint:recommended", "plugin:react/recommended"],
+	"parser": "babel-eslint",
 	"parserOptions": {
 		"ecmaFeatures": {
 			"jsx": true
@@ -14,7 +16,7 @@
 	},
 	"plugins": ["react"],
 	"rules": {
-		"indent": ["error", "tab"],
+		"indent": ["error", "tab", { "SwitchCase": 1 }],
 		"linebreak-style": ["error", "unix"],
 		"quotes": ["error", "double"],
 		"semi": ["error", "always"]
