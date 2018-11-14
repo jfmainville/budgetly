@@ -1,4 +1,4 @@
-import reducer from "./TransactionReducer";
+import reducer from "./transactionReducer";
 
 describe("transactionReducer", () => {
 	it("should return the reducer initial state", () => {
