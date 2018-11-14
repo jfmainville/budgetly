@@ -1,18 +1,18 @@
-@import '../../sass/_variables';
+@import "../../sass/_variables";
 
 .Container {
-  display: flex;
-  flex-direction: column;
-  flex: 0 0 100%;
-  max-height: 100vh;
-  background-color: $color-white;
-  position: relative;
+	display: flex;
+	flex-direction: column;
+	flex: 0 0 100%;
+	max-height: 100vh;
+	background-color: $color-white;
+	position: relative;
 }
 
 .Content {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 100%;
-  min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	max-width: 100%;
+	min-height: 100vh;
 }
