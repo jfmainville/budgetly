@@ -19,32 +19,11 @@
 	margin-bottom: 1rem;
 	background-color: $color-green;
 
-	.NewAccountSectionButtonPlusSave {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 5%;
-		height: 4rem;
-		border: 1px solid $color-white;
-		background-color: $color-green;
-		color: $color-white;
-		font-family: $default-font-family;
-		font-size: $default-font-size;
-		outline: none;
-		cursor: pointer;
-
-		.NewAccountSectionIconPlusSave {
-			width: 4rem;
-			height: 4rem;
-			fill: $color-white;
-		}
-	}
-
 	.NewAccountSectionButtonSave {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 10%;
+		width: 13%;
 		height: 4rem;
 		margin-right: 1rem;
 		border: 1px solid $color-white;

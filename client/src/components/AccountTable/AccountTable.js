@@ -16,11 +16,6 @@ const accountTable = props => {
 	return (
 		<div className={classes.Container}>
 			<div className={classes.NewAccountSection}>
-				<button className={classes.NewAccountSectionButtonPlusSave}>
-					<svg className={classes.NewAccountSectionIconPlusSave}>
-						<use xlinkHref="/assets/sprite.svg#icon-plus" />
-					</svg>
-				</button>
 				<AccountEnterpriseInput />
 				<AccountTypeDropdown
 					accounts={accounts}
