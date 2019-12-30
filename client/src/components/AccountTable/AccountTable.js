@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import classes from "./AccountTable.module.scss";
 import AccountCard from "./AccountCard/AccountCard";
@@ -7,33 +8,97 @@ import AccountEnterpriseInput from "./AccountEnterpriseInput/AccountEnterpriseIn
 import AccountTypeDropdown from "./AccountTypeDropdown/AccountTypeDropdown";
 
 const accountTable = props => {
-	const accounts = props.accounts.sort((a, b) => {
+	const accounts = useSelector(state => state.account.accounts);
+	const [categories] = useState([
+		{ id: 1, title: "Entertainment" },
+		{ id: 2, title: "Technology" },
+		{ id: 3, title: "Grocery" },
+		{ id: 4, title: "Fashion" },
+		{ id: 5, title: "Automobile" },
+		{ id: 6, title: "Automobile" },
+		{ id: 7, title: "Automobile" },
+		{ id: 8, title: "Automobile" },
+		{ id: 9, title: "Automobile" },
+		{ id: 10, title: "Automobile" },
+		{ id: 11, title: "Automobile" },
+		{ id: 12, title: "Automobile" },
+		{ id: 13, title: "Automobile" },
+		{ id: 14, title: "Automobile" },
+		{ id: 15, title: "Automobile" },
+		{ id: 16, title: "Automobile" }
+	])
+	const [categorySearchInput, setCategorySearchInput] = useState("");
+	const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
+	const [typeSearchInput, setTypeSearchInput] = useState("");
+	const [showTypeDropdown, setShowTypeDropdown] = useState(false);
+
+	const sortedAccounts = accounts.sort((a, b) => {
 		const textA = a.enterprise.toLowerCase();
 		const textB = b.enterprise.toLowerCase();
 		return textA < textB ? -1 : textA > textB ? 1 : 0;
 	});
-	const categories = props.categories;
+
+	const handleShowCategoryDropdown = () => {
+		setShowCategoryDropdown(!showCategoryDropdown);
+	};
+
+	const handleCategorySearch = event => {
+		const categorySearchInput = event.target.value;
+		setShowCategoryDropdown(true);
+		setCategorySearchInput(categorySearchInput);
+	};
+
+	const handleClearCategorySearch = () => {
+		setShowCategoryDropdown(false);
+		setCategorySearchInput("");
+	};
+
+	const handleCategorySearchSelection = category => {
+		setCategorySearchInput(category.title);
+		setShowCategoryDropdown(false);
+	};
+
+	const handleShowTypeDropdown = () => {
+		setShowTypeDropdown(!showTypeDropdown)
+	};
+
+	const handleTypeSearch = event => {
+		const typeSearchInput = event.target.value;
+		setShowTypeDropdown(true);
+		setTypeSearchInput(typeSearchInput);
+	};
+
+	const handleClearTypeSearch = () => {
+		setShowTypeDropdown(false)
+		setTypeSearchInput("");
+	};
+
+	const handleTypeSearchSelection = type => {
+		setTypeSearchInput(type);
+		setShowTypeDropdown(false);
+	};
+
 	return (
 		<div className={classes.Container}>
 			<div className={classes.NewAccountSection}>
 				<AccountEnterpriseInput />
 				<AccountTypeDropdown
-					accounts={accounts}
-					typeSearchInput={props.typeSearchInput}
-					showTypeDropdown={props.showTypeDropdown}
-					handleShowTypeDropdown={props.handleShowTypeDropdown}
-					handleTypeSearch={props.handleTypeSearch}
-					handleClearTypeSearch={props.handleClearTypeSearch}
-					handleTypeSearchSelection={props.handleTypeSearchSelection}
+					accounts={sortedAccounts}
+					typeSearchInput={typeSearchInput}
+					showTypeDropdown={showTypeDropdown}
+					handleShowTypeDropdown={handleShowTypeDropdown}
+					handleTypeSearch={handleTypeSearch}
+					handleClearTypeSearch={handleClearTypeSearch}
+					handleTypeSearchSelection={handleTypeSearchSelection}
 				/>
 				<AccountCategoryDropdown
 					categories={categories}
-					categorySearchInput={props.categorySearchInput}
-					showCategoryDropdown={props.showCategoryDropdown}
-					handleCategorySearch={props.handleCategorySearch}
-					handleClearCategorySearch={props.handleClearCategorySearch}
-					handleShowCategoryDropdown={props.handleShowCategoryDropdown}
-					handleCategorySearchSelection={props.handleCategorySearchSelection}
+					categorySearchInput={categorySearchInput}
+					showCategoryDropdown={showCategoryDropdown}
+					handleCategorySearch={handleCategorySearch}
+					handleClearCategorySearch={handleClearCategorySearch}
+					handleShowCategoryDropdown={handleShowCategoryDropdown}
+					handleCategorySearchSelection={handleCategorySearchSelection}
 				/>
 				<button className={classes.NewAccountSectionButtonSave}>
 					Add Account
@@ -49,7 +114,7 @@ const accountTable = props => {
 				<div className={classes.TableHeaderTotalColumn}>Total</div>
 			</div>
 			<div className={classes.TableRows}>
-				{accounts.map(account => (
+				{sortedAccounts.map(account => (
 					<AccountCard key={account.id} account={account} />
 				))}
 			</div>

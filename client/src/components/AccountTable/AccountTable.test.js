@@ -1,5 +1,8 @@
 import React from "react";
-import { configure, shallow } from "enzyme";
+import { Provider } from "react-redux";
+import configureMockStore from "redux-mock-store";
+import thunk from "redux-thunk";
+import { configure, mount } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import AccountTable from "./AccountTable";
 import AccountEnterpriseInput from "./AccountEnterpriseInput/AccountEnterpriseInput";
@@ -11,26 +14,6 @@ configure({ adapter: new Adapter() });
 
 describe("<AccountTable/>", () => {
 	const props = {
-		accounts: [
-			{
-				id: 1,
-				enterprise: "Tim Hortons",
-				category: "Restaurant",
-				total: 920.24
-			},
-			{
-				id: 2,
-				enterprise: "McDonalds",
-				category: "Restaurant",
-				total: 1200.24
-			},
-			{
-				id: 3,
-				enterprise: "Burger King",
-				category: "Restaurant",
-				total: 120.24
-			}
-		],
 		categories: [
 			{ id: 1, title: "Entertainment" },
 			{ id: 2, title: "Technology" },
@@ -53,36 +36,48 @@ describe("<AccountTable/>", () => {
 	const location = { pathname: "/accounts" };
 	let wrapper;
 	beforeEach(() => {
-		wrapper = shallow(<AccountTable {...props} location={location} />);
-	});
-
-	it("should contain the accounts array", () => {
-		expect(props.accounts).toEqual(expect.arrayContaining(props.accounts));
-	});
-	it("should contain the categories array", () => {
-		expect(props.categories).toEqual(expect.arrayContaining(props.categories));
-	});
-	it("should contain the required props in the <AccountTypeDropdown/> component", () => {
-		expect(wrapper.find(AccountTypeDropdown).props()).toEqual({
-			accounts: props.accounts,
-			typeSearchInput: props.typeSearchInput,
-			showTypeDropdown: props.showTypeDropdown,
-			handleShowTypeDropdown: props.handleShowTypeDropdown,
-			handleTypeSearch: props.handleTypeSearch,
-			handleClearTypeSearch: props.handleClearTypeSearch,
-			handleTypeSearchSelection: props.handleTypeSearchSelection
+		const mockStore = configureMockStore([thunk]);
+		const store = mockStore({
+			account: {
+				accounts: [
+					{
+						id: 1,
+						enterprise: "Tim Hortons",
+						type: "Expense",
+						category: "Restaurant",
+						recurrent: true,
+						recurrence: 1,
+						payment_date: "2018-11-01",
+						payment_amount: 100
+					},
+					{
+						id: 2,
+						enterprise: "McDonalds",
+						type: "Expense",
+						category: "Restaurant",
+						recurrent: true,
+						recurrence: 2,
+						payment_date: "2019-11-01",
+						payment_amount: 500
+					},
+					{
+						id: 3,
+						enterprise: "Burger King",
+						type: "Expense",
+						category: "Restaurant",
+						recurrent: false,
+						recurrence: null,
+						payment_date: null,
+						payment_amount: null
+					},
+				]
+			}
 		});
-	});
-	it("should contain the required props in the <AccountCategoryDropdown/> component", () => {
-		expect(wrapper.find(AccountCategoryDropdown).props()).toEqual({
-			categories: props.categories,
-			categorySearchInput: props.categorySearchInput,
-			showCategoryDropdown: props.showCategoryDropdown,
-			handleCategorySearch: props.handleCategorySearch,
-			handleClearCategorySearch: props.handleClearCategorySearch,
-			handleShowCategoryDropdown: props.handleShowCategoryDropdown,
-			handleCategorySearchSelection: props.handleCategorySearchSelection
-		});
+		wrapper = mount(
+			<Provider store={store}>
+				<AccountTable store={store} location={location} />
+			</Provider>
+		)
 	});
 	it("should show one <AccountEnterpriseInput/> component", () => {
 		expect(wrapper.find(AccountEnterpriseInput)).toHaveLength(1);
@@ -95,9 +90,5 @@ describe("<AccountTable/>", () => {
 	});
 	it("should show one <AccountCard/> component", () => {
 		expect(wrapper.find(AccountCard)).toHaveLength(3);
-	});
-
-	afterEach(() => {
-		wrapper.unmount();
 	});
 });
