@@ -195,3 +195,22 @@ export const dummyTransactions = [
         total: 1000.24
     }
 ]
+
+export const dummyCategories = [
+    { id: 1, title: "Entertainment" },
+    { id: 2, title: "Technology" },
+    { id: 3, title: "Grocery" },
+    { id: 4, title: "Fashion" },
+    { id: 5, title: "Automobile" },
+    { id: 6, title: "Automobile" },
+    { id: 7, title: "Automobile" },
+    { id: 8, title: "Automobile" },
+    { id: 9, title: "Automobile" },
+    { id: 10, title: "Automobile" },
+    { id: 11, title: "Automobile" },
+    { id: 12, title: "Automobile" },
+    { id: 13, title: "Automobile" },
+    { id: 14, title: "Automobile" },
+    { id: 15, title: "Automobile" },
+    { id: 16, title: "Automobile" }
+]
