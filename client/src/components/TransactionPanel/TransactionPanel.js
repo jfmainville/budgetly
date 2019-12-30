@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import * as actions from "../../store/actions/index";
 import moment from "moment";
 import classes from "./TransactionPanel.module.scss";
 import PropTypes from "prop-types";
@@ -8,6 +9,11 @@ import TransactionCard from "./TransactionCard/TransactionCard";
 const transactionPanel = () => {
 	const transactions = useSelector(state => state.transaction.transactions);
 	const [activeMonth, setActiveMonth] = useState(moment().format("YYYY-MM"));
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		dispatch(actions.fetchTransactions())
+	})
 
 	const handleMonthSelectionPrevious = () => {
 		let selectedMonth = moment(activeMonth, "YYYY-MM")
