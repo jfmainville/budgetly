@@ -10,7 +10,7 @@ export function fetchAccountsLoad(bool) {
 export function fetchAccountsSuccess(data) {
 	return {
 		type: actionTypes.FETCH_ACCOUNTS_SUCCESS,
-		transactions: data
+		accounts: data
 	};
 }
 
