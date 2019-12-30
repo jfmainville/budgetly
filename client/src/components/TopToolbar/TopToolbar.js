@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./TopToolbar.module.scss";
 import { NavLink } from "react-router-dom";
 
 const topToolbar = props => {
-	const profile = props.profile;
+	const [profileName] = useState("Jean-Frederic Mainville");
 	return (
 		<div className={classes.Navigation}>
 			<div className={classes.Logo}>Budgetly</div>
@@ -41,7 +41,7 @@ const topToolbar = props => {
 			</div>
 			<div className={classes.UserNavigation}>
 				<div className={classes.Profile}>
-					<p className={classes.ProfileName}>{profile.name}</p>
+					<p className={classes.ProfileName}>{profileName}</p>
 				</div>
 				<div className={classes.Settings}>
 					<button className={classes.SettingsButton}>
