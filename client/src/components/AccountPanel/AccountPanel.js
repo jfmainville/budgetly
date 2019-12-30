@@ -11,25 +11,8 @@ import AccountTypeDropdown from "./AccountTypeDropdown/AccountTypeDropdown";
 const accountPanel = () => {
 	const accounts = useSelector(state => state.account.accounts);
 	const transactions = useSelector(state => state.transaction.transactions);
+	const categories = useSelector(state => state.category.categories);
 	const dispatch = useDispatch()
-	const [categories] = useState([
-		{ id: 1, title: "Entertainment" },
-		{ id: 2, title: "Technology" },
-		{ id: 3, title: "Grocery" },
-		{ id: 4, title: "Fashion" },
-		{ id: 5, title: "Automobile" },
-		{ id: 6, title: "Automobile" },
-		{ id: 7, title: "Automobile" },
-		{ id: 8, title: "Automobile" },
-		{ id: 9, title: "Automobile" },
-		{ id: 10, title: "Automobile" },
-		{ id: 11, title: "Automobile" },
-		{ id: 12, title: "Automobile" },
-		{ id: 13, title: "Automobile" },
-		{ id: 14, title: "Automobile" },
-		{ id: 15, title: "Automobile" },
-		{ id: 16, title: "Automobile" }
-	])
 	const [categorySearchInput, setCategorySearchInput] = useState("");
 	const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
 	const [typeSearchInput, setTypeSearchInput] = useState("");
@@ -43,6 +26,7 @@ const accountPanel = () => {
 
 	useEffect(() => {
 		dispatch(actions.fetchAccounts())
+		dispatch(actions.fetchCategories())
 	}, [])
 
 	const handleShowCategoryDropdown = () => {
