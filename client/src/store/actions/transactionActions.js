@@ -1,4 +1,5 @@
 import * as actionTypes from "./actionTypes";
+import { dummyTransactions } from "../../utils/DummyData";
 
 export function fetchTransactionsLoad(bool) {
 	return {
@@ -114,9 +115,9 @@ export function deleteTransactionRowSuccess(rowId, transactionId) {
 	};
 }
 
-export function fetchTransactions(data) {
+export function fetchTransactions() {
 	return dispatch => {
-		dispatch(fetchTransactionsSuccess(data));
+		dispatch(fetchTransactionsSuccess(dummyTransactions));
 	};
 }
 
