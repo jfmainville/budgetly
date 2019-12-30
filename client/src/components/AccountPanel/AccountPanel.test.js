@@ -45,20 +45,12 @@ describe("<AccountPanel/>", () => {
 						enterprise: "Tim Hortons",
 						type: "Expense",
 						category: "Restaurant",
-						recurrent: true,
-						recurrence: 1,
-						payment_date: "2018-11-01",
-						payment_amount: 100
 					},
 					{
 						id: 2,
 						enterprise: "McDonalds",
 						type: "Expense",
 						category: "Restaurant",
-						recurrent: true,
-						recurrence: 2,
-						payment_date: "2019-11-01",
-						payment_amount: 500
 					},
 					{
 						id: 3,
