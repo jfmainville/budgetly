@@ -1,12 +1,28 @@
-import React from "react";
-import classes from "./TransactionTable.module.scss";
-import PropTypes from "prop-types";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import moment from "moment";
+import classes from "./TransactionPanel.module.scss";
+import PropTypes from "prop-types";
 import TransactionCard from "./TransactionCard/TransactionCard";
 
-const transactionTable = props => {
-	const transactions = props.transactions;
-	const activeMonth = props.activeMonth;
+const transactionPanel = props => {
+	const transactions = useSelector(state => state.transaction.transactions);
+	const [activeMonth, setActiveMonth] = useState(moment().format("YYYY-MM"));
+
+	const handleMonthSelectionPrevious = () => {
+		let selectedMonth = moment(activeMonth, "YYYY-MM")
+			.add(-1, "month")
+			.format("YYYY-MM");
+		setActiveMonth(selectedMonth)
+	};
+
+	const handleMonthSelectionNext = () => {
+		let selectedMonth = moment(activeMonth, "YYYY-MM")
+			.add(1, "month")
+			.format("YYYY-MM");
+		setActiveMonth(selectedMonth)
+	};
+
 	let filteredTransactions = [];
 	let totalFilteredTransactions = [];
 	if (transactions) {
@@ -29,7 +45,7 @@ const transactionTable = props => {
 			<div className={classes.MonthPicker}>
 				<button
 					className={classes.MonthPickerPrevious}
-					onClick={props.handleMonthSelectionPrevious}
+					onClick={handleMonthSelectionPrevious}
 				>
 					Previous Month
 				</button>
@@ -38,7 +54,7 @@ const transactionTable = props => {
 				</h2>
 				<button
 					className={classes.MonthPickerNext}
-					onClick={props.handleMonthSelectionNext}
+					onClick={handleMonthSelectionNext}
 				>
 					Next Month
 				</button>
@@ -75,7 +91,7 @@ const transactionTable = props => {
 	);
 };
 
-transactionTable.propTypes = {
+transactionPanel.propTypes = {
 	transactions: PropTypes.array,
 	transaction: PropTypes.object,
 	activeMonth: PropTypes.string,
@@ -86,4 +102,4 @@ transactionTable.propTypes = {
 	handleNewTransactionBottomRow: PropTypes.func
 };
 
-export default transactionTable;
+export default transactionPanel;
