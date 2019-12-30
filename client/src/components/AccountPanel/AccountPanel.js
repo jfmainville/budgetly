@@ -117,6 +117,7 @@ accountPanel.propTypes = {
 	accounts: PropTypes.array,
 	account: PropTypes.object,
 	categories: PropTypes.array,
+	transactions: PropTypes.array,
 	categorySearchInput: PropTypes.string,
 	showCategoryDropdown: PropTypes.bool,
 	handleCategorySearch: PropTypes.func,
