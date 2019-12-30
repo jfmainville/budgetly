@@ -9,6 +9,7 @@ import AccountTypeDropdown from "./AccountTypeDropdown/AccountTypeDropdown";
 
 const accountPanel = props => {
 	const accounts = useSelector(state => state.account.accounts);
+	const transactions = useSelector(state => state.transaction.transactions);
 	const [categories] = useState([
 		{ id: 1, title: "Entertainment" },
 		{ id: 2, title: "Technology" },
@@ -115,7 +116,7 @@ const accountPanel = props => {
 			</div>
 			<div className={classes.TableRows}>
 				{sortedAccounts.map(account => (
-					<AccountCard key={account.id} account={account} />
+					<AccountCard key={account.id} account={account} transactions={transactions} />
 				))}
 			</div>
 		</div>
