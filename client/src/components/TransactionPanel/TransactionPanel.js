@@ -5,7 +5,7 @@ import classes from "./TransactionPanel.module.scss";
 import PropTypes from "prop-types";
 import TransactionCard from "./TransactionCard/TransactionCard";
 
-const transactionPanel = props => {
+const transactionPanel = () => {
 	const transactions = useSelector(state => state.transaction.transactions);
 	const [activeMonth, setActiveMonth] = useState(moment().format("YYYY-MM"));
 
