@@ -7,7 +7,7 @@ import AccountCategoryDropdown from "./AccountCategoryDropdown/AccountCategoryDr
 import AccountEnterpriseInput from "./AccountEnterpriseInput/AccountEnterpriseInput";
 import AccountTypeDropdown from "./AccountTypeDropdown/AccountTypeDropdown";
 
-const accountPanel = props => {
+const accountPanel = () => {
 	const accounts = useSelector(state => state.account.accounts);
 	const transactions = useSelector(state => state.transaction.transactions);
 	const [categories] = useState([
