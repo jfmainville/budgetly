@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import * as actions from "../../store/actions/index";
 import PropTypes from "prop-types";
 import classes from "./AccountPanel.module.scss";
 import AccountCard from "./AccountCard/AccountCard";
@@ -10,6 +11,7 @@ import AccountTypeDropdown from "./AccountTypeDropdown/AccountTypeDropdown";
 const accountPanel = () => {
 	const accounts = useSelector(state => state.account.accounts);
 	const transactions = useSelector(state => state.transaction.transactions);
+	const dispatch = useDispatch()
 	const [categories] = useState([
 		{ id: 1, title: "Entertainment" },
 		{ id: 2, title: "Technology" },
@@ -38,6 +40,10 @@ const accountPanel = () => {
 		const textB = b.enterprise.toLowerCase();
 		return textA < textB ? -1 : textA > textB ? 1 : 0;
 	});
+
+	useEffect(() => {
+		dispatch(actions.fetchAccounts())
+	}, [])
 
 	const handleShowCategoryDropdown = () => {
 		setShowCategoryDropdown(!showCategoryDropdown);
