@@ -1,4 +1,5 @@
 import * as actionTypes from "./actionTypes";
+import { dummyAccounts } from "../../utils/DummyData";
 
 export function fetchAccountsLoad(bool) {
 	return {
@@ -84,9 +85,9 @@ export function deleteAccountFail(bool) {
 	};
 }
 
-export function fetchAccounts(data) {
+export function fetchAccounts() {
 	return dispatch => {
-		dispatch(fetchAccountsSuccess(data));
+		dispatch(fetchAccountsSuccess(dummyAccounts));
 	};
 }
 
