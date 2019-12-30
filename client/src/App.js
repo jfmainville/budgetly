@@ -4,7 +4,7 @@ import "./App.module.scss";
 import Layout from "./hoc/Layout/Layout";
 import DashboardPanel from "./components/DashboardPanel/DashboardPanel";
 import TransactionPanel from "./containers/TransactionPanel/TransactionPanel";
-import AccountTable from "./components/AccountTable/AccountTable";
+import AccountPanel from "./components/AccountPanel/AccountPanel";
 
 class App extends Component {
 	render() {
@@ -33,7 +33,7 @@ class App extends Component {
 					path="/accounts"
 					render={() => (
 						<Layout>
-							<AccountTable />
+							<AccountPanel />
 						</Layout>
 					)}
 				/>

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
-import classes from "./AccountTable.module.scss";
+import classes from "./AccountPanel.module.scss";
 import AccountCard from "./AccountCard/AccountCard";
 import AccountCategoryDropdown from "./AccountCategoryDropdown/AccountCategoryDropdown";
 import AccountEnterpriseInput from "./AccountEnterpriseInput/AccountEnterpriseInput";
 import AccountTypeDropdown from "./AccountTypeDropdown/AccountTypeDropdown";
 
-const accountTable = props => {
+const accountPanel = props => {
 	const accounts = useSelector(state => state.account.accounts);
 	const [categories] = useState([
 		{ id: 1, title: "Entertainment" },
@@ -122,7 +122,7 @@ const accountTable = props => {
 	);
 };
 
-accountTable.propTypes = {
+accountPanel.propTypes = {
 	accounts: PropTypes.array,
 	account: PropTypes.object,
 	categories: PropTypes.array,
@@ -134,4 +134,4 @@ accountTable.propTypes = {
 	handleCategorySearchSelection: PropTypes.func
 };
 
-export default accountTable;
+export default accountPanel;

@@ -4,7 +4,7 @@ import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import { configure, mount } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import AccountTable from "./AccountTable";
+import AccountPanel from "./AccountPanel";
 import AccountEnterpriseInput from "./AccountEnterpriseInput/AccountEnterpriseInput";
 import AccountCategoryDropdown from "./AccountCategoryDropdown/AccountCategoryDropdown";
 import AccountCard from "./AccountCard/AccountCard";
@@ -12,7 +12,7 @@ import AccountTypeDropdown from "./AccountTypeDropdown/AccountTypeDropdown";
 
 configure({ adapter: new Adapter() });
 
-describe("<AccountTable/>", () => {
+describe("<AccountPanel/>", () => {
 	const props = {
 		categories: [
 			{ id: 1, title: "Entertainment" },
@@ -75,7 +75,7 @@ describe("<AccountTable/>", () => {
 		});
 		wrapper = mount(
 			<Provider store={store}>
-				<AccountTable store={store} location={location} />
+				<AccountPanel store={store} location={location} />
 			</Provider>
 		)
 	});
