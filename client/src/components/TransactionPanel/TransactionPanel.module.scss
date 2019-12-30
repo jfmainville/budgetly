@@ -196,33 +196,3 @@
 		font-size: 1.7rem;
 	}
 }
-
-.NewTransactionSection {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: flex-start;
-	width: 95%;
-
-	.NewTransactionButton {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: center;
-		flex-basis: 15rem;
-		height: 4rem;
-		border: 1px solid $color-white;
-		background-color: $color-green;
-		color: $color-white;
-		font-family: $default-font-family;
-		font-size: $default-font-size;
-		outline: none;
-		cursor: pointer;
-
-		&:hover {
-			color: $color-green;
-			background-color: $color-white;
-			border: 1px solid $color-green;
-		}
-	}
-}

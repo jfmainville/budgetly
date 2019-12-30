@@ -80,14 +80,6 @@ const transactionPanel = () => {
 					<TransactionCard key={transaction.id} transaction={transaction} />
 				))}
 			</div>
-			<div className={classes.NewTransactionSection}>
-				<button
-					onClick={props.handleNewTransactionBottomRow}
-					className={classes.NewTransactionButton}
-				>
-					Add Transactions
-				</button>
-			</div>
 		</div>
 	);
 };
