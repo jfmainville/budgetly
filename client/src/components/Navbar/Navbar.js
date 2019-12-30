@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import classes from "./TopToolbar.module.scss";
+import PropTypes from "prop-types";
+import classes from "./Navbar.module.scss";
 import { NavLink } from "react-router-dom";
 
-const topToolbar = props => {
+const navbar = props => {
 	const [profileName] = useState("Jean-Frederic Mainville");
 	return (
 		<div className={classes.Navigation}>
@@ -55,4 +56,8 @@ const topToolbar = props => {
 	);
 };
 
-export default topToolbar;
+navbar.propTypes = {
+	profileName: PropTypes.string
+}
+
+export default navbar;

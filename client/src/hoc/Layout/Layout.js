@@ -1,12 +1,12 @@
 import React from "react";
-import TopToolbar from "../../components/TopToolbar/TopToolbar";
+import Navbar from "../../components/Navbar/Navbar";
 import classes from "./Layout.module.scss";
 import Content from "../Content/Content";
 
 const layout = props => {
 	return (
 		<div className={classes.Container}>
-			<TopToolbar />
+			<Navbar />
 			<div className={classes.Content}>
 				<Content>{props.children}</Content>
 			</div>
