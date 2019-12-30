@@ -11,10 +11,10 @@ describe("accountActions", () => {
 		expect(actions.fetchAccountsLoad(bool)).toEqual(expectedAction);
 	});
 	it("should execute the fetchAccountsSuccess action", () => {
-		const data = "transactions";
+		const data = "accounts";
 		const expectedAction = {
 			type: actionTypes.FETCH_ACCOUNTS_SUCCESS,
-			transactions: data
+			accounts: data
 		};
 		expect(actions.fetchAccountsSuccess(data)).toEqual(expectedAction);
 	});
@@ -35,7 +35,7 @@ describe("accountActions", () => {
 		expect(actions.createAccountLoad(bool)).toEqual(expectedAction);
 	});
 	it("should execute the createAccountSuccess action", () => {
-		const data = "transactions";
+		const data = "accounts";
 		const expectedAction = {
 			type: actionTypes.CREATE_ACCOUNT_SUCCESS,
 			createAccount: data
@@ -59,7 +59,7 @@ describe("accountActions", () => {
 		expect(actions.updateAccountLoad(bool)).toEqual(expectedAction);
 	});
 	it("should execute the updateAccountSuccess action", () => {
-		const data = "transactions";
+		const data = "accounts";
 		const expectedAction = {
 			type: actionTypes.UPDATE_ACCOUNT_SUCCESS,
 			updateAccount: data
@@ -83,7 +83,7 @@ describe("accountActions", () => {
 		expect(actions.deleteAccountLoad(bool)).toEqual(expectedAction);
 	});
 	it("should execute the deleteAccountSuccess action", () => {
-		const data = "transactions";
+		const data = "accounts";
 		const expectedAction = {
 			type: actionTypes.DELETE_ACCOUNT_SUCCESS,
 			deleteAccount: data
