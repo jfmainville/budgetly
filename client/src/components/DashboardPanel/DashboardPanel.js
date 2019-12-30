@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./Dashboard.module.scss";
+import classes from "./DashboardPanel.module.scss";
 import { Bar, Doughnut } from "react-chartjs-2";
 
 const dashboard = () => {

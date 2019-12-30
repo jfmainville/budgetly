@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import "./App.module.scss";
 import Layout from "./hoc/Layout/Layout";
-import DashboardPanel from "./containers/DashboardPanel/DashboardPanel";
+import DashboardPanel from "./components/DashboardPanel/DashboardPanel";
 import TransactionPanel from "./containers/TransactionPanel/TransactionPanel";
 import AccountTable from "./components/AccountTable/AccountTable";
 
