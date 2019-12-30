@@ -18,12 +18,6 @@ const accountPanel = () => {
 	const [typeSearchInput, setTypeSearchInput] = useState("");
 	const [showTypeDropdown, setShowTypeDropdown] = useState(false);
 
-	const sortedAccounts = accounts.sort((a, b) => {
-		const textA = a.enterprise.toLowerCase();
-		const textB = b.enterprise.toLowerCase();
-		return textA < textB ? -1 : textA > textB ? 1 : 0;
-	});
-
 	useEffect(() => {
 		dispatch(actions.fetchAccounts())
 		dispatch(actions.fetchCategories())
@@ -68,6 +62,12 @@ const accountPanel = () => {
 		setTypeSearchInput(type);
 		setShowTypeDropdown(false);
 	};
+
+	const sortedAccounts = accounts.sort((a, b) => {
+		const textA = a.enterprise.toLowerCase();
+		const textB = b.enterprise.toLowerCase();
+		return textA < textB ? -1 : textA > textB ? 1 : 0;
+	});
 
 	return (
 		<div className={classes.Container}>
