@@ -40,6 +40,7 @@ const transactionPanel = props => {
 			}).format(totalFilteredTransactions);
 		}
 	}
+
 	return (
 		<div className={classes.Container}>
 			<div className={classes.MonthPicker}>
