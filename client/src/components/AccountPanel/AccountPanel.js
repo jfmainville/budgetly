@@ -12,14 +12,15 @@ const accountPanel = () => {
 	const accounts = useSelector(state => state.account.accounts);
 	const transactions = useSelector(state => state.transaction.transactions);
 	const categories = useSelector(state => state.category.categories);
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
+	const [enterpriseInput, setEnterpriseInput] = useState("");
 	const [categorySearchInput, setCategorySearchInput] = useState("");
 	const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
 	const [typeSearchInput, setTypeSearchInput] = useState("");
 	const [showTypeDropdown, setShowTypeDropdown] = useState(false);
 
 	useEffect(() => {
-		dispatch(actions.fetchAccounts())
+		dispatch(actions.fetchAccounts());
 		dispatch(actions.fetchCategories())
 	}, [])
 
@@ -63,6 +64,23 @@ const accountPanel = () => {
 		setShowTypeDropdown(false);
 	};
 
+	const handleAccountCreate = () => {
+		let data = {};
+		if (accounts) {
+			data.id = Math.max.apply(Math, accounts.map(account => account.id)) + 1;
+			data.enterprise = enterpriseInput;
+			data.type = typeSearchInput;
+			data.category = categorySearchInput;
+			dispatch(actions.createAccount(data))
+		} else {
+			data.id = 1;
+			data.enterprise = enterpriseInput;
+			data.type = typeSearchInput;
+			data.category = categorySearchInput;
+			dispatch(actions.createAccount(data))
+		}
+	};
+
 	const sortedAccounts = accounts.sort((a, b) => {
 		const textA = a.enterprise.toLowerCase();
 		const textB = b.enterprise.toLowerCase();
@@ -91,7 +109,7 @@ const accountPanel = () => {
 					handleShowCategoryDropdown={handleShowCategoryDropdown}
 					handleCategorySearchSelection={handleCategorySearchSelection}
 				/>
-				<button className={classes.NewAccountSectionButtonSave}>
+				<button className={classes.NewAccountSectionButtonSave} onClick={handleAccountCreate}>
 					Add Account
 				</button>
 			</div>
