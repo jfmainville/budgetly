@@ -22,7 +22,12 @@ const accountPanel = () => {
 	useEffect(() => {
 		dispatch(actions.fetchAccounts());
 		dispatch(actions.fetchCategories())
-	}, [])
+	}, []);
+
+	const handleEnterpriseInput = event => {
+		const enterpriseInput = event.target.value;
+		setEnterpriseInput(enterpriseInput)
+	};
 
 	const handleShowCategoryDropdown = () => {
 		setShowCategoryDropdown(!showCategoryDropdown);
@@ -55,7 +60,7 @@ const accountPanel = () => {
 	};
 
 	const handleClearTypeSearch = () => {
-		setShowTypeDropdown(false)
+		setShowTypeDropdown(false);
 		setTypeSearchInput("");
 	};
 
@@ -90,7 +95,10 @@ const accountPanel = () => {
 	return (
 		<div className={classes.Container}>
 			<div className={classes.NewAccountSection}>
-				<AccountEnterpriseInput />
+				<AccountEnterpriseInput
+					enterpriseInput={enterpriseInput}
+					handleEnterpriseInput={handleEnterpriseInput}
+				/>
 				<AccountTypeDropdown
 					accounts={sortedAccounts}
 					typeSearchInput={typeSearchInput}
@@ -115,7 +123,7 @@ const accountPanel = () => {
 			</div>
 			<div className={classes.TableHeader}>
 				<div className={classes.TableHeaderSelectColumn}>
-					<input className={classes.TableHeaderCheckboxInput} type="checkbox" />
+					<input className={classes.TableHeaderCheckboxInput} type="checkbox"/>
 				</div>
 				<div className={classes.TableHeaderEnterpriseColumn}>Enterprise</div>
 				<div className={classes.TableHeaderCategoryColumn}>Type</div>
