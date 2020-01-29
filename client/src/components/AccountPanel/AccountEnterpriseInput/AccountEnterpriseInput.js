@@ -7,6 +7,8 @@ const accountEnterpriseInput = props => {
 			<input
 				className={classes.NewAccountSectionEnterpriseInput}
 				type="text"
+				value={props.enterpriseInput}
+				onChange={props.handleEnterpriseInput}
 				placeholder="Enterprise"
 			/>
 		</div>
