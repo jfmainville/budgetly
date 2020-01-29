@@ -72,17 +72,21 @@ const accountPanel = () => {
 	const handleAccountCreate = () => {
 		let data = {};
 		if (accounts) {
-			data.id = Math.max.apply(Math, accounts.map(account => account.id)) + 1;
-			data.enterprise = enterpriseInput;
-			data.type = typeSearchInput;
-			data.category = categorySearchInput;
-			dispatch(actions.createAccount(data))
+			if (enterpriseInput && typeSearchInput && categorySearchInput) {
+				data.id = Math.max.apply(Math, accounts.map(account => account.id)) + 1;
+				data.enterprise = enterpriseInput;
+				data.type = typeSearchInput;
+				data.category = categorySearchInput;
+				dispatch(actions.createAccount(data))
+			}
 		} else {
-			data.id = 1;
-			data.enterprise = enterpriseInput;
-			data.type = typeSearchInput;
-			data.category = categorySearchInput;
-			dispatch(actions.createAccount(data))
+			if (enterpriseInput && typeSearchInput && categorySearchInput) {
+				data.id = 1;
+				data.enterprise = enterpriseInput;
+				data.type = typeSearchInput;
+				data.category = categorySearchInput;
+				dispatch(actions.createAccount(data))
+			}
 		}
 		setEnterpriseInput("");
 		setTypeSearchInput("");
