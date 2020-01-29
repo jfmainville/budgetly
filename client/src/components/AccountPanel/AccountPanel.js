@@ -150,7 +150,8 @@ accountPanel.propTypes = {
 	handleCategorySearch: PropTypes.func,
 	handleClearCategorySearch: PropTypes.func,
 	handleShowCategoryDropdown: PropTypes.func,
-	handleCategorySearchSelection: PropTypes.func
+	handleCategorySearchSelection: PropTypes.func,
+	handleEnterpriseInput: PropTypes.func
 };
 
 export default accountPanel;
