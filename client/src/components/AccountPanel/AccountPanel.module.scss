@@ -150,6 +150,25 @@
 			background-color: $color-green-dark;
 		}
 	}
+
+	.TableHeaderButtonsColumn {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		width: 10%;
+		border-top: 1px solid transparent;
+		border-bottom: 1px solid transparent;
+		font-family: $default-font-family;
+		font-size: $default-font-size;
+		font-weight: 600;
+		color: $color-white;
+		height: 5rem;
+		cursor: pointer;
+
+		&:hover {
+			background-color: $color-green-dark;
+		}
+	}
 }
 
 .TableRows {

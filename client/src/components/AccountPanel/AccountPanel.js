@@ -86,6 +86,14 @@ const accountPanel = () => {
 		}
 	};
 
+	const handleAccountDelete = (account) => {
+		let data = {};
+		if (account.id) {
+			data = account.id;
+			dispatch(actions.deleteAccount(data))
+		}
+	};
+
 	const sortedAccounts = accounts.sort((a, b) => {
 		const textA = a.enterprise.toLowerCase();
 		const textB = b.enterprise.toLowerCase();
@@ -129,10 +137,12 @@ const accountPanel = () => {
 				<div className={classes.TableHeaderCategoryColumn}>Type</div>
 				<div className={classes.TableHeaderCategoryColumn}>Category</div>
 				<div className={classes.TableHeaderTotalColumn}>Total</div>
+				<div className={classes.TableHeaderButtonsColumn}/>
 			</div>
 			<div className={classes.TableRows}>
 				{sortedAccounts.map(account => (
-					<AccountCard key={account.id} account={account} transactions={transactions} />
+					<AccountCard key={account.id} account={account} transactions={transactions}
+								 handleAccountDelete={handleAccountDelete}/>
 				))}
 			</div>
 		</div>

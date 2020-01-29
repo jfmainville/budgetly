@@ -24,12 +24,19 @@ const accountCard = props => {
 	return (
 		<div className={classes.TableRow}>
 			<div className={classes.TableSelectRow}>
-				<input className={classes.TableCheckboxInput} type="checkbox" />
+				<input className={classes.TableCheckboxInput} type="checkbox"/>
 			</div>
 			<div className={classes.TableEnterpriseRow}>{account.enterprise}</div>
 			<div className={classes.TableTypeRow}>{account.type}</div>
 			<div className={classes.TableCategoryRow}>{account.category}</div>
 			<div className={classes.TableTotalRow}>{totalFilteredTransactions}</div>
+			<div className={classes.TableButtonsRow}>
+				<button
+					id={account}
+					onClick={() => props.handleAccountDelete(account)}
+				>X
+				</button>
+			</div>
 		</div>
 	);
 };

@@ -70,4 +70,15 @@
 		color: $color-grey-dark-1;
 		height: 5rem;
 	}
+
+	.TableButtonsRow {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 10%;
+		font-family: $default-font-family;
+		font-size: $default-font-size;
+		color: $color-grey-dark-1;
+		height: 5rem;
+	}
 }
