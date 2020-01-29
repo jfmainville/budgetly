@@ -84,6 +84,9 @@ const accountPanel = () => {
 			data.category = categorySearchInput;
 			dispatch(actions.createAccount(data))
 		}
+		setEnterpriseInput("");
+		setTypeSearchInput("");
+		setCategorySearchInput("");
 	};
 
 	const handleAccountDelete = (account) => {
