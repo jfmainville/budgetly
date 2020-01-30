@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, {useState, useEffect} from "react";
+import {useSelector, useDispatch} from "react-redux";
 import * as actions from "../../store/actions/index";
 import PropTypes from "prop-types";
 import classes from "./AccountPanel.module.scss";
@@ -14,6 +14,8 @@ const accountPanel = () => {
 	const categories = useSelector(state => state.category.categories);
 	const dispatch = useDispatch();
 	const [enterpriseInput, setEnterpriseInput] = useState("");
+	const [enterpriseInputSelection, setEnterpriseInputSelection] = useState("");
+	const [enterpriseInputUpdate, setEnterpriseInputUpdate] = useState("");
 	const [categorySearchInput, setCategorySearchInput] = useState("");
 	const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
 	const [typeSearchInput, setTypeSearchInput] = useState("");
@@ -27,6 +29,19 @@ const accountPanel = () => {
 	const handleEnterpriseInput = event => {
 		const enterpriseInput = event.target.value;
 		setEnterpriseInput(enterpriseInput)
+	};
+
+	const handleEnterpriseInputSelection = (account) => {
+		if (!enterpriseInputSelection) {
+			setEnterpriseInputSelection(account);
+		} else {
+			handleAccountUpdate();
+			setEnterpriseInputSelection("");
+		}
+	};
+
+	const handleEnterpriseInputUpdate = event => {
+		setEnterpriseInputUpdate(event.target.value);
 	};
 
 	const handleShowCategoryDropdown = () => {
@@ -93,6 +108,15 @@ const accountPanel = () => {
 		setCategorySearchInput("");
 	};
 
+	const handleAccountUpdate = () => {
+		let data = {};
+		data.id = enterpriseInputSelection.id;
+		data.enterprise = enterpriseInputUpdate;
+		data.type = enterpriseInputSelection.type;
+		data.category = enterpriseInputSelection.category;
+		dispatch(actions.updateAccount(data));
+	};
+
 	const handleAccountDelete = (account) => {
 		let data = {};
 		if (account.id) {
@@ -148,8 +172,15 @@ const accountPanel = () => {
 			</div>
 			<div className={classes.TableRows}>
 				{sortedAccounts.map(account => (
-					<AccountCard key={account.id} account={account} transactions={transactions}
-								 handleAccountDelete={handleAccountDelete}/>
+					<AccountCard
+						key={account.id}
+						account={account}
+						transactions={transactions}
+						handleAccountDelete={handleAccountDelete}
+						handleEnterpriseInputUpdate={handleEnterpriseInputUpdate}
+						handleEnterpriseInputSelection={handleEnterpriseInputSelection}
+						enterpriseInputSelection={enterpriseInputSelection}
+					/>
 				))}
 			</div>
 		</div>

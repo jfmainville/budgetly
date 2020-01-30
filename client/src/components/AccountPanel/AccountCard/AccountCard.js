@@ -26,7 +26,22 @@ const accountCard = props => {
 			<div className={classes.TableSelectRow}>
 				<input className={classes.TableCheckboxInput} type="checkbox"/>
 			</div>
-			<div className={classes.TableEnterpriseRow}>{account.enterprise}</div>
+			<div className={classes.TableEnterpriseRow}>
+				{props.enterpriseInputSelection.id === account.id ? (
+					<input
+						id={account.id}
+						defaultValue={account.enterprise}
+						placeholder="Enterprise"
+						autoFocus={true}
+						onChange={props.handleEnterpriseInputUpdate}
+						onBlur={props.handleEnterpriseInputSelection}
+					>
+					</input>
+				) : <div onClick={() => props.handleEnterpriseInputSelection(account)}>
+					{account.enterprise}
+				</div>
+				}
+			</div>
 			<div className={classes.TableTypeRow}>{account.type}</div>
 			<div className={classes.TableCategoryRow}>{account.category}</div>
 			<div className={classes.TableTotalRow}>{totalFilteredTransactions}</div>
