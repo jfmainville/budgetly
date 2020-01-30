@@ -35,7 +35,9 @@ const accountPanel = () => {
 		if (!enterpriseInputSelection) {
 			setEnterpriseInputSelection(account);
 		} else {
-			handleAccountUpdate();
+			if (enterpriseInputUpdate) {
+				handleAccountUpdate();
+			}
 			setEnterpriseInputSelection("");
 		}
 	};
