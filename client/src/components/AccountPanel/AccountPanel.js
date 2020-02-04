@@ -87,18 +87,22 @@ const accountPanel = () => {
 	};
 
 	const handleTypeSearchSelection = type => {
-		setTypeSearchInput(type);
-		setShowTypeDropdown(false);
-	};
+		setTypeSearchInput(type)
+		setShowTypeDropdown(false)
+	}
+
+	const handleAccountCardTypeDropdownShowDropdown = (account) => {
+		setAccountCardTypeDropdownShowDropdown(account)
+	}
 
 	const handleAccountCreate = () => {
 		let data = {};
 		if (accounts) {
 			if (enterpriseInput && typeSearchInput && categorySearchInput) {
-				data.id = Math.max.apply(Math, accounts.map(account => account.id)) + 1;
-				data.enterprise = enterpriseInput;
-				data.type = typeSearchInput;
-				data.category = categorySearchInput;
+				data.id = Math.max.apply(Math, accounts.map(account => account.id)) + 1
+				data.enterprise = enterpriseInput
+				data.type = typeSearchInput
+				data.category = categorySearchInput
 				dispatch(actions.createAccount(data))
 			}
 		} else {
@@ -189,6 +193,9 @@ const accountPanel = () => {
 						handleEnterpriseInputUpdate={handleEnterpriseInputUpdate}
 						handleEnterpriseInputSelection={handleEnterpriseInputSelection}
 						enterpriseInputSelection={enterpriseInputSelection}
+						handleAccountCardTypeDropdownShowDropdown={handleAccountCardTypeDropdownShowDropdown}
+						accountCardTypeDropdownShowDropdown={accountCardTypeDropdownShowDropdown}
+						handleAccountUpdate={handleAccountUpdate}
 					/>
 				))}
 			</div>
