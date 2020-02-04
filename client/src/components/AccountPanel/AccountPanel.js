@@ -9,17 +9,22 @@ import AccountEnterpriseInput from "./AccountEnterpriseInput/AccountEnterpriseIn
 import AccountTypeDropdown from "./AccountTypeDropdown/AccountTypeDropdown";
 
 const accountPanel = () => {
-	const accounts = useSelector(state => state.account.accounts);
-	const transactions = useSelector(state => state.transaction.transactions);
-	const categories = useSelector(state => state.category.categories);
-	const dispatch = useDispatch();
-	const [enterpriseInput, setEnterpriseInput] = useState("");
-	const [enterpriseInputSelection, setEnterpriseInputSelection] = useState("");
-	const [enterpriseInputUpdate, setEnterpriseInputUpdate] = useState("");
-	const [categorySearchInput, setCategorySearchInput] = useState("");
-	const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
-	const [typeSearchInput, setTypeSearchInput] = useState("");
-	const [showTypeDropdown, setShowTypeDropdown] = useState(false);
+	const accounts = useSelector(state => state.account.accounts)
+	const transactions = useSelector(state => state.transaction.transactions)
+	const categories = useSelector(state => state.category.categories)
+	const dispatch = useDispatch()
+	const types = [
+		'Expense',
+		'Income'
+	]
+	const [enterpriseInput, setEnterpriseInput] = useState('')
+	const [enterpriseInputSelection, setEnterpriseInputSelection] = useState('')
+	const [enterpriseInputUpdate, setEnterpriseInputUpdate] = useState('')
+	const [categorySearchInput, setCategorySearchInput] = useState('')
+	const [showCategoryDropdown, setShowCategoryDropdown] = useState(false)
+	const [typeSearchInput, setTypeSearchInput] = useState('')
+	const [showTypeDropdown, setShowTypeDropdown] = useState(false)
+	const [accountCardTypeDropdownShowDropdown, setAccountCardTypeDropdownShowDropdown] = useState('')
 
 	useEffect(() => {
 		dispatch(actions.fetchAccounts());
@@ -142,6 +147,7 @@ const accountPanel = () => {
 				/>
 				<AccountTypeDropdown
 					accounts={sortedAccounts}
+					types={types}
 					typeSearchInput={typeSearchInput}
 					showTypeDropdown={showTypeDropdown}
 					handleShowTypeDropdown={handleShowTypeDropdown}
@@ -178,6 +184,7 @@ const accountPanel = () => {
 						key={account.id}
 						account={account}
 						transactions={transactions}
+						types={types}
 						handleAccountDelete={handleAccountDelete}
 						handleEnterpriseInputUpdate={handleEnterpriseInputUpdate}
 						handleEnterpriseInputSelection={handleEnterpriseInputSelection}

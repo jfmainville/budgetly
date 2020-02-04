@@ -4,7 +4,7 @@ import classes from "./AccountTypeDropdown.module.scss";
 import { Manager, Reference, Popper } from "react-popper";
 
 const accountTypeDropdown = props => {
-	let types = ["Expense", "Income"];
+	const types = props.types
 	return (
 		<Manager>
 			<div className={classes.TypeDropdown}>
