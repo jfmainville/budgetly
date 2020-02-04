@@ -1,5 +1,6 @@
 import React from "react";
-import classes from "./AccountCard.module.scss";
+import classes from './AccountCard.module.scss'
+import AccountCardTypeDropdown from './AccountCardTypeDropdown/AccountCardTypeDropdown'
 
 const accountCard = props => {
 	const account = props.account;
@@ -42,7 +43,16 @@ const accountCard = props => {
 				</div>
 				}
 			</div>
-			<div className={classes.TableTypeRow}>{account.type}</div>
+			<div className={classes.TableTypeRow}>
+				<AccountCardTypeDropdown
+					account={account}
+					types={props.types}
+					handleAccountCardTypeDropdownShowDropdown={props.handleAccountCardTypeDropdownShowDropdown}
+					handleAccountCardTypeDropdownSearch={props.handleAccountCardTypeDropdownSearch}
+					accountCardTypeDropdownShowDropdown={props.accountCardTypeDropdownShowDropdown}
+					handleAccountUpdate={props.handleAccountUpdate}
+				/>
+			</div>
 			<div className={classes.TableCategoryRow}>{account.category}</div>
 			<div className={classes.TableTotalRow}>{totalFilteredTransactions}</div>
 			<div className={classes.TableButtonsRow}>
