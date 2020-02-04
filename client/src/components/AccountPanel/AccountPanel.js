@@ -1,39 +1,39 @@
-import React, {useState, useEffect} from "react";
-import {useSelector, useDispatch} from "react-redux";
-import * as actions from "../../store/actions/index";
-import PropTypes from "prop-types";
-import classes from "./AccountPanel.module.scss";
-import AccountCard from "./AccountCard/AccountCard";
-import AccountCategoryDropdown from "./AccountCategoryDropdown/AccountCategoryDropdown";
-import AccountEnterpriseInput from "./AccountEnterpriseInput/AccountEnterpriseInput";
-import AccountTypeDropdown from "./AccountTypeDropdown/AccountTypeDropdown";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import * as actions from '../../store/actions/index';
+import PropTypes from 'prop-types';
+import classes from './AccountPanel.module.scss';
+import AccountCard from './AccountCard/AccountCard';
+import AccountCategoryDropdown from './AccountCategoryDropdown/AccountCategoryDropdown';
+import AccountEnterpriseInput from './AccountEnterpriseInput/AccountEnterpriseInput';
+import AccountTypeDropdown from './AccountTypeDropdown/AccountTypeDropdown';
 
 const accountPanel = () => {
-	const accounts = useSelector(state => state.account.accounts)
-	const transactions = useSelector(state => state.transaction.transactions)
-	const categories = useSelector(state => state.category.categories)
-	const dispatch = useDispatch()
+	const accounts = useSelector(state => state.account.accounts);
+	const transactions = useSelector(state => state.transaction.transactions);
+	const categories = useSelector(state => state.category.categories);
+	const dispatch = useDispatch();
 	const types = [
 		'Expense',
 		'Income'
-	]
-	const [enterpriseInput, setEnterpriseInput] = useState('')
-	const [enterpriseInputSelection, setEnterpriseInputSelection] = useState('')
-	const [enterpriseInputUpdate, setEnterpriseInputUpdate] = useState('')
-	const [categorySearchInput, setCategorySearchInput] = useState('')
-	const [showCategoryDropdown, setShowCategoryDropdown] = useState(false)
-	const [typeSearchInput, setTypeSearchInput] = useState('')
-	const [showTypeDropdown, setShowTypeDropdown] = useState(false)
-	const [accountCardTypeDropdownShowDropdown, setAccountCardTypeDropdownShowDropdown] = useState('')
+	];
+	const [enterpriseInput, setEnterpriseInput] = useState('');
+	const [enterpriseInputSelection, setEnterpriseInputSelection] = useState('');
+	const [enterpriseInputUpdate, setEnterpriseInputUpdate] = useState('');
+	const [categorySearchInput, setCategorySearchInput] = useState('');
+	const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
+	const [typeSearchInput, setTypeSearchInput] = useState('');
+	const [showTypeDropdown, setShowTypeDropdown] = useState(false);
+	const [accountCardTypeDropdownShowDropdown, setAccountCardTypeDropdownShowDropdown] = useState('');
 
 	useEffect(() => {
 		dispatch(actions.fetchAccounts());
-		dispatch(actions.fetchCategories())
+		dispatch(actions.fetchCategories());
 	}, []);
 
 	const handleEnterpriseInput = event => {
 		const enterpriseInput = event.target.value;
-		setEnterpriseInput(enterpriseInput)
+		setEnterpriseInput(enterpriseInput);
 	};
 
 	const handleEnterpriseInputSelection = (account) => {
@@ -43,7 +43,7 @@ const accountPanel = () => {
 			if (enterpriseInputUpdate) {
 				handleAccountUpdate();
 			}
-			setEnterpriseInputSelection("");
+			setEnterpriseInputSelection('');
 		}
 	};
 
@@ -63,7 +63,7 @@ const accountPanel = () => {
 
 	const handleClearCategorySearch = () => {
 		setShowCategoryDropdown(false);
-		setCategorySearchInput("");
+		setCategorySearchInput('');
 	};
 
 	const handleCategorySearchSelection = category => {
@@ -72,7 +72,7 @@ const accountPanel = () => {
 	};
 
 	const handleShowTypeDropdown = () => {
-		setShowTypeDropdown(!showTypeDropdown)
+		setShowTypeDropdown(!showTypeDropdown);
 	};
 
 	const handleTypeSearch = event => {
@@ -83,67 +83,67 @@ const accountPanel = () => {
 
 	const handleClearTypeSearch = () => {
 		setShowTypeDropdown(false);
-		setTypeSearchInput("");
+		setTypeSearchInput('');
 	};
 
 	const handleTypeSearchSelection = type => {
-		setTypeSearchInput(type)
-		setShowTypeDropdown(false)
-	}
+		setTypeSearchInput(type);
+		setShowTypeDropdown(false);
+	};
 
 	const handleAccountCardTypeDropdownShowDropdown = (account) => {
-		setAccountCardTypeDropdownShowDropdown(account)
-	}
+		setAccountCardTypeDropdownShowDropdown(account);
+	};
 
 	const handleAccountCreate = () => {
 		let data = {};
 		if (accounts) {
 			if (enterpriseInput && typeSearchInput && categorySearchInput) {
-				data.id = Math.max.apply(Math, accounts.map(account => account.id)) + 1
-				data.enterprise = enterpriseInput
-				data.type = typeSearchInput
-				data.category = categorySearchInput
-				dispatch(actions.createAccount(data))
+				data.id = Math.max.apply(Math, accounts.map(account => account.id)) + 1;
+				data.enterprise = enterpriseInput;
+				data.type = typeSearchInput;
+				data.category = categorySearchInput;
+				dispatch(actions.createAccount(data));
 			}
 		} else {
 			if (enterpriseInput && typeSearchInput && categorySearchInput) {
 				data.id = 1;
 				data.enterprise = enterpriseInput;
-				data.type = typeSearchInput
-				data.category = categorySearchInput
-				dispatch(actions.createAccount(data))
+				data.type = typeSearchInput;
+				data.category = categorySearchInput;
+				dispatch(actions.createAccount(data));
 			}
 		}
-		setEnterpriseInput('')
-		setTypeSearchInput('')
-		setCategorySearchInput('')
+		setEnterpriseInput('');
+		setTypeSearchInput('');
+		setCategorySearchInput('');
 	};
 
 	const handleAccountUpdate = (account, type) => {
-		let data = {}
+		let data = {};
 		if (enterpriseInputSelection) {
-			data.id = enterpriseInputSelection.id
-			data.enterprise = enterpriseInputUpdate
-			data.type = enterpriseInputSelection.type
-			data.category = enterpriseInputSelection.category
-			dispatch(actions.updateAccount(data))
-			setEnterpriseInputUpdate('')
+			data.id = enterpriseInputSelection.id;
+			data.enterprise = enterpriseInputUpdate;
+			data.type = enterpriseInputSelection.type;
+			data.category = enterpriseInputSelection.category;
+			dispatch(actions.updateAccount(data));
+			setEnterpriseInputUpdate('');
 		}
 		if (account && type) {
-			data.id = account.id
-			data.enterprise = account.enterprise
-			data.type = type
-			data.category = account.category
-			dispatch(actions.updateAccount(data))
-			setAccountCardTypeDropdownShowDropdown('')
+			data.id = account.id;
+			data.enterprise = account.enterprise;
+			data.type = type;
+			data.category = account.category;
+			dispatch(actions.updateAccount(data));
+			setAccountCardTypeDropdownShowDropdown('');
 		}
-	}
+	};
 
 	const handleAccountDelete = (account) => {
 		let data = {};
 		if (account.id) {
 			data = account.id;
-			dispatch(actions.deleteAccount(data))
+			dispatch(actions.deleteAccount(data));
 		}
 	};
 
