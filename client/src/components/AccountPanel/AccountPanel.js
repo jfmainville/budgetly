@@ -109,24 +109,35 @@ const accountPanel = () => {
 			if (enterpriseInput && typeSearchInput && categorySearchInput) {
 				data.id = 1;
 				data.enterprise = enterpriseInput;
-				data.type = typeSearchInput;
-				data.category = categorySearchInput;
+				data.type = typeSearchInput
+				data.category = categorySearchInput
 				dispatch(actions.createAccount(data))
 			}
 		}
-		setEnterpriseInput("");
-		setTypeSearchInput("");
-		setCategorySearchInput("");
+		setEnterpriseInput('')
+		setTypeSearchInput('')
+		setCategorySearchInput('')
 	};
 
-	const handleAccountUpdate = () => {
-		let data = {};
-		data.id = enterpriseInputSelection.id;
-		data.enterprise = enterpriseInputUpdate;
-		data.type = enterpriseInputSelection.type;
-		data.category = enterpriseInputSelection.category;
-		dispatch(actions.updateAccount(data));
-	};
+	const handleAccountUpdate = (account, type) => {
+		let data = {}
+		if (enterpriseInputSelection) {
+			data.id = enterpriseInputSelection.id
+			data.enterprise = enterpriseInputUpdate
+			data.type = enterpriseInputSelection.type
+			data.category = enterpriseInputSelection.category
+			dispatch(actions.updateAccount(data))
+			setEnterpriseInputUpdate('')
+		}
+		if (account && type) {
+			data.id = account.id
+			data.enterprise = account.enterprise
+			data.type = type
+			data.category = account.category
+			dispatch(actions.updateAccount(data))
+			setAccountCardTypeDropdownShowDropdown('')
+		}
+	}
 
 	const handleAccountDelete = (account) => {
 		let data = {};
