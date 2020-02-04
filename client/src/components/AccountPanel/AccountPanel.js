@@ -124,7 +124,7 @@ const accountPanel = () => {
 		setCategorySearchInput("");
 	};
 
-	const handleAccountUpdate = (account, type) => {
+	const handleAccountUpdate = (account, type, category) => {
 		let data = {};
 		if (enterpriseInputSelection) {
 			data.id = enterpriseInputSelection.id;
@@ -140,7 +140,15 @@ const accountPanel = () => {
 			data.type = type;
 			data.category = account.category;
 			dispatch(actions.updateAccount(data));
-			setAccountCardTypeDropdownShowDropdown('');
+			setAccountCardTypeDropdownShowDropdown("");
+		}
+		if (account && category) {
+			data.id = account.id;
+			data.enterprise = account.enterprise;
+			data.type = account.type;
+			data.category = category.title;
+			dispatch(actions.updateAccount(data));
+			setAccountCardCategoryDropdownShowDropdown("");
 		}
 	};
 
