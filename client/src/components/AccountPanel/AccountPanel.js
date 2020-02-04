@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import * as actions from '../../store/actions/index';
-import PropTypes from 'prop-types';
-import classes from './AccountPanel.module.scss';
-import AccountCard from './AccountCard/AccountCard';
-import AccountCategoryDropdown from './AccountCategoryDropdown/AccountCategoryDropdown';
-import AccountEnterpriseInput from './AccountEnterpriseInput/AccountEnterpriseInput';
-import AccountTypeDropdown from './AccountTypeDropdown/AccountTypeDropdown';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import * as actions from "../../store/actions/index";
+import PropTypes from "prop-types";
+import classes from "./AccountPanel.module.scss";
+import AccountCard from "./AccountCard/AccountCard";
+import AccountCategoryDropdown from "./AccountCategoryDropdown/AccountCategoryDropdown";
+import AccountEnterpriseInput from "./AccountEnterpriseInput/AccountEnterpriseInput";
+import AccountTypeDropdown from "./AccountTypeDropdown/AccountTypeDropdown";
 
 const accountPanel = () => {
 	const accounts = useSelector(state => state.account.accounts);
@@ -14,17 +14,18 @@ const accountPanel = () => {
 	const categories = useSelector(state => state.category.categories);
 	const dispatch = useDispatch();
 	const types = [
-		'Expense',
-		'Income'
+		"Expense",
+		"Income"
 	];
-	const [enterpriseInput, setEnterpriseInput] = useState('');
-	const [enterpriseInputSelection, setEnterpriseInputSelection] = useState('');
-	const [enterpriseInputUpdate, setEnterpriseInputUpdate] = useState('');
-	const [categorySearchInput, setCategorySearchInput] = useState('');
+	const [enterpriseInput, setEnterpriseInput] = useState("");
+	const [enterpriseInputSelection, setEnterpriseInputSelection] = useState("");
+	const [enterpriseInputUpdate, setEnterpriseInputUpdate] = useState("");
+	const [categorySearchInput, setCategorySearchInput] = useState("");
 	const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
-	const [typeSearchInput, setTypeSearchInput] = useState('');
+	const [typeSearchInput, setTypeSearchInput] = useState("");
 	const [showTypeDropdown, setShowTypeDropdown] = useState(false);
-	const [accountCardTypeDropdownShowDropdown, setAccountCardTypeDropdownShowDropdown] = useState('');
+	const [accountCardTypeDropdownShowDropdown, setAccountCardTypeDropdownShowDropdown] = useState("");
+	const [accountCardCategoryDropdownShowDropdown, setAccountCardCategoryDropdownShowDropdown] = useState("");
 
 	useEffect(() => {
 		dispatch(actions.fetchAccounts());
@@ -43,7 +44,7 @@ const accountPanel = () => {
 			if (enterpriseInputUpdate) {
 				handleAccountUpdate();
 			}
-			setEnterpriseInputSelection('');
+			setEnterpriseInputSelection("");
 		}
 	};
 
@@ -63,7 +64,7 @@ const accountPanel = () => {
 
 	const handleClearCategorySearch = () => {
 		setShowCategoryDropdown(false);
-		setCategorySearchInput('');
+		setCategorySearchInput("");
 	};
 
 	const handleCategorySearchSelection = category => {
@@ -83,7 +84,7 @@ const accountPanel = () => {
 
 	const handleClearTypeSearch = () => {
 		setShowTypeDropdown(false);
-		setTypeSearchInput('');
+		setTypeSearchInput("");
 	};
 
 	const handleTypeSearchSelection = type => {
@@ -93,6 +94,10 @@ const accountPanel = () => {
 
 	const handleAccountCardTypeDropdownShowDropdown = (account) => {
 		setAccountCardTypeDropdownShowDropdown(account);
+	};
+
+	const handleAccountCardCategoryDropdownShowDropdown = (account) => {
+		setAccountCardCategoryDropdownShowDropdown(account);
 	};
 
 	const handleAccountCreate = () => {
@@ -114,9 +119,9 @@ const accountPanel = () => {
 				dispatch(actions.createAccount(data));
 			}
 		}
-		setEnterpriseInput('');
-		setTypeSearchInput('');
-		setCategorySearchInput('');
+		setEnterpriseInput("");
+		setTypeSearchInput("");
+		setCategorySearchInput("");
 	};
 
 	const handleAccountUpdate = (account, type) => {
@@ -127,7 +132,7 @@ const accountPanel = () => {
 			data.type = enterpriseInputSelection.type;
 			data.category = enterpriseInputSelection.category;
 			dispatch(actions.updateAccount(data));
-			setEnterpriseInputUpdate('');
+			setEnterpriseInputUpdate("");
 		}
 		if (account && type) {
 			data.id = account.id;
@@ -200,12 +205,15 @@ const accountPanel = () => {
 						account={account}
 						transactions={transactions}
 						types={types}
+						categories={categories}
 						handleAccountDelete={handleAccountDelete}
 						handleEnterpriseInputUpdate={handleEnterpriseInputUpdate}
 						handleEnterpriseInputSelection={handleEnterpriseInputSelection}
 						enterpriseInputSelection={enterpriseInputSelection}
 						handleAccountCardTypeDropdownShowDropdown={handleAccountCardTypeDropdownShowDropdown}
+						handleAccountCardCategoryDropdownShowDropdown={handleAccountCardCategoryDropdownShowDropdown}
 						accountCardTypeDropdownShowDropdown={accountCardTypeDropdownShowDropdown}
+						accountCardCategoryDropdownShowDropdown={accountCardCategoryDropdownShowDropdown}
 						handleAccountUpdate={handleAccountUpdate}
 					/>
 				))}
