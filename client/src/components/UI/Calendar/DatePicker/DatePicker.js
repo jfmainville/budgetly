@@ -222,31 +222,6 @@ class DatePicker extends Component {
 			<div className={classes.DatePickerContainer}>
 				{!this.state.monthsArray ? (
 					<div className={classes.DatePicker}>
-						<div className={classes.DateSelection}>
-							<button onClick={this.handleCurrentMonthTodayDate}>
-								<svg>
-									<use xlinkHref="/assets/sprite.svg#icon-light-up"/>
-								</svg>
-							</button>
-							<button onClick={this.handleTomorrowDate}>
-								<svg>
-									<use xlinkHref="/assets/sprite.svg#icon-sunrise"/>
-								</svg>
-							</button>
-							<button onClick={this.handleNextWeekDate}>
-								<svg>
-									<use xlinkHref="/assets/sprite.svg#icon-next-monday"/>
-								</svg>
-							</button>
-							<button
-								onClick={this.handleActiveDateRemove}
-								className={classes.DateSelectionRemoval}
-							>
-								<svg>
-									<use xlinkHref="/assets/sprite.svg#icon-event-busy"/>
-								</svg>
-							</button>
-						</div>
 						<div className={classes.Month}>
 							<ul>
 								<li>
