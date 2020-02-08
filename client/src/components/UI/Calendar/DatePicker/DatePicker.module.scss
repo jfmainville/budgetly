@@ -1,0 +1,238 @@
+@import '../../../../sass/variables';
+
+.DatePickerContainer {
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+  border: 1px solid $border-grey-light;
+  box-shadow: $box-shadow-all;
+  z-index: 20;
+}
+
+.DatePicker {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.Month {
+  background-color: $color-green-dark;
+  text-align: center;
+  height: 3rem;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  button {
+    height: 3rem;
+    width: 3rem;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-white;
+      background-color: $color-green-light;
+    }
+
+    svg {
+      height: 2rem;
+      width: 2rem;
+      fill: $color-white;
+    }
+  }
+}
+
+.MonthHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  button {
+    width: 100%;
+    outline: none;
+    color: $color-white;
+    font-size: $default-font-size;
+    text-transform: uppercase;
+    letter-spacing: .5rem;
+    background-color: transparent;
+
+    &:hover {
+      color: $color-white;
+      background-color: $color-green-light;
+    }
+  }
+}
+
+.PreviousMonth {
+  float: left;
+}
+
+.NextMonth {
+  float: right;
+}
+
+.WeekDays {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  flex-grow: 0;
+  flex-shrink: 0;
+  justify-content: center;
+  margin: 0;
+  padding: 1rem 0;
+  background-color: $color-grey-light-1;
+
+  li {
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    padding: 0 1.68rem;
+    color: #666;
+    text-align: center;
+  }
+}
+
+.Days {
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+  padding: 1rem 0;
+  background: $color-white;
+  margin: 0;
+
+  li {
+    display: flex;
+    justify-content: center;
+    width: 14%;
+    flex-direction: row;
+    flex-shrink: 0;
+    padding: .2rem 0;
+    text-align: center;
+  }
+
+  button {
+    border-color: transparent;
+    outline: none;
+    padding: .5rem .5rem;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-white;
+      background-color: $color-green-light;
+    }
+  }
+}
+
+.CurrentMonthDays {
+  color: $color-black;
+  background-color: transparent;
+}
+
+.OtherMonthDays {
+  color: $color-grey-light-2;
+  background-color: transparent;
+}
+
+.Today {
+  color: $color-white;
+  background-color: $color-green-light;
+}
+
+.SelectedDate {
+  color: $color-white;
+  background-color: $color-green-dark;
+}
+
+.TodayButton {
+  border-color: transparent;
+  outline: none;
+  color: $color-white;
+  background-color: $color-green-dark;
+  padding: .5rem .5rem;
+  cursor: pointer;
+}
+
+.Months {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: $color-white;
+  margin: 0;
+  padding: 0.75rem .5rem;
+
+  li {
+    display: inline-flex;
+    flex-shrink: 0;
+    text-align: center;
+    padding: .2rem .2rem;
+  }
+
+  button {
+    border-color: transparent;
+    outline: none;
+    width: 5rem;
+    height: 5rem;
+    padding: 1rem 1rem;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-white;
+      background-color: $color-green-dark;
+    }
+  }
+}
+
+.DateSelection {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 100%;
+  background-color: $color-green-dark;
+  border-bottom: 1px solid $color-white;
+
+  button {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    fill: $color-white;
+    padding: 1rem 1.2rem;
+    cursor: pointer;
+
+    :hover {
+      fill: $color-green-light;
+    }
+  }
+
+  svg {
+    height: 3rem;
+    width: 3rem;
+  }
+}
+
+.DateSelectionRemoval {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  svg {
+    height: 3.7rem;
+    width: 3.7rem;
+    padding-top: .5rem;
+  }
+}
