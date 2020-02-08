@@ -15,24 +15,37 @@
 	justify-content: flex-start;
 	align-items: center;
 	width: 95%;
-	margin-bottom: 1rem;
+  margin-bottom: 1rem;
 
-	.MonthPickerPrevious {
-	}
-	.MonthPickerTitle {
-	}
-	.MonthPickerNext {
-	}
+  .MonthPickerPrevious {
+  }
+
+  .MonthPickerTitle {
+  }
+
+  .MonthPickerNext {
+  }
+}
+
+.NewTransactionSection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 95%;
+  height: 5rem;
+  margin-bottom: 1rem;
+  background-color: $color-green;
 }
 
 .TableHeader {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	width: 95%;
-	background-color: $color-green;
-	box-shadow: $box-shadow-all;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  background-color: $color-green;
+  box-shadow: $box-shadow-all;
 
 	.TableHeaderSelectColumn {
 		display: flex;

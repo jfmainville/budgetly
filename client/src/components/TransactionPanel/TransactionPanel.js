@@ -5,10 +5,12 @@ import moment from "moment";
 import classes from "./TransactionPanel.module.scss";
 import PropTypes from "prop-types";
 import TransactionCard from "./TransactionCard/TransactionCard";
+import TransactionDatePicker from "./TransactionDatePicker/TransactionDatePicker";
 
 const transactionPanel = () => {
 	const transactions = useSelector(state => state.transaction.transactions);
 	const [activeMonth, setActiveMonth] = useState(moment().format("YYYY-MM"));
+	const [showTransactionDatePicker, setShowTransactionDatePicker] = useState(false);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -27,6 +29,10 @@ const transactionPanel = () => {
 			.add(1, "month")
 			.format("YYYY-MM");
 		setActiveMonth(selectedMonth);
+	};
+
+	const handleShowTransactionDatePicker = () => {
+		setShowTransactionDatePicker(!showTransactionDatePicker);
 	};
 
 	let filteredTransactions = [];
@@ -65,6 +71,12 @@ const transactionPanel = () => {
 				>
 					Next Month
 				</button>
+			</div>
+			<div className={classes.NewTransactionSection}>
+				<TransactionDatePicker
+					handleShowTransactionDatePicker={handleShowTransactionDatePicker}
+					showTransactionDatePicker={showTransactionDatePicker}
+				/>
 			</div>
 			<div className={classes.TableHeader}>
 				<div className={classes.TableHeaderSelectColumn}>
