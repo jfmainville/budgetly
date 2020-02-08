@@ -9,24 +9,24 @@ import TransactionCard from "./TransactionCard/TransactionCard";
 const transactionPanel = () => {
 	const transactions = useSelector(state => state.transaction.transactions);
 	const [activeMonth, setActiveMonth] = useState(moment().format("YYYY-MM"));
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(actions.fetchTransactions())
-	})
+		dispatch(actions.fetchTransactions());
+	});
 
 	const handleMonthSelectionPrevious = () => {
 		let selectedMonth = moment(activeMonth, "YYYY-MM")
 			.add(-1, "month")
 			.format("YYYY-MM");
-		setActiveMonth(selectedMonth)
+		setActiveMonth(selectedMonth);
 	};
 
 	const handleMonthSelectionNext = () => {
 		let selectedMonth = moment(activeMonth, "YYYY-MM")
 			.add(1, "month")
 			.format("YYYY-MM");
-		setActiveMonth(selectedMonth)
+		setActiveMonth(selectedMonth);
 	};
 
 	let filteredTransactions = [];
@@ -68,7 +68,7 @@ const transactionPanel = () => {
 			</div>
 			<div className={classes.TableHeader}>
 				<div className={classes.TableHeaderSelectColumn}>
-					<input className={classes.TableHeaderCheckboxInput} type="checkbox" />
+					<input className={classes.TableHeaderCheckboxInput} type="checkbox"/>
 				</div>
 				<div className={classes.TableHeaderEnterpriseColumn}>Date</div>
 				<div className={classes.TableHeaderEnterpriseColumn}>Enterprise</div>
@@ -83,7 +83,7 @@ const transactionPanel = () => {
 			</div>
 			<div className={classes.TableRows}>
 				{filteredTransactions.map(transaction => (
-					<TransactionCard key={transaction.id} transaction={transaction} />
+					<TransactionCard key={transaction.id} transaction={transaction}/>
 				))}
 			</div>
 		</div>
