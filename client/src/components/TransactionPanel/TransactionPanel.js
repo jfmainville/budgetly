@@ -11,6 +11,7 @@ const transactionPanel = () => {
 	const transactions = useSelector(state => state.transaction.transactions);
 	const [activeMonth, setActiveMonth] = useState(moment().format("YYYY-MM"));
 	const [showTransactionDatePicker, setShowTransactionDatePicker] = useState(false);
+	const [transactionDate, setTransactionDate] = useState("");
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -33,6 +34,13 @@ const transactionPanel = () => {
 
 	const handleShowTransactionDatePicker = () => {
 		setShowTransactionDatePicker(!showTransactionDatePicker);
+	};
+
+	const handleSelectedDate = date => {
+		const date_full = date.date_full;
+		setTransactionDate(date_full);
+		console.log(date_full);
+		setShowTransactionDatePicker(false);
 	};
 
 	let filteredTransactions = [];
@@ -76,6 +84,7 @@ const transactionPanel = () => {
 				<TransactionDatePicker
 					handleShowTransactionDatePicker={handleShowTransactionDatePicker}
 					showTransactionDatePicker={showTransactionDatePicker}
+					handleSelectedDate={handleSelectedDate}
 				/>
 			</div>
 			<div className={classes.TableHeader}>
@@ -105,12 +114,15 @@ const transactionPanel = () => {
 transactionPanel.propTypes = {
 	transactions: PropTypes.array,
 	transaction: PropTypes.object,
+	showTransactionDatePicker: PropTypes.bool,
+	transactionDate: PropTypes.string,
 	activeMonth: PropTypes.string,
 	filteredTransactions: PropTypes.array,
 	totalFilteredTransactions: PropTypes.array,
 	handleMonthSelectionPrevious: PropTypes.func,
 	handleMonthSelectionNext: PropTypes.func,
-	handleNewTransactionBottomRow: PropTypes.func
+	handleNewTransactionBottomRow: PropTypes.func,
+	handleSelectedDate: PropTypes.func
 };
 
 export default transactionPanel;

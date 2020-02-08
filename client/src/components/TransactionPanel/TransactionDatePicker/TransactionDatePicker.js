@@ -35,7 +35,9 @@ const transactionDatePicker = props => {
 									data-placement={placement}
 									className={classes.ShowTransactionDatePicker}
 								>
-									<DatePicker/>
+									<DatePicker
+										handleSelectedDate={props.handleSelectedDate}
+									/>
 								</div>
 							)}
 						</Popper>
