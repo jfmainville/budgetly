@@ -6,7 +6,6 @@ const accountCardCategoryDropdown = props => {
 	const account_category = props.account.category;
 	const account_id = props.account.id;
 	const categories = props.categories;
-	console.log(categories);
 
 	return (
 		<Manager>
