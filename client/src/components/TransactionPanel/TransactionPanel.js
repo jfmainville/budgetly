@@ -45,7 +45,6 @@ const transactionPanel = () => {
 	const handleSelectedDate = date => {
 		const date_full = date.date_full;
 		setTransactionDate(date_full);
-		console.log(date_full);
 		setShowTransactionDatePicker(false);
 	};
 
