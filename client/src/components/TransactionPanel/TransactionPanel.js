@@ -6,6 +6,7 @@ import classes from "./TransactionPanel.module.scss";
 import PropTypes from "prop-types";
 import TransactionCard from "./TransactionCard/TransactionCard";
 import TransactionDatePicker from "./TransactionDatePicker/TransactionDatePicker";
+import TransactionDateInput from "./TransactionDateInput/TransactionDateInput";
 
 const transactionPanel = () => {
 	const transactions = useSelector(state => state.transaction.transactions);
@@ -34,6 +35,11 @@ const transactionPanel = () => {
 
 	const handleShowTransactionDatePicker = () => {
 		setShowTransactionDatePicker(!showTransactionDatePicker);
+	};
+
+	const handleTransactionDateInput = event => {
+		const date_input = event.target.value;
+		setTransactionDate(date_input);
 	};
 
 	const handleSelectedDate = date => {
@@ -85,6 +91,10 @@ const transactionPanel = () => {
 					handleShowTransactionDatePicker={handleShowTransactionDatePicker}
 					showTransactionDatePicker={showTransactionDatePicker}
 					handleSelectedDate={handleSelectedDate}
+				/>
+				<TransactionDateInput
+					handleTransactionDateInput={handleTransactionDateInput}
+					transactionDate={transactionDate}
 				/>
 			</div>
 			<div className={classes.TableHeader}>
