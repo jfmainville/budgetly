@@ -8,6 +8,7 @@ import TransactionCard from "./TransactionCard/TransactionCard";
 import TransactionDatePicker from "./TransactionDatePicker/TransactionDatePicker";
 import TransactionDateInput from "./TransactionDateInput/TransactionDateInput";
 import TransactionEnterpriseInput from "./TransactionEnterpriseInput/TransactionEnterpriseInput";
+import TransactionAmountInput from "./TransactionAmountInput/TransactionAmountInput";
 
 const transactionPanel = () => {
 	const accounts = useSelector(state => state.account.accounts);
@@ -16,6 +17,7 @@ const transactionPanel = () => {
 	const [showTransactionDatePicker, setShowTransactionDatePicker] = useState(false);
 	const [showEnterpriseDropdown, setShowEnterpriseDropdown] = useState(false);
 	const [enterpriseSearchInput, setEnterpriseSearchInput] = useState("");
+	const [enterpriseAmountInput, setEnterpriseAmountInput] = useState("");
 	const [transactionDate, setTransactionDate] = useState("");
 	const dispatch = useDispatch();
 
@@ -72,6 +74,11 @@ const transactionPanel = () => {
 		const account_enterprise = account.enterprise;
 		setEnterpriseSearchInput(account_enterprise);
 		setShowEnterpriseDropdown(false);
+	};
+
+	const handleEnterpriseAmountInput = event => {
+		const transaction_amount = event.target.value;
+		setEnterpriseAmountInput(transaction_amount);
 	};
 
 	let filteredTransactions = [];
@@ -136,6 +143,10 @@ const transactionPanel = () => {
 					handleClearEnterpriseSearch={handleClearEnterpriseSearch}
 					handleEnterpriseSearchSelection={handleEnterpriseSearchSelection}
 				/>
+				<TransactionAmountInput
+					enterpriseAmountInput={enterpriseAmountInput}
+					handleEnterpriseAmountInput={handleEnterpriseAmountInput}
+				/>
 			</div>
 			<div className={classes.TableHeader}>
 				<div className={classes.TableHeaderSelectColumn}>
@@ -167,6 +178,7 @@ transactionPanel.propTypes = {
 	showTransactionDatePicker: PropTypes.bool,
 	showEnterpriseDropdown: PropTypes.bool,
 	enterpriseSearchInput: PropTypes.string,
+	enterpriseAmountInput: PropTypes.string,
 	transactionDate: PropTypes.string,
 	activeMonth: PropTypes.string,
 	filteredTransactions: PropTypes.array,
@@ -178,7 +190,8 @@ transactionPanel.propTypes = {
 	handleShowEnterpriseDropdown: PropTypes.func,
 	handleEnterpriseSearch: PropTypes.func,
 	handleClearEnterpriseSearch: PropTypes.func,
-	handleEnterpriseSearchSelection: PropTypes.func
+	handleEnterpriseSearchSelection: PropTypes.func,
+	handleEnterpriseAmountInput: PropTypes.func
 };
 
 export default transactionPanel;
