@@ -19,6 +19,6 @@ const transactionAmountInput = props => {
 export default transactionAmountInput;
 
 transactionAmountInput.propTypes = {
-	enterpriseAmountInput: PropTypes.bool,
+	enterpriseAmountInput: PropTypes.string,
 	handleEnterpriseAmountInput: PropTypes.func
 };
