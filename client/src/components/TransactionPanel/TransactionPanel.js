@@ -7,15 +7,20 @@ import PropTypes from "prop-types";
 import TransactionCard from "./TransactionCard/TransactionCard";
 import TransactionDatePicker from "./TransactionDatePicker/TransactionDatePicker";
 import TransactionDateInput from "./TransactionDateInput/TransactionDateInput";
+import TransactionEnterpriseInput from "./TransactionEnterpriseInput/TransactionEnterpriseInput";
 
 const transactionPanel = () => {
+	const accounts = useSelector(state => state.account.accounts);
 	const transactions = useSelector(state => state.transaction.transactions);
 	const [activeMonth, setActiveMonth] = useState(moment().format("YYYY-MM"));
 	const [showTransactionDatePicker, setShowTransactionDatePicker] = useState(false);
+	const [showEnterpriseDropdown, setShowEnterpriseDropdown] = useState(false);
+	const [enterpriseSearchInput, setEnterpriseSearchInput] = useState("");
 	const [transactionDate, setTransactionDate] = useState("");
 	const dispatch = useDispatch();
 
 	useEffect(() => {
+		dispatch(actions.fetchAccounts());
 		dispatch(actions.fetchTransactions());
 	});
 
@@ -48,6 +53,27 @@ const transactionPanel = () => {
 		setShowTransactionDatePicker(false);
 	};
 
+	const handleShowEnterpriseDropdown = () => {
+		setShowEnterpriseDropdown(!showEnterpriseDropdown);
+	};
+
+	const handleEnterpriseSearch = event => {
+		const enterpriseSearchInput = event.target.value;
+		setShowEnterpriseDropdown(true);
+		setEnterpriseSearchInput(enterpriseSearchInput);
+	};
+
+	const handleClearEnterpriseSearch = () => {
+		setShowEnterpriseDropdown(false);
+		setEnterpriseSearchInput("");
+	};
+
+	const handleEnterpriseSearchSelection = account => {
+		const account_enterprise = account.enterprise;
+		setEnterpriseSearchInput(account_enterprise);
+		setShowEnterpriseDropdown(false);
+	};
+
 	let filteredTransactions = [];
 	let totalFilteredTransactions = [];
 	if (transactions) {
@@ -65,6 +91,12 @@ const transactionPanel = () => {
 			}).format(totalFilteredTransactions);
 		}
 	}
+
+	const sortedAccounts = accounts.sort((a, b) => {
+		const textA = a.enterprise.toLowerCase();
+		const textB = b.enterprise.toLowerCase();
+		return textA < textB ? -1 : textA > textB ? 1 : 0;
+	});
 
 	return (
 		<div className={classes.Container}>
@@ -95,6 +127,15 @@ const transactionPanel = () => {
 					handleTransactionDateInput={handleTransactionDateInput}
 					transactionDate={transactionDate}
 				/>
+				<TransactionEnterpriseInput
+					accounts={sortedAccounts}
+					showEnterpriseDropdown={showEnterpriseDropdown}
+					enterpriseSearchInput={enterpriseSearchInput}
+					handleShowEnterpriseDropdown={handleShowEnterpriseDropdown}
+					handleEnterpriseSearch={handleEnterpriseSearch}
+					handleClearEnterpriseSearch={handleClearEnterpriseSearch}
+					handleEnterpriseSearchSelection={handleEnterpriseSearchSelection}
+				/>
 			</div>
 			<div className={classes.TableHeader}>
 				<div className={classes.TableHeaderSelectColumn}>
@@ -124,6 +165,8 @@ transactionPanel.propTypes = {
 	transactions: PropTypes.array,
 	transaction: PropTypes.object,
 	showTransactionDatePicker: PropTypes.bool,
+	showEnterpriseDropdown: PropTypes.bool,
+	enterpriseSearchInput: PropTypes.string,
 	transactionDate: PropTypes.string,
 	activeMonth: PropTypes.string,
 	filteredTransactions: PropTypes.array,
@@ -131,7 +174,11 @@ transactionPanel.propTypes = {
 	handleMonthSelectionPrevious: PropTypes.func,
 	handleMonthSelectionNext: PropTypes.func,
 	handleNewTransactionBottomRow: PropTypes.func,
-	handleSelectedDate: PropTypes.func
+	handleSelectedDate: PropTypes.func,
+	handleShowEnterpriseDropdown: PropTypes.func,
+	handleEnterpriseSearch: PropTypes.func,
+	handleClearEnterpriseSearch: PropTypes.func,
+	handleEnterpriseSearchSelection: PropTypes.func
 };
 
 export default transactionPanel;
