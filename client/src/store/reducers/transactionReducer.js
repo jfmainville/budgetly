@@ -28,7 +28,7 @@ const createTransactionLoad = (state, action) => {
 
 const createTransactionSuccess = (state, action) => {
 	let transactions = [...state.transactions];
-	transactions.splice(action.rowId, 1, action.createTransaction);
+	transactions.push(action.createTransaction);
 	return updateObject(state, { transactions: transactions });
 };
 
