@@ -115,7 +115,7 @@ const transactionPanel = () => {
 		filteredTransactions = transactions.filter(
 			transaction =>
 				moment(transaction.date, "YYYY-MM-DD").format("YYYY-MM") === activeMonth
-		);
+		).sort((a, b) => {return new Date(b.date) - new Date(a.date);});
 		if (filteredTransactions.length > 0) {
 			totalFilteredTransactions = filteredTransactions
 				.map(transaction => transaction.total)
