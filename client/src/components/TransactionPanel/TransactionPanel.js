@@ -24,7 +24,7 @@ const transactionPanel = () => {
 	useEffect(() => {
 		dispatch(actions.fetchAccounts());
 		dispatch(actions.fetchTransactions());
-	});
+	}, []);
 
 	const handleMonthSelectionPrevious = () => {
 		let selectedMonth = moment(activeMonth, "YYYY-MM")
@@ -79,6 +79,34 @@ const transactionPanel = () => {
 	const handleEnterpriseAmountInput = event => {
 		const transaction_amount = event.target.value;
 		setEnterpriseAmountInput(transaction_amount);
+	};
+
+	const handleTransactionCreate = () => {
+		let data = {};
+		if (transactions) {
+			if (transactionDate && enterpriseSearchInput && enterpriseAmountInput) {
+				if (accounts) {
+					const accountDetails = accounts.filter(account => account.enterprise === enterpriseSearchInput)[0];
+					data.id = Math.max.apply(Math, transactions.map(transaction => transaction.id)) + 1;
+					data.date = transactionDate;
+					data.enterprise = enterpriseSearchInput;
+					data.type = accountDetails.type;
+					data.category = accountDetails.category;
+					data.total = parseInt(enterpriseAmountInput);
+					dispatch(actions.createTransaction(data));
+				}
+			}
+		} else {
+			data.id = 1;
+			data.date = transactionDate;
+			data.enterprise = enterpriseSearchInput;
+			data.amount = enterpriseAmountInput;
+			dispatch(actions.createTransaction(data));
+		}
+
+		setTransactionDate("");
+		setEnterpriseSearchInput("");
+		setEnterpriseAmountInput("");
 	};
 
 	let filteredTransactions = [];
@@ -147,6 +175,9 @@ const transactionPanel = () => {
 					enterpriseAmountInput={enterpriseAmountInput}
 					handleEnterpriseAmountInput={handleEnterpriseAmountInput}
 				/>
+				<button className={classes.NewTransactionSectionButtonSave} onClick={handleTransactionCreate}>
+					Add Transaction
+				</button>
 			</div>
 			<div className={classes.TableHeader}>
 				<div className={classes.TableHeaderSelectColumn}>
