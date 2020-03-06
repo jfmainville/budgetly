@@ -15,6 +15,7 @@ const transactionPanel = () => {
 	const transactions = useSelector(state => state.transaction.transactions);
 	const [activeMonth, setActiveMonth] = useState(moment().format("YYYY-MM"));
 	const [showTransactionDatePicker, setShowTransactionDatePicker] = useState(false);
+	const [showTransactionUpdateDatePicker, setShowTransactionUpdateDatePicker] = useState(null);
 	const [showEnterpriseDropdown, setShowEnterpriseDropdown] = useState(false);
 	const [enterpriseSearchInput, setEnterpriseSearchInput] = useState("");
 	const [enterpriseAmountInput, setEnterpriseAmountInput] = useState("");
@@ -42,6 +43,15 @@ const transactionPanel = () => {
 
 	const handleShowTransactionDatePicker = () => {
 		setShowTransactionDatePicker(!showTransactionDatePicker);
+	};
+
+	const handleShowTransactionUpdateDatePicker = (transaction) => {
+		const transactionId = transaction.id;
+		if (transactionId) {
+			setShowTransactionUpdateDatePicker(transactionId);
+		} else {
+			setShowTransactionUpdateDatePicker(null);
+		}
 	};
 
 	const handleTransactionDateInput = event => {
