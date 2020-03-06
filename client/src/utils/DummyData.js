@@ -148,7 +148,7 @@ export const dummyAccounts = [
 export const dummyTransactions = [
 	{
 		id: 1,
-		date: "2020-02-08",
+		date: "2020-03-08",
 		enterprise: "Tim Hortons",
 		type: "Expense",
 		category: "Restaurant",
@@ -156,7 +156,7 @@ export const dummyTransactions = [
 	},
 	{
 		id: 2,
-		date: "2020-02-08",
+		date: "2020-03-08",
 		enterprise: "McDonalds",
 		type: "Expense",
 		category: "Restaurant",
@@ -180,7 +180,7 @@ export const dummyTransactions = [
 	},
 	{
 		id: 5,
-		date: "2020-02-08",
+		date: "2020-03-08",
 		enterprise: "Metro",
 		type: "Expense",
 		category: "Grocery",
@@ -188,7 +188,7 @@ export const dummyTransactions = [
 	},
 	{
 		id: 6,
-		date: "2020-02-01",
+		date: "2020-03-01",
 		enterprise: "IGA",
 		type: "Expense",
 		category: "Grocery",
