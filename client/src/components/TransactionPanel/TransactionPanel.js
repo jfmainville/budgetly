@@ -125,6 +125,24 @@ const transactionPanel = () => {
 		setEnterpriseAmountInput("");
 	};
 
+	const handleTransactionUpdate = (date) => {
+		let data = {};
+		if (transactions) {
+			if (date && showTransactionUpdateDatePicker) {
+				const transactionDetails = transactions.filter(transaction => transaction.id === showTransactionUpdateDatePicker)[0];
+				data.id = showTransactionUpdateDatePicker;
+				data.date = date;
+				data.enterprise = transactionDetails.enterprise;
+				data.type = transactionDetails.type;
+				data.category = transactionDetails.category;
+				data.total = transactionDetails.total;
+				dispatch(actions.updateTransaction(data));
+			}
+		}
+
+		setShowTransactionUpdateDatePicker(null);
+	};
+
 	let filteredTransactions = [];
 	let totalFilteredTransactions = [];
 	if (transactions) {
