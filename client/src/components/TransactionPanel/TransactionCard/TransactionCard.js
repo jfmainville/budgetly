@@ -1,6 +1,8 @@
 import React from "react";
 import classes from "./TransactionCard.module.scss";
 import PropTypes from "prop-types";
+import { Manager, Popper, Reference } from "react-popper";
+import DatePicker from "../../UI/Calendar/DatePicker/DatePicker";
 
 const transactionCard = props => {
 	const transaction = props.transaction;
@@ -11,9 +13,43 @@ const transactionCard = props => {
 	return (
 		<div className={classes.TableRow}>
 			<div className={classes.TableSelectRow}>
-				<input className={classes.TableCheckboxInput} type="checkbox" />
+				<input className={classes.TableCheckboxInput} type="checkbox"/>
 			</div>
-			<div className={classes.TableEnterpriseRow}>{transaction.date}</div>
+			<Manager>
+				<div className={classes.TableDateRow}>
+					<Reference>
+						{({ ref }) => (
+							<div className={classes.TableDateRow}
+									 ref={ref}
+									 onClick={() => props.handleShowTransactionUpdateDatePicker(transaction)}>
+								{transaction.date}
+							</div>
+						)}
+					</Reference>
+					{props.showTransactionUpdateDatePicker === transaction.id ? (
+						<div className={classes.TransparentBackgroundWrapper}>
+							<div
+								onClick={props.handleShowTransactionUpdateDatePicker}
+								className={classes.TransparentBackground}
+							/>
+							<Popper placement="bottom" positionFixed="true">
+								{({ ref, style, placement }) => (
+									<div
+										ref={ref}
+										style={style}
+										data-placement={placement}
+										className={classes.ShowTransactionDatePicker}
+									>
+										<DatePicker
+											handleSelectedDate={props.handleSelectedDate}
+										/>
+									</div>
+								)}
+							</Popper>
+						</div>
+					) : null}
+				</div>
+			</Manager>
 			<div className={classes.TableEnterpriseRow}>{transaction.enterprise}</div>
 			<div className={classes.TableTypeRow}>{transaction.type}</div>
 			<div className={classes.TableCategoryRow}>{transaction.category}</div>
