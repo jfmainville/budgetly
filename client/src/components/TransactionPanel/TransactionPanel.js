@@ -61,8 +61,14 @@ const transactionPanel = () => {
 
 	const handleSelectedDate = date => {
 		const date_full = date.date_full;
-		setTransactionDate(date_full);
-		setShowTransactionDatePicker(false);
+		if (showTransactionDatePicker && date_full) {
+			setTransactionDate(date_full);
+			setShowTransactionDatePicker(false);
+		}
+		if (showTransactionUpdateDatePicker && date_full) {
+			handleTransactionUpdate(date_full);
+			setShowTransactionUpdateDatePicker(null);
+		}
 	};
 
 	const handleShowEnterpriseDropdown = () => {
