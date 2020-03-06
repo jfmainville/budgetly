@@ -248,6 +248,7 @@ transactionPanel.propTypes = {
 	transactions: PropTypes.array,
 	transaction: PropTypes.object,
 	showTransactionDatePicker: PropTypes.bool,
+	showTransactionUpdateDatePicker: PropTypes.string,
 	showEnterpriseDropdown: PropTypes.bool,
 	enterpriseSearchInput: PropTypes.string,
 	enterpriseAmountInput: PropTypes.string,
@@ -257,13 +258,17 @@ transactionPanel.propTypes = {
 	totalFilteredTransactions: PropTypes.array,
 	handleMonthSelectionPrevious: PropTypes.func,
 	handleMonthSelectionNext: PropTypes.func,
+	handleShowTransactionDatePicker: PropTypes.func,
+	handleShowTransactionUpdateDatePicker: PropTypes.func,
 	handleNewTransactionBottomRow: PropTypes.func,
 	handleSelectedDate: PropTypes.func,
 	handleShowEnterpriseDropdown: PropTypes.func,
 	handleEnterpriseSearch: PropTypes.func,
 	handleClearEnterpriseSearch: PropTypes.func,
 	handleEnterpriseSearchSelection: PropTypes.func,
-	handleEnterpriseAmountInput: PropTypes.func
+	handleEnterpriseAmountInput: PropTypes.func,
+	handleTransactionCreate: PropTypes.func,
+	handleTransactionUpdate: PropTypes.func
 };
 
 export default transactionPanel;
