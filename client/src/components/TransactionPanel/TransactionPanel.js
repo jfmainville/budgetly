@@ -230,7 +230,14 @@ const transactionPanel = () => {
 			</div>
 			<div className={classes.TableRows}>
 				{filteredTransactions.map(transaction => (
-					<TransactionCard key={transaction.id} transaction={transaction}/>
+					<TransactionCard
+						key={transaction.id}
+						transaction={transaction}
+						handleShowTransactionUpdateDatePicker={handleShowTransactionUpdateDatePicker}
+						showTransactionUpdateDatePicker={showTransactionUpdateDatePicker}
+						handleSelectedDate={handleSelectedDate}
+
+					/>
 				))}
 			</div>
 		</div>
