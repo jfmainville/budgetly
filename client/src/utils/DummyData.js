@@ -193,6 +193,62 @@ export const dummyTransactions = [
 		type: "Expense",
 		category: "Grocery",
 		total: 1000.24
+	},
+	{
+		id: 7,
+		date: "2020-01-01",
+		enterprise: "IGA",
+		type: "Expense",
+		category: "Grocery",
+		total: 1000.24
+	},
+	{
+		id: 8,
+		date: "2020-01-10",
+		enterprise: "Services Conseils Franc-Jeu",
+		type: "Revenue",
+		category: "Income",
+		total: 5000.25
+	},
+	{
+		id: 10,
+		date: "2020-02-01",
+		enterprise: "Pizza Pizza",
+		type: "Expense",
+		category: "Restaurant",
+		total: 500.24
+	},
+	{
+		id: 11,
+		date: "2020-02-10",
+		enterprise: "Services Conseils Franc-Jeu",
+		type: "Revenue",
+		category: "Income",
+		total: 2000.25
+	},
+	{
+		id: 12,
+		date: "2020-02-15",
+		enterprise: "IGA",
+		type: "Expense",
+		category: "Grocery",
+		total: 600.24
+	},
+	{
+		id: 13,
+		date: "2020-03-14",
+		enterprise: "Services Conseils Franc-Jeu",
+		type: "Revenue",
+		category: "Income",
+		total: 6000.45
+	},
+	{
+		id: 14,
+		date: "2020-03-15",
+		enterprise: "Pizza Pizza",
+		type: "Expense",
+		category: "Restaurant",
+		total: 24.24
 	}
 ];
 
