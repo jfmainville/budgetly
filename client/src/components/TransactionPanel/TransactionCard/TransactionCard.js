@@ -3,6 +3,7 @@ import classes from "./TransactionCard.module.scss";
 import PropTypes from "prop-types";
 import { Manager, Popper, Reference } from "react-popper";
 import DatePicker from "../../UI/Calendar/DatePicker/DatePicker";
+import TransactionCardEnterpriseDropdown from "./TransactionCardEnterpriseDropdown/TransactionCardEnterpriseDropdown";
 
 const transactionCard = props => {
 	const transaction = props.transaction;
@@ -10,6 +11,7 @@ const transactionCard = props => {
 		style: "currency",
 		currency: "CAD"
 	}).format(transaction.total);
+
 	return (
 		<div className={classes.TableRow}>
 			<div className={classes.TableSelectRow}>
@@ -50,7 +52,15 @@ const transactionCard = props => {
 					) : null}
 				</div>
 			</Manager>
-			<div className={classes.TableEnterpriseRow}>{transaction.enterprise}</div>
+			<div className={classes.TableEnterpriseRow}>
+				<TransactionCardEnterpriseDropdown
+					transaction={transaction}
+					accounts={props.accounts}
+					handleTransactionCardEnterpriseDropdownShowDropdown={props.handleTransactionCardEnterpriseDropdownShowDropdown}
+					transactionCardEnterpriseDropdownShowDropdown={props.transactionCardEnterpriseDropdownShowDropdown}
+					handleTransactionUpdate={props.handleTransactionUpdate}
+				/>
+			</div>
 			<div className={classes.TableTypeRow}>{transaction.type}</div>
 			<div className={classes.TableCategoryRow}>{transaction.category}</div>
 			<div className={classes.TableTotalRow}>{totalAmount}</div>

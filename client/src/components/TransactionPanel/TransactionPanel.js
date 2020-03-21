@@ -19,6 +19,7 @@ const transactionPanel = () => {
 	const [showEnterpriseDropdown, setShowEnterpriseDropdown] = useState(false);
 	const [enterpriseSearchInput, setEnterpriseSearchInput] = useState("");
 	const [enterpriseAmountInput, setEnterpriseAmountInput] = useState("");
+	const [transactionCardEnterpriseDropdownShowDropdown, setTransactionCardEnterpriseDropdownShowDropdown] = useState("");
 	const [transactionDate, setTransactionDate] = useState("");
 	const dispatch = useDispatch();
 
@@ -97,6 +98,10 @@ const transactionPanel = () => {
 		setEnterpriseAmountInput(transaction_amount);
 	};
 
+	const handleTransactionCardEnterpriseDropdownShowDropdown = (account) => {
+		setTransactionCardEnterpriseDropdownShowDropdown(account);
+	};
+
 	const handleTransactionCreate = () => {
 		let data = {};
 		if (transactions) {
@@ -125,7 +130,7 @@ const transactionPanel = () => {
 		setEnterpriseAmountInput("");
 	};
 
-	const handleTransactionUpdate = (date) => {
+	const handleTransactionUpdate = (date, account) => {
 		let data = {};
 		if (transactions) {
 			if (date && showTransactionUpdateDatePicker) {
@@ -138,9 +143,20 @@ const transactionPanel = () => {
 				data.total = transactionDetails.total;
 				dispatch(actions.updateTransaction(data));
 			}
+			if (account && transactionCardEnterpriseDropdownShowDropdown) {
+				const transactionDetails = transactions.filter(transaction => transaction.id === transactionCardEnterpriseDropdownShowDropdown.id)[0];
+				data.id = transactionCardEnterpriseDropdownShowDropdown.id;
+				data.date = transactionDetails.date;
+				data.enterprise = account.enterprise;
+				data.type = account.type;
+				data.category = account.category;
+				data.total = transactionDetails.total;
+				dispatch(actions.updateTransaction(data));
+			}
 		}
 
 		setShowTransactionUpdateDatePicker(null);
+		setTransactionCardEnterpriseDropdownShowDropdown("");
 	};
 
 	let filteredTransactions = [];
@@ -233,10 +249,17 @@ const transactionPanel = () => {
 					<TransactionCard
 						key={transaction.id}
 						transaction={transaction}
+						accounts={accounts}
 						handleShowTransactionUpdateDatePicker={handleShowTransactionUpdateDatePicker}
 						showTransactionUpdateDatePicker={showTransactionUpdateDatePicker}
+						handleTransactionCardEnterpriseDropdownShowDropdown={handleTransactionCardEnterpriseDropdownShowDropdown}
+						handleEnterpriseSearch={handleEnterpriseSearch}
+						handleTransactionUpdate={handleTransactionUpdate}
+						showEnterpriseDropdown={showEnterpriseDropdown}
+						handleShowEnterpriseDropdown={handleShowEnterpriseDropdown}
+						transactionCardEnterpriseDropdownShowDropdown={transactionCardEnterpriseDropdownShowDropdown}
+						handleEnterpriseSearchSelection={handleEnterpriseSearchSelection}
 						handleSelectedDate={handleSelectedDate}
-
 					/>
 				))}
 			</div>
