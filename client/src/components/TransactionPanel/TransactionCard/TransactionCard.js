@@ -64,6 +64,14 @@ const transactionCard = props => {
 			<div className={classes.TableTypeRow}>{transaction.type}</div>
 			<div className={classes.TableCategoryRow}>{transaction.category}</div>
 			<div className={classes.TableTotalRow}>{totalAmount}</div>
+			<div className={classes.TableButtonsRow}>
+				<button
+					id={transaction}
+					onClick={() => props.handleTransactionDelete(transaction)}
+				>
+					X
+				</button>
+			</div>
 		</div>
 	);
 };

@@ -159,6 +159,14 @@ const transactionPanel = () => {
 		setTransactionCardEnterpriseDropdownShowDropdown("");
 	};
 
+	const handleTransactionDelete = (transaction) => {
+		let data = {};
+		if (transaction.id) {
+			data = transaction.id;
+			dispatch(actions.deleteTransaction(data));
+		}
+	};
+
 	let filteredTransactions = [];
 	let totalFilteredTransactions = [];
 	if (transactions) {
@@ -255,6 +263,7 @@ const transactionPanel = () => {
 						handleTransactionCardEnterpriseDropdownShowDropdown={handleTransactionCardEnterpriseDropdownShowDropdown}
 						handleEnterpriseSearch={handleEnterpriseSearch}
 						handleTransactionUpdate={handleTransactionUpdate}
+						handleTransactionDelete={handleTransactionDelete}
 						showEnterpriseDropdown={showEnterpriseDropdown}
 						handleShowEnterpriseDropdown={handleShowEnterpriseDropdown}
 						transactionCardEnterpriseDropdownShowDropdown={transactionCardEnterpriseDropdownShowDropdown}
