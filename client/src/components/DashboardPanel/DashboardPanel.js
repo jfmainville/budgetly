@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./DashboardPanel.module.scss";
 import { Bar, Doughnut } from "react-chartjs-2";
 
-const dashboard = () => {
+const DashboardPanel = () => {
 	const monthlyIncomesExpensesData = {
 		labels: [
 			"Jan",
@@ -153,4 +153,4 @@ const dashboard = () => {
 	);
 };
 
-export default dashboard;
+export default DashboardPanel;
