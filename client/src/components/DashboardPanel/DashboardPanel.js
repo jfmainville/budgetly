@@ -132,22 +132,9 @@ const DashboardPanel = () => {
 				</div>
 			</div>
 			<div className={classes.BottomCharts}>
-				<div className={classes.TotalIncomesExpensesChart}>
-					<Doughnut
-						data={totalIncomesExpensesData}
-						options={doughnutOptions}
-						width={700}
-						height={400}
-					/>
-				</div>
-				<div>
-					<Bar
-						data={categoryExpensesData}
-						options={options}
-						width={700}
-						height={400}
-					/>
-				</div>
+				<TotalTransactionChart
+					transactions={transactions}
+				/>
 			</div>
 		</div>
 	);
