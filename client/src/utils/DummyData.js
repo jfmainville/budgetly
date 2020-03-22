@@ -206,8 +206,8 @@ export const dummyTransactions = [
 		id: 8,
 		date: "2020-01-10",
 		enterprise: "Services Conseils Franc-Jeu",
-		type: "Revenue",
-		category: "Income",
+		type: "Income",
+		category: "Revenue",
 		total: 5000.25
 	},
 	{
@@ -222,8 +222,8 @@ export const dummyTransactions = [
 		id: 11,
 		date: "2020-02-10",
 		enterprise: "Services Conseils Franc-Jeu",
-		type: "Revenue",
-		category: "Income",
+		type: "Income",
+		category: "Revenue",
 		total: 2000.25
 	},
 	{
@@ -238,8 +238,8 @@ export const dummyTransactions = [
 		id: 13,
 		date: "2020-03-14",
 		enterprise: "Services Conseils Franc-Jeu",
-		type: "Revenue",
-		category: "Income",
+		type: "Income",
+		category: "Revenue",
 		total: 6000.45
 	},
 	{
