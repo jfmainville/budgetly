@@ -1,14 +1,16 @@
 import React from "react";
 import classes from "./TotalTransactionChart.module.scss";
 import { Doughnut } from "react-chartjs-2";
+import moment from "moment";
 
 const totalTransactionChart = props => {
 	const transactions = props.transactions;
+	const activeYear = props.activeYear;
 	let chartData = [];
 	if (transactions) {
 		const filteredIncomes = transactions.filter(
 			transaction =>
-				transaction.type === "Income"
+				transaction.type === "Income" && moment(transaction.date).format("YYYY") === moment(activeYear).format("YYYY")
 		);
 		if (filteredIncomes.length > 0) {
 			const totalFilteredIncomes = Math.round(filteredIncomes
@@ -18,7 +20,7 @@ const totalTransactionChart = props => {
 		}
 		const filteredExpenses = transactions.filter(
 			transaction =>
-				transaction.type === "Expense"
+				transaction.type === "Expense" && moment(transaction.date).format("YYYY") === moment(activeYear).format("YYYY")
 		);
 		if (filteredExpenses.length > 0) {
 			const totalFilteredExpenses = Math.round(filteredExpenses
