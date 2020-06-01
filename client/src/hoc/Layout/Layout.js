@@ -1,16 +1,18 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import classes from "./Layout.module.scss";
-import Content from "../Content/Content";
 
 const layout = props => {
 	return (
 		<div className={classes.Container}>
-			<Navbar />
-			<div className={classes.Content}>
-				<Content>{props.children}</Content>
-			</div>
+			<section className={classes.Navbar}>
+				<Navbar/>
+			</section>
+			<section className={classes.Content}>
+				{props.children}
+			</section>
 		</div>
+
 	);
 };
 
