@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import classes from "./TransactionDateInput.scss";
+import classes from "./TransactionDateInput.module.scss";
 
 const transactionDateInput = props => {
 	return (
