@@ -1,22 +1,21 @@
 @import "../../sass/_variables";
 
 .Container {
-  display: flex;
-  flex-direction: column;
   max-height: 100vh;
   background-color: $color-white;
-  position: relative;
 
   .Navbar {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
     flex-wrap: wrap;
-    flex: 1 1 auto;
+    background-color: $color-green;
+    box-shadow: $box-shadow-bottom;
+    margin-bottom: 2rem;
+    font-family: $default-font-family;
+    font-size: $default-font-size;
   }
 
   .Content {
-    display: flex;
-    max-width: 100%;
     min-height: 100vh;
   }
 }

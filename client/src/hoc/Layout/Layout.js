@@ -9,7 +9,8 @@ const layout = props => {
 				<Navbar/>
 			</section>
 			<section className={classes.Content}>
-				{props.children}
+
+			{props.children}
 			</section>
 		</div>
 
