@@ -2,16 +2,11 @@
 
 .CategoryDropdown {
 	display: flex;
-	flex-direction: row;
+	flex-wrap: wrap;
+	flex-grow: 2;
 	align-items: center;
-	justify-content: flex-start;
-	flex-basis: 20%;
 
 	.CategoryDropdownButton {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: center;
 		width: 3rem;
 		height: 4rem;
 		border: 1px solid $color-white;
@@ -24,10 +19,6 @@
 		}
 
 		.CategoryDropdownButtonIcon {
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			justify-content: center;
 			width: 3rem;
 			height: 4rem;
 			fill: $color-white;
@@ -55,7 +46,6 @@
 		justify-content: center;
 		width: 3rem;
 		height: 4rem;
-		font-family: $default-font-family;
 		font-size: $default-font-size;
 		font-weight: 600;
 		color: $color-white;
@@ -71,9 +61,6 @@
 	}
 
 	.ShowCategoryDropdown {
-		display: flex;
-		align-items: flex-start;
-		justify-content: center;
 		background-color: $color-white;
 		width: 20rem;
 		box-shadow: $box-shadow-all;
@@ -102,9 +89,8 @@
 
 		.ShowCategoryDropdownRow {
 			display: flex;
-			flex-direction: row;
+			flex-wrap: wrap;
 			align-items: center;
-			width: 100%;
 			height: 4rem;
 			justify-content: flex-start;
 			cursor: pointer;

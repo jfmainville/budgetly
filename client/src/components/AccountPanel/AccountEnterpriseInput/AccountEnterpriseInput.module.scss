@@ -2,23 +2,20 @@
 
 .NewAccountSectionFields {
 	display: flex;
-	flex-direction: row;
-	flex-basis: 45%;
+	flex-grow: 3;
+	align-items: center;
+	height: 5rem;
 
 	.NewAccountSectionEnterpriseInput {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: flex-start;
 		font-family: $default-font-family;
 		font-size: $default-font-size;
 		color: $color-black;
 		border: 1px solid $color-white;
-		width: 100%;
 		height: 4rem;
 		margin-right: 3rem;
 		padding-left: 1rem;
 		margin-left: 1rem;
 		outline: none;
+		width: 100%;
 	}
 }

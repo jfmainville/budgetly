@@ -167,7 +167,7 @@ const accountPanel = () => {
 	});
 
 	return (
-		<div className={classes.Container}>
+		<React.Fragment>
 			<div className={classes.NewAccountSection}>
 				<AccountEnterpriseInput
 					enterpriseInput={enterpriseInput}
@@ -226,7 +226,7 @@ const accountPanel = () => {
 					/>
 				))}
 			</div>
-		</div>
+		</React.Fragment>
 	);
 };
 
