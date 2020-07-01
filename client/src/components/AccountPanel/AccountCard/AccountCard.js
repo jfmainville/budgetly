@@ -65,9 +65,11 @@ const accountCard = props => {
 			<div className={classes.TableTotalRow}>{totalFilteredTransactions}</div>
 			<div className={classes.TableButtonsRow}>
 				<button
+					className={classes.TableButtonsRowDeleteButton}
 					id={account}
 					onClick={() => props.handleAccountDelete(account)}
-				>X
+				>
+					X
 				</button>
 			</div>
 		</div>
