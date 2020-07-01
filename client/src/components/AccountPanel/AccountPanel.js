@@ -57,6 +57,15 @@ const accountPanel = () => {
 		setAccountCardCategoryDropdownShowDropdown(account);
 	};
 
+	const handleDropdownItemSearch = (itemType, data) => {
+		if (itemType === "Type") {
+			setTypeSearchInput(data);
+		}
+		if (itemType === "Category") {
+			setCategorySearchInput(data);
+		}
+	};
+
 	const handleDropdownItemSelection = (itemType, item) => {
 		if (itemType === "Type") {
 			setTypeSearchInput(item.name);
@@ -141,13 +150,17 @@ const accountPanel = () => {
 				/>
 				<SearchableDropdown
 					items={types}
+					inputData={typeSearchInput}
 					placeHolder="Type"
-					handleItemSelection={handleItemSelection}
+					handleDropdownItemSearch={handleDropdownItemSearch}
+					handleDropdownItemSelection={handleDropdownItemSelection}
 				/>
 				<SearchableDropdown
 					items={categories}
+					inputData={categorySearchInput}
 					placeHolder="Category"
-					handleItemSelection={handleItemSelection}
+					handleDropdownItemSearch={handleDropdownItemSearch}
+					handleDropdownItemSelection={handleDropdownItemSelection}
 				/>
 				<button className={classes.NewAccountSectionButtonSave} onClick={handleAccountCreate}>
 					Add Account

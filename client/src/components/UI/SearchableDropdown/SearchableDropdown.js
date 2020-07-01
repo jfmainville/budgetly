@@ -3,7 +3,6 @@ import classes from "./SearchableDropdown.module.scss";
 import { Manager, Reference, Popper } from "react-popper";
 
 const searchableDropdown = props => {
-	const [searchInput, setSearchInput] = useState("");
 	const [showDropdown, setShowDropdown] = useState(false);
 
 	const handleShowDropdown = () => {
@@ -11,24 +10,26 @@ const searchableDropdown = props => {
 	};
 
 	const handleSearch = event => {
+		const placeHolder = props.placeHolder;
 		const searchInput = event.target.value;
 		setShowDropdown(true);
-		setSearchInput(searchInput);
+		props.handleDropdownItemSearch(placeHolder, searchInput);
 	};
 
 	const handleClearSearch = () => {
+		const placeHolder = props.placeHolder;
 		setShowDropdown(false);
-		setSearchInput("");
+		props.handleDropdownItemSearch(placeHolder, "");
 	};
 
 	const handleSearchSelection = item => {
 		const placeHolder = props.placeHolder;
-		setSearchInput(item.name);
 		setShowDropdown(false);
-		props.handleItemSelection(placeHolder, item);
+		props.handleDropdownItemSelection(placeHolder, item);
 	};
 
 	const items = props.items;
+	const searchInput = props.inputData;
 	const placeHolder = props.placeHolder;
 
 	return (
