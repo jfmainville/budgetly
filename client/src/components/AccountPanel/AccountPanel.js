@@ -194,11 +194,6 @@ accountPanel.propTypes = {
 	transactions: PropTypes.array,
 	categorySearchInput: PropTypes.string,
 	enterpriseInput: PropTypes.string,
-	showCategoryDropdown: PropTypes.bool,
-	handleCategorySearch: PropTypes.func,
-	handleClearCategorySearch: PropTypes.func,
-	handleShowCategoryDropdown: PropTypes.func,
-	handleCategorySearchSelection: PropTypes.func,
 	handleEnterpriseInput: PropTypes.func
 };
 
