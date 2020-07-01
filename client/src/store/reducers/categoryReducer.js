@@ -27,7 +27,7 @@ const createCategoryLoad = (state, action) => {
 
 const createCategorySuccess = (state, action) => {
     let categories = [...state.categories];
-    categories.splice(action.rowId, 1, action.createCategory);
+    categories.push(action.createCategory);
     return updateObject(state, { categories: categories });
 };
 
