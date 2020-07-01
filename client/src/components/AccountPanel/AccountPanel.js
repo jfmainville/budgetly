@@ -57,7 +57,7 @@ const accountPanel = () => {
 		setAccountCardCategoryDropdownShowDropdown(account);
 	};
 
-	const handleItemSelection = (itemType, item) => {
+	const handleDropdownItemSelection = (itemType, item) => {
 		if (itemType === "Type") {
 			setTypeSearchInput(item.name);
 		}
