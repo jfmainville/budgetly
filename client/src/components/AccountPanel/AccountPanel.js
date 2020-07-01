@@ -4,8 +4,8 @@ import * as actions from "../../store/actions/index";
 import PropTypes from "prop-types";
 import classes from "./AccountPanel.module.scss";
 import AccountCard from "./AccountCard/AccountCard";
-import AccountEnterpriseInput from "./AccountEnterpriseInput/AccountEnterpriseInput";
 import SearchableDropdown from "../UI/SearchableDropdown/SearchableDropdown";
+import InputField from "../UI/InputField/InputField";
 
 const accountPanel = () => {
 	const accounts = useSelector(state => state.account.accounts);
@@ -29,9 +29,11 @@ const accountPanel = () => {
 		dispatch(actions.fetchCategories());
 	}, []);
 
-	const handleEnterpriseInput = event => {
-		const enterpriseInput = event.target.value;
-		setEnterpriseInput(enterpriseInput);
+	const handleInputSelection = (item) => {
+		setEnterpriseInput(item);
+		if (enterpriseInputUpdate) {
+			handleAccountUpdate();
+		}
 	};
 
 	const handleEnterpriseInputSelection = (account) => {
@@ -144,9 +146,10 @@ const accountPanel = () => {
 	return (
 		<React.Fragment>
 			<div className={classes.NewAccountSection}>
-				<AccountEnterpriseInput
-					enterpriseInput={enterpriseInput}
-					handleEnterpriseInput={handleEnterpriseInput}
+				<InputField
+					inputData={enterpriseInput}
+					placeHolder="Enterprise"
+					handleInputSelection={handleInputSelection}
 				/>
 				<SearchableDropdown
 					items={types}
