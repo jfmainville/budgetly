@@ -1,0 +1,21 @@
+@import "../../../sass/variables";
+
+.InputField {
+	display: flex;
+	flex-grow: 3;
+	align-items: center;
+	height: 5rem;
+
+	.InputFieldInput {
+		font-family: $default-font-family;
+		font-size: $default-font-size;
+		color: $color-black;
+		border: 1px solid $color-white;
+		height: 4rem;
+		margin-right: 3rem;
+		padding-left: 1rem;
+		margin-left: 1rem;
+		outline: none;
+		width: 100%;
+	}
+}
