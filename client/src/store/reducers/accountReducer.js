@@ -28,7 +28,7 @@ const createAccountLoad = (state, action) => {
 
 const createAccountSuccess = (state, action) => {
 	let accounts = [...state.accounts];
-	accounts.splice(action.rowId, 1, action.createAccount);
+	accounts.push(action.createAccount);
 	return updateObject(state, { accounts: accounts });
 };
 
