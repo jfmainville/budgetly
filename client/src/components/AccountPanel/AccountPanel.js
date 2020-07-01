@@ -4,9 +4,8 @@ import * as actions from "../../store/actions/index";
 import PropTypes from "prop-types";
 import classes from "./AccountPanel.module.scss";
 import AccountCard from "./AccountCard/AccountCard";
-import AccountCategoryDropdown from "./AccountCategoryDropdown/AccountCategoryDropdown";
 import AccountEnterpriseInput from "./AccountEnterpriseInput/AccountEnterpriseInput";
-import AccountTypeDropdown from "./AccountTypeDropdown/AccountTypeDropdown";
+import SearchableDropdown from "../UI/SearchableDropdown/SearchableDropdown";
 
 const accountPanel = () => {
 	const accounts = useSelector(state => state.account.accounts);
@@ -21,9 +20,7 @@ const accountPanel = () => {
 	const [enterpriseInputSelection, setEnterpriseInputSelection] = useState("");
 	const [enterpriseInputUpdate, setEnterpriseInputUpdate] = useState("");
 	const [categorySearchInput, setCategorySearchInput] = useState("");
-	const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
 	const [typeSearchInput, setTypeSearchInput] = useState("");
-	const [showTypeDropdown, setShowTypeDropdown] = useState(false);
 	const [accountCardTypeDropdownShowDropdown, setAccountCardTypeDropdownShowDropdown] = useState("");
 	const [accountCardCategoryDropdownShowDropdown, setAccountCardCategoryDropdownShowDropdown] = useState("");
 
@@ -52,52 +49,21 @@ const accountPanel = () => {
 		setEnterpriseInputUpdate(event.target.value);
 	};
 
-	const handleShowCategoryDropdown = () => {
-		setShowCategoryDropdown(!showCategoryDropdown);
-	};
-
-	const handleCategorySearch = event => {
-		const categorySearchInput = event.target.value;
-		setShowCategoryDropdown(true);
-		setCategorySearchInput(categorySearchInput);
-	};
-
-	const handleClearCategorySearch = () => {
-		setShowCategoryDropdown(false);
-		setCategorySearchInput("");
-	};
-
-	const handleCategorySearchSelection = category => {
-		setCategorySearchInput(category.title);
-		setShowCategoryDropdown(false);
-	};
-
-	const handleShowTypeDropdown = () => {
-		setShowTypeDropdown(!showTypeDropdown);
-	};
-
-	const handleTypeSearch = event => {
-		const typeSearchInput = event.target.value;
-		setShowTypeDropdown(true);
-		setTypeSearchInput(typeSearchInput);
-	};
-
-	const handleClearTypeSearch = () => {
-		setShowTypeDropdown(false);
-		setTypeSearchInput("");
-	};
-
-	const handleTypeSearchSelection = type => {
-		setTypeSearchInput(type);
-		setShowTypeDropdown(false);
-	};
-
 	const handleAccountCardTypeDropdownShowDropdown = (account) => {
 		setAccountCardTypeDropdownShowDropdown(account);
 	};
 
 	const handleAccountCardCategoryDropdownShowDropdown = (account) => {
 		setAccountCardCategoryDropdownShowDropdown(account);
+	};
+
+	const handleItemSelection = (itemType, item) => {
+		if (itemType === "Type") {
+			setTypeSearchInput(item.name);
+		}
+		if (itemType === "Category") {
+			setCategorySearchInput(item.name);
+		}
 	};
 
 	const handleAccountCreate = () => {
@@ -173,24 +139,15 @@ const accountPanel = () => {
 					enterpriseInput={enterpriseInput}
 					handleEnterpriseInput={handleEnterpriseInput}
 				/>
-				<AccountTypeDropdown
-					accounts={sortedAccounts}
-					types={types}
-					typeSearchInput={typeSearchInput}
-					showTypeDropdown={showTypeDropdown}
-					handleShowTypeDropdown={handleShowTypeDropdown}
-					handleTypeSearch={handleTypeSearch}
-					handleClearTypeSearch={handleClearTypeSearch}
-					handleTypeSearchSelection={handleTypeSearchSelection}
+				<SearchableDropdown
+					items={types}
+					placeHolder="Type"
+					handleItemSelection={handleItemSelection}
 				/>
-				<AccountCategoryDropdown
-					categories={categories}
-					categorySearchInput={categorySearchInput}
-					showCategoryDropdown={showCategoryDropdown}
-					handleCategorySearch={handleCategorySearch}
-					handleClearCategorySearch={handleClearCategorySearch}
-					handleShowCategoryDropdown={handleShowCategoryDropdown}
-					handleCategorySearchSelection={handleCategorySearchSelection}
+				<SearchableDropdown
+					items={categories}
+					placeHolder="Category"
+					handleItemSelection={handleItemSelection}
 				/>
 				<button className={classes.NewAccountSectionButtonSave} onClick={handleAccountCreate}>
 					Add Account
