@@ -253,20 +253,20 @@ export const dummyTransactions = [
 ];
 
 export const dummyCategories = [
-	{ id: 1, title: "Entertainment" },
-	{ id: 2, title: "Technology" },
-	{ id: 3, title: "Grocery" },
-	{ id: 4, title: "Fashion" },
-	{ id: 5, title: "Automobile" },
-	{ id: 6, title: "Automobile" },
-	{ id: 7, title: "Automobile" },
-	{ id: 8, title: "Automobile" },
-	{ id: 9, title: "Automobile" },
-	{ id: 10, title: "Automobile" },
-	{ id: 11, title: "Automobile" },
-	{ id: 12, title: "Automobile" },
-	{ id: 13, title: "Automobile" },
-	{ id: 14, title: "Automobile" },
-	{ id: 15, title: "Automobile" },
-	{ id: 16, title: "Automobile" }
+	{ id: 1, name: "Entertainment" },
+	{ id: 2, name: "Technology" },
+	{ id: 3, name: "Grocery" },
+	{ id: 4, name: "Fashion" },
+	{ id: 5, name: "Automobile" },
+	{ id: 6, name: "Automobile" },
+	{ id: 7, name: "Automobile" },
+	{ id: 8, name: "Automobile" },
+	{ id: 9, name: "Automobile" },
+	{ id: 10, name: "Automobile" },
+	{ id: 11, name: "Automobile" },
+	{ id: 12, name: "Automobile" },
+	{ id: 13, name: "Automobile" },
+	{ id: 14, name: "Automobile" },
+	{ id: 15, name: "Automobile" },
+	{ id: 16, name: "Automobile" }
 ];
