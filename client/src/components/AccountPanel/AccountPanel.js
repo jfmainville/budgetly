@@ -14,8 +14,8 @@ const accountPanel = () => {
 	const categories = useSelector(state => state.category.categories);
 	const dispatch = useDispatch();
 	const types = [
-		"Expense",
-		"Income"
+		{ "id": 1, "name": "Expense" },
+		{ "id": 2, "name": "Income" }
 	];
 	const [enterpriseInput, setEnterpriseInput] = useState("");
 	const [enterpriseInputSelection, setEnterpriseInputSelection] = useState("");
