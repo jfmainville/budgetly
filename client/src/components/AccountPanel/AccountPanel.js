@@ -112,7 +112,7 @@ const accountPanel = () => {
 			data.id = account.id;
 			data.enterprise = account.enterprise;
 			data.type = account.type;
-			data.category = category.title;
+			data.category = category.name;
 			dispatch(actions.updateAccount(data));
 			setAccountCardCategoryDropdownShowDropdown("");
 		}
