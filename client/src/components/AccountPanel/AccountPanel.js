@@ -13,8 +13,8 @@ const accountPanel = () => {
 	const categories = useSelector(state => state.category.categories);
 	const dispatch = useDispatch();
 	const types = [
-		{ "id": 1, "name": "Expense" },
-		{ "id": 2, "name": "Income" }
+		{ "id": 1, "type": "Expense" },
+		{ "id": 2, "type": "Income" }
 	];
 	const [enterpriseInput, setEnterpriseInput] = useState("");
 	const [enterpriseInputSelection, setEnterpriseInputSelection] = useState("");
@@ -70,10 +70,10 @@ const accountPanel = () => {
 
 	const handleDropdownItemSelection = (itemType, item) => {
 		if (itemType === "Type") {
-			setTypeSearchInput(item.name);
+			setTypeSearchInput(item[itemType.toLowerCase()]);
 		}
 		if (itemType === "Category") {
-			setCategorySearchInput(item.name);
+			setCategorySearchInput(item[itemType.toLowerCase()]);
 		}
 	};
 
@@ -103,18 +103,10 @@ const accountPanel = () => {
 
 	const handleAccountUpdate = (account, itemType, item) => {
 		let data = {};
-		if (enterpriseInputSelection) {
-			data.id = enterpriseInputSelection.id;
-			data.enterprise = enterpriseInputUpdate;
-			data.type = enterpriseInputSelection.type;
-			data.category = enterpriseInputSelection.category;
-			dispatch(actions.updateAccount(data));
-			setEnterpriseInputUpdate("");
-		}
 		if (account && itemType === "Type") {
 			data.id = account.id;
 			data.enterprise = account.enterprise;
-			data.type = item.name;
+			data.type = item.type;
 			data.category = account.category;
 			dispatch(actions.updateAccount(data));
 		}
@@ -122,7 +114,7 @@ const accountPanel = () => {
 			data.id = account.id;
 			data.enterprise = account.enterprise;
 			data.type = account.type;
-			data.category = item.name;
+			data.category = item.category;
 			dispatch(actions.updateAccount(data));
 		}
 	};
