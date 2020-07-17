@@ -88,9 +88,9 @@ const searchableDropdown = props => {
 												"(" + searchInput + ")",
 												"gi"
 											);
-											const match = item.name.match(regex);
+											const match = item[placeHolder.toLowerCase()].match(regex);
 											if (match != null) {
-												let parts = item.name.split(match[0], 2);
+												let parts = item[placeHolder.toLowerCase()].split(match[0], 2);
 												return (
 													<div
 														className={classes.ShowSearchableDropdownRow}
@@ -114,7 +114,7 @@ const searchableDropdown = props => {
 													onClick={() => handleSearchSelection(item)}
 												>
 													<p className={classes.ShowSearchableDropdownTitle}>
-														{item.name}
+														{item[placeHolder.toLowerCase()]}
 													</p>
 												</div>
 											);

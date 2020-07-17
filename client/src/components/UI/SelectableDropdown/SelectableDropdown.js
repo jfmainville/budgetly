@@ -45,7 +45,7 @@ const selectableDropdown = props => {
 								ref={ref}
 								className={classes.ShowSelectableDropdownTitle}
 							>
-								{item.name === mapItem[placeHolder.toLowerCase()] ? item.name : null}
+								{item[placeHolder.toLowerCase()] === mapItem[placeHolder.toLowerCase()] ? item[placeHolder.toLowerCase()] : null}
 							</p>
 						)}
 					</Reference>
@@ -74,7 +74,7 @@ const selectableDropdown = props => {
 											}}
 										>
 											<p className={classes.ShowSelectableDropdownTitle}>
-												{item.name}
+												{item[placeHolder.toLowerCase()]}
 											</p>
 										</div>
 									)}
