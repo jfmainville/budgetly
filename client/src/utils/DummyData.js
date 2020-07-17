@@ -253,14 +253,14 @@ export const dummyTransactions = [
 ];
 
 export const dummyCategories = [
-	{ id: 1, name: "Entertainment" },
-	{ id: 2, name: "Technology" },
-	{ id: 3, name: "Grocery" },
-	{ id: 4, name: "Fashion" },
-	{ id: 5, name: "Automobile" },
-	{ id: 6, name: "Sport" },
-	{ id: 7, name: "Revenue" },
-	{ id: 8, name: "Bank" },
-	{ id: 9, name: "Restaurant" },
-	{ id: 10, name: "Transport" },
+	{ id: 1, category: "Entertainment" },
+	{ id: 2, category: "Technology" },
+	{ id: 3, category: "Grocery" },
+	{ id: 4, category: "Fashion" },
+	{ id: 5, category: "Automobile" },
+	{ id: 6, category: "Sport" },
+	{ id: 7, category: "Revenue" },
+	{ id: 8, category: "Bank" },
+	{ id: 9, category: "Restaurant" },
+	{ id: 10, category: "Transport" },
 ];
