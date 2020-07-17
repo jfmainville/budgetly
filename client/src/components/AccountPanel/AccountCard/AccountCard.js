@@ -1,7 +1,6 @@
 import React from "react";
-import classes from './AccountCard.module.scss'
-import AccountCardTypeDropdown from "./AccountCardTypeDropdown/AccountCardTypeDropdown";
-import AccountCardCategoryDropdown from "./AccountCardCategoryDropdown/AccountCardCategoryDropdown";
+import classes from "./AccountCard.module.scss";
+import SelectableDropdown from "../../UI/SelectableDropdown/SelectableDropdown";
 
 const accountCard = props => {
 	const account = props.account;
@@ -45,21 +44,19 @@ const accountCard = props => {
 				}
 			</div>
 			<div className={classes.TableTypeRow}>
-				<AccountCardTypeDropdown
-					account={account}
-					types={props.types}
-					handleAccountCardTypeDropdownShowDropdown={props.handleAccountCardTypeDropdownShowDropdown}
-					accountCardTypeDropdownShowDropdown={props.accountCardTypeDropdownShowDropdown}
-					handleAccountUpdate={props.handleAccountUpdate}
+				<SelectableDropdown
+					mapItem={account}
+					items={props.types}
+					placeHolder="Type"
+					handleDropdownItemSelection={props.handleAccountUpdate}
 				/>
 			</div>
 			<div className={classes.TableCategoryRow}>
-				<AccountCardCategoryDropdown
-					account={account}
-					categories={props.categories}
-					handleAccountCardCategoryDropdownShowDropdown={props.handleAccountCardCategoryDropdownShowDropdown}
-					accountCardCategoryDropdownShowDropdown={props.accountCardCategoryDropdownShowDropdown}
-					handleAccountUpdate={props.handleAccountUpdate}
+				<SelectableDropdown
+					mapItem={account}
+					items={props.categories}
+					placeHolder="Category"
+					handleDropdownItemSelection={props.handleAccountUpdate}
 				/>
 			</div>
 			<div className={classes.TableTotalRow}>{totalFilteredTransactions}</div>
