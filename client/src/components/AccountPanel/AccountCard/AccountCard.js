@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./AccountCard.module.scss";
 import SelectableDropdown from "../../UI/SelectableDropdown/SelectableDropdown";
+import DeleteButton from "../../UI/DeleteButton/DeleteButton";
 
 const accountCard = props => {
 	const account = props.account;
@@ -61,13 +62,10 @@ const accountCard = props => {
 			</div>
 			<div className={classes.TableTotalRow}>{totalFilteredTransactions}</div>
 			<div className={classes.TableButtonsRow}>
-				<button
-					className={classes.TableButtonsRowDeleteButton}
-					id={account}
-					onClick={() => props.handleAccountDelete(account)}
-				>
-					X
-				</button>
+				<DeleteButton
+					item={account}
+					handleDeleteButton={props.handleAccountDelete}
+				/>
 			</div>
 		</div>
 	);

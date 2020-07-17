@@ -80,27 +80,5 @@
 		font-size: $default-font-size;
 		color: $color-grey-dark-1;
 		height: 5rem;
-
-		.TableButtonsRowDeleteButton {
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			justify-content: center;
-			width: 3rem;
-			height: 3rem;
-			font-size: $default-font-size;
-			font-weight: 600;
-			color: $color-white;
-			border: 1px solid $color-error;
-			background-color: $color-error;
-			outline: none;
-			cursor: pointer;
-
-			&:hover {
-				color: $color-error;
-				border: 1px solid $color-error;
-				background-color: transparent;
-			}
-		}
 	}
 }
