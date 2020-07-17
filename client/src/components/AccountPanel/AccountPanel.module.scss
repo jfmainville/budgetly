@@ -53,10 +53,6 @@
 		height: 5rem;
 		cursor: pointer;
 
-		&:hover {
-			background-color: $color-green-dark;
-		}
-
 		.TableHeaderCheckboxInput {
 			width: 1.5rem;
 			height: 1.5rem;
@@ -76,10 +72,6 @@
 		color: $color-white;
 		height: 5rem;
 		cursor: pointer;
-
-		&:hover {
-			background-color: $color-green-dark;
-		}
 	}
 
 	.TableHeaderTypeColumn {
@@ -95,10 +87,6 @@
 		color: $color-white;
 		height: 5rem;
 		cursor: pointer;
-
-		&:hover {
-			background-color: $color-green-dark;
-		}
 	}
 
 	.TableHeaderCategoryColumn {
@@ -114,10 +102,6 @@
 		color: $color-white;
 		height: 5rem;
 		cursor: pointer;
-
-		&:hover {
-			background-color: $color-green-dark;
-		}
 	}
 
 	.TableHeaderTotalColumn {
@@ -133,10 +117,6 @@
 		color: $color-white;
 		height: 5rem;
 		cursor: pointer;
-
-		&:hover {
-			background-color: $color-green-dark;
-		}
 	}
 
 	.TableHeaderButtonsColumn {
@@ -152,10 +132,6 @@
 		color: $color-white;
 		height: 5rem;
 		cursor: pointer;
-
-		&:hover {
-			background-color: $color-green-dark;
-		}
 	}
 }
 
