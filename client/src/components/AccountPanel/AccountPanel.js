@@ -101,7 +101,7 @@ const accountPanel = () => {
 		setCategorySearchInput("");
 	};
 
-	const handleAccountUpdate = (account, type, category) => {
+	const handleAccountUpdate = (account, itemType, item) => {
 		let data = {};
 		if (enterpriseInputSelection) {
 			data.id = enterpriseInputSelection.id;
@@ -111,21 +111,19 @@ const accountPanel = () => {
 			dispatch(actions.updateAccount(data));
 			setEnterpriseInputUpdate("");
 		}
-		if (account && type) {
+		if (account && itemType === "Type") {
 			data.id = account.id;
 			data.enterprise = account.enterprise;
-			data.type = type;
+			data.type = item.name;
 			data.category = account.category;
 			dispatch(actions.updateAccount(data));
-			setAccountCardTypeDropdownShowDropdown("");
 		}
-		if (account && category) {
+		if (account && itemType === "Category") {
 			data.id = account.id;
 			data.enterprise = account.enterprise;
 			data.type = account.type;
-			data.category = category.name;
+			data.category = item.name;
 			dispatch(actions.updateAccount(data));
-			setAccountCardCategoryDropdownShowDropdown("");
 		}
 	};
 
