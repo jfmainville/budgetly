@@ -53,7 +53,7 @@ jobs:
         with:
           namespace: 'default'
           manifests: |
-            kubernetes/budgelty-client-deployment.yaml
+            kubernetes/budgetly-client-deployment.yaml
             kubernetes/budgetly-client-cluster-ip-service.yaml
           images: |
             '${{ secrets.ACR_URL }}/budgetly-client:${{ github.sha }}'
