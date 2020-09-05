@@ -1,0 +1,15 @@
+@import "../../../sass/variables";
+
+.TopChart {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  .IncomesExpensesChart {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+}
