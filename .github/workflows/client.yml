@@ -18,7 +18,7 @@ jobs:
       - name: Build the React Docker image
         run: docker build ./client --file ./client/Dockerfile --tag ${{ secrets.ACR_URL }}/budgetly-client:latest --tag ${{ secrets.ACR_URL }}/budgetly-client:${{ github.sha }}
       - name: Build the NGINX Docker image
-        run: docker build ./nginx --file ./nginx/Dockerfile --tag ${{ secrets.ACR_URL }}/budgetly-nginx:latest --tag ${{ secrets.ACR_URL }}/budgetly-nginx:latest:${{ github.sha }}
+        run: docker build ./nginx --file ./nginx/Dockerfile --tag ${{ secrets.ACR_URL }}/budgetly-nginx:latest --tag ${{ secrets.ACR_URL }}/budgetly-nginx:${{ github.sha }}
       - name: Push the client docker latest image
         run: docker push ${{ secrets.ACR_URL }}/budgetly-client:latest
       - name: Build the NGINX docker latest image
