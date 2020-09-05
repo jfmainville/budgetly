@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: budgetly-client-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: budgetly-client
+  template:
+    metadata:
+      labels:
+        app: budgetly-client
+    spec:
+      containers:
+        - name: budgetly-client
+          image: acrnuagircaeprod.azurecr.io/budgetly-client:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 3000
+      imagePullSecrets:
+        - name: acr-cae-prod-secret
