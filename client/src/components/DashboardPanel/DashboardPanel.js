@@ -23,7 +23,7 @@ const DashboardPanel = () => {
 			{
 				label: ["Expenses"],
 				data: [1000, 1200, 1000, 1200, 1200, 1000],
-				backgroundColor: "#c3323d"
+				backgroundColor: "#ff3b33"
 			}
 		]
 	};
