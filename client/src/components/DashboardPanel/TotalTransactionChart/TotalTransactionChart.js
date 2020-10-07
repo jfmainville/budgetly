@@ -34,7 +34,7 @@ const totalTransactionChart = props => {
 		datasets: [
 			{
 				data: chartData,
-				backgroundColor: ["#29a529", "#c3323d"]
+				backgroundColor: ["#28b045", "#ff3b33"]
 			}
 		]
 	};
