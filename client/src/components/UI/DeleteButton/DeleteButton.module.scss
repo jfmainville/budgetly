@@ -10,14 +10,14 @@
   font-size: $default-font-size;
   font-weight: 600;
   color: $color-white;
-  border: 1px solid $color-error;
-  background-color: $color-error;
+  border: 1px solid $color-red;
+  background-color: $color-red;
   outline: none;
   cursor: pointer;
 
   &:hover {
-    color: $color-error;
-    border: 1px solid $color-error;
+    color: $color-red;
+    border: 1px solid $color-red;
     background-color: transparent;
   }
 }
