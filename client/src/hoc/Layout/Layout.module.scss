@@ -10,12 +10,29 @@
     flex-wrap: wrap;
     background-color: $color-green;
     box-shadow: $box-shadow-bottom;
-    margin-bottom: 2rem;
     font-family: $default-font-family;
     font-size: $default-font-size;
   }
 
-  .Content {
-    min-height: 100vh;
+  .Row {
+    display: flex;
+    flex-direction: row;
+
+    .Sidebar {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      min-width: 30rem;
+      background-color: $color-green;
+      box-shadow: $box-shadow-right;
+      font-family: $default-font-family;
+      font-size: $default-font-size;
+      margin-right: 2rem;
+    }
+
+    .Content {
+      margin-top: 2rem;
+      min-height: 100vh;
+    }
   }
 }
