@@ -51,7 +51,7 @@ const monthlyTransactionChart = props => {
 					1200,
 					1300
 				],
-				backgroundColor: "#29a529"
+				backgroundColor: "#28b045"
 			},
 			{
 				label: "Expenses",
@@ -69,7 +69,7 @@ const monthlyTransactionChart = props => {
 					1400,
 					1500
 				],
-				backgroundColor: "#c3323d"
+				backgroundColor: "#ff3b33"
 			}
 		]
 	};

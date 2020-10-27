@@ -1,43 +1,12 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import classes from "./Navbar.module.scss";
-import { NavLink } from "react-router-dom";
 
 const navbar = props => {
 	const [profileName] = useState("Jean-Frederic Mainville");
 	return (
 		<React.Fragment>
 			<div className={classes.Logo}>Budgetly</div>
-			<ul>
-				<li className={classes.NavigationItem}>
-					<NavLink
-						activeClassName={classes.NavigationItemLinkActive}
-						className={classes.NavigationItemLink}
-						to={"/"}
-						exact={true}
-					>
-						Dashboard
-					</NavLink>
-				</li>
-				<li className={classes.NavigationItem}>
-					<NavLink
-						activeClassName={classes.NavigationItemLinkActive}
-						className={classes.NavigationItemLink}
-						to={"/transactions"}
-					>
-						Transactions
-					</NavLink>
-				</li>
-				<li className={classes.NavigationItem}>
-					<NavLink
-						activeClassName={classes.NavigationItemLinkActive}
-						className={classes.NavigationItemLink}
-						to={"/accounts"}
-					>
-						Accounts
-					</NavLink>
-				</li>
-			</ul>
 			<div className={classes.UserNavigation}>
 				<div className={classes.Profile}>
 					<p className={classes.ProfileName}>{profileName}</p>
