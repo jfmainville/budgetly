@@ -48,15 +48,10 @@ jobs:
           container-registry-password: ${{ secrets.ACR_PASSWORD }}
           secret-name: acr-cae-prod-secret
         id: create-secret
-      - name: Set imagePullSecret Kubernetes secret
-        uses: Azure/k8s-deploy@v1
+      - name: Set the kubectl command context
+        uses: matootie/dokube@v1.3.3
         with:
-          namespace: 'default'
-          manifests: |
-            kubernetes/budgetly-client-deployment.yaml
-            kubernetes/budgetly-client-cluster-ip-service.yaml
-          images: |
-            '${{ secrets.ACR_URL }}/budgetly-client:${{ github.sha }}'
-            '${{ secrets.ACR_URL }}/budgetly-nginx:${{ github.sha }}'
-          imagepullsecrets: acr-cae-prod-secret
-          kubectl-version: 'latest'
+          personalAccessToken: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+          clusterName: ${{ secrets.DIGITALOCEAN_DOKS_NAME }}
+      - name: Create the client deployment
+        run:  kubectl set image deployments/client-deployment client=${{ secrets.ACR_URL }}/budgetly-client:${{ github.sha }} --record
