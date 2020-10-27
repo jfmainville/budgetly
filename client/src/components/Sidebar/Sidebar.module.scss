@@ -1,4 +1,5 @@
 @import "../../sass/variables";
+@import "../../sass/mixins";
 
 ul {
   display: flex;
@@ -54,5 +55,11 @@ ul {
       }
     }
   }
-}
 
+  @include respond(tab-portrait) {
+    .NavigationItem {
+      font-size: 0;
+      letter-spacing: 0;
+    }
+  }
+}
