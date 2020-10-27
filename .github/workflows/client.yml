@@ -54,4 +54,4 @@ jobs:
           personalAccessToken: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
           clusterName: ${{ secrets.DIGITALOCEAN_DOKS_NAME }}
       - name: Create the client deployment
-        run:  kubectl set image deployments/budgetly-client-deployment client=${{ secrets.ACR_URL }}/budgetly-client:${{ github.sha }} --record
+        run:  kubectl set image deployments/budgetly-client-deployment budgetly-client=${{ secrets.ACR_URL }}/budgetly-client:${{ github.sha }} --record
