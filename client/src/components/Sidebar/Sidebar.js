@@ -14,7 +14,7 @@ const sidebar = props => {
 						exact={true}
 					>
 						<svg className={classes.Icon}>
-							<use xlinkHref="/assets/sprite.svg#icon-stats-bars"/>
+							<use xlinkHref="/assets/sprite.svg#icon-bar-graph"/>
 						</svg>
 						Dashboard
 					</NavLink>
@@ -26,7 +26,7 @@ const sidebar = props => {
 						to={"/transactions"}
 					>
 						<svg className={classes.Icon}>
-							<use xlinkHref="/assets/sprite.svg#icon-file-text"/>
+							<use xlinkHref="/assets/sprite.svg#icon-text-document"/>
 						</svg>
 						Transactions
 					</NavLink>
@@ -38,7 +38,7 @@ const sidebar = props => {
 						to={"/accounts"}
 					>
 						<svg className={classes.Icon}>
-							<use xlinkHref="/assets/sprite.svg#icon-credit-card"/>
+							<use xlinkHref="/assets/sprite.svg#icon-wallet"/>
 						</svg>
 						Accounts
 					</NavLink>

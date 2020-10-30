@@ -16,9 +16,9 @@ ul {
 
     .NavigationItemLink {
       display: flex;
-      justify-content: center;
-      width: 100%;
+      justify-content: left;
       align-items: center;
+      width: 100%;
       color: $color-white;
       padding: 0 1rem 0 1rem;
       height: 5rem;
@@ -36,8 +36,8 @@ ul {
       }
 
       .Icon {
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 2rem;
+        height: 2rem;
         padding: 0.5rem;
         fill: $color-white;
         background-color: transparent;
