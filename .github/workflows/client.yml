@@ -47,5 +47,7 @@ jobs:
         with:
           personalAccessToken: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
           clusterName: ${{ secrets.DIGITALOCEAN_DOKS_NAME }}
+      - name: Deploy the Kubernetes components
+        run:  kubectl apply -f kubernetes
       - name: Create the client deployment
         run:  kubectl set image deployments/budgetly-client-deployment budgetly-client=${{ secrets.ACR_URL }}/budgetly-client:${{ github.sha }} --record
