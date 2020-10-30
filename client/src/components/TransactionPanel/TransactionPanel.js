@@ -238,9 +238,6 @@ const transactionPanel = () => {
 				</button>
 			</div>
 			<div className={classes.TableHeader}>
-				<div className={classes.TableHeaderSelectColumn}>
-					<input className={classes.TableHeaderCheckboxInput} type="checkbox"/>
-				</div>
 				<div className={classes.TableHeaderEnterpriseColumn}>Date</div>
 				<div className={classes.TableHeaderEnterpriseColumn}>Enterprise</div>
 				<div className={classes.TableHeaderCategoryColumn}>Type</div>

@@ -14,9 +14,6 @@ const transactionCard = props => {
 
 	return (
 		<div className={classes.TableRow}>
-			<div className={classes.TableSelectRow}>
-				<input className={classes.TableCheckboxInput} type="checkbox"/>
-			</div>
 			<Manager>
 				<div className={classes.TableDateRow}>
 					<Reference>
