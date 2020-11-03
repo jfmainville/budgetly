@@ -245,11 +245,6 @@ const transactionPanel = () => {
 				<div className={classes.TableHeaderTotalColumn}>Amount</div>
 				<div className={classes.TableHeaderMenuColumn}/>
 			</div>
-			<div className={classes.TotalColumnTotal}>
-				<h2 className={classes.TotalColumnTotalText}>
-					{totalFilteredTransactions}
-				</h2>
-			</div>
 			<div className={classes.TableRows}>
 				{filteredTransactions.map(transaction => (
 					<TransactionCard

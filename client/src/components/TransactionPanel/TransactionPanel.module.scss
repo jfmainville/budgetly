@@ -178,17 +178,3 @@
     background-color: $color-grey-light-2;
   }
 }
-
-.TotalColumnTotal {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  width: 95%;
-  margin-right: 10rem;
-
-  .TotalColumnTotalText {
-    font-family: $default-font-family;
-    font-size: 1.7rem;
-  }
-}
