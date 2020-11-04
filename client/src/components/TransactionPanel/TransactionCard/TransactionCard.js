@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { Manager, Popper, Reference } from "react-popper";
 import DatePicker from "../../UI/Calendar/DatePicker/DatePicker";
 import TransactionCardEnterpriseDropdown from "./TransactionCardEnterpriseDropdown/TransactionCardEnterpriseDropdown";
+import DeleteButton from "../../UI/DeleteButton/DeleteButton";
 
 const transactionCard = props => {
 	const transaction = props.transaction;
@@ -60,12 +61,10 @@ const transactionCard = props => {
 			<div className={classes.TableCategoryRow}>{transaction.category}</div>
 			<div className={classes.TableTotalRow}>{totalAmount}</div>
 			<div className={classes.TableMenuRow}>
-				<button
-					id={transaction}
-					onClick={() => props.handleTransactionDelete(transaction)}
-				>
-					X
-				</button>
+				<DeleteButton
+					item={transaction}
+					handleDeleteButton={() => props.handleTransactionDelete(transaction)}
+				/>
 			</div>
 		</div>
 	);
