@@ -15,39 +15,37 @@ const transactionCard = props => {
 	return (
 		<div className={classes.TableRow}>
 			<Manager>
-				<div className={classes.TableDateRow}>
-					<Reference>
-						{({ ref }) => (
-							<div className={classes.TableDateRow}
-									 ref={ref}
-									 onClick={() => props.handleShowTransactionUpdateDatePicker(transaction)}>
-								{transaction.date}
-							</div>
-						)}
-					</Reference>
-					{props.showTransactionUpdateDatePicker === transaction.id ? (
-						<div className={classes.TransparentBackgroundWrapper}>
-							<div
-								onClick={props.handleShowTransactionUpdateDatePicker}
-								className={classes.TransparentBackground}
-							/>
-							<Popper placement="bottom" positionFixed="true">
-								{({ ref, style, placement }) => (
-									<div
-										ref={ref}
-										style={style}
-										data-placement={placement}
-										className={classes.ShowTransactionDatePicker}
-									>
-										<DatePicker
-											handleSelectedDate={props.handleSelectedDate}
-										/>
-									</div>
-								)}
-							</Popper>
+				<Reference>
+					{({ ref }) => (
+						<div className={classes.TableDateRow}
+								 ref={ref}
+								 onClick={() => props.handleShowTransactionUpdateDatePicker(transaction)}>
+							{transaction.date}
 						</div>
-					) : null}
-				</div>
+					)}
+				</Reference>
+				{props.showTransactionUpdateDatePicker === transaction.id ? (
+					<div className={classes.TransparentBackgroundWrapper}>
+						<div
+							onClick={props.handleShowTransactionUpdateDatePicker}
+							className={classes.TransparentBackground}
+						/>
+						<Popper placement="bottom" positionFixed="true">
+							{({ ref, style, placement }) => (
+								<div
+									ref={ref}
+									style={style}
+									data-placement={placement}
+									className={classes.ShowTransactionDatePicker}
+								>
+									<DatePicker
+										handleSelectedDate={props.handleSelectedDate}
+									/>
+								</div>
+							)}
+						</Popper>
+					</div>
+				) : null}
 			</Manager>
 			<div className={classes.TableEnterpriseRow}>
 				<TransactionCardEnterpriseDropdown
