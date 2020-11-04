@@ -7,31 +7,15 @@
   justify-content: center;
   width: 100%;
 
-  &:not(:last-child) {
-    border-bottom: 1px solid $color-grey-light-3;
-  }
-
-  .TableSelectRow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 5%;
-    font-family: $default-font-family;
-    font-size: $default-font-size;
-    color: $color-grey-dark-1;
-    height: 5rem;
-
-    .TableCheckboxInput {
-      width: 1.5rem;
-      height: 1.5rem;
-    }
-  }
-
   .TableDateRow {
     display: flex;
     flex-direction: row;
     align-items: center;
-    flex-basis: 20rem;
+    justify-content: center;
+    width: 20%;
+    height: 5rem;
+    border: 1px solid $color-green;
+    border-top: 0;
     font-family: $default-font-family;
     font-size: $default-font-size;
     color: $default-font-color;
@@ -102,10 +86,12 @@
   .TableEnterpriseRow {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    width: 45%;
+    width: 35%;
     font-family: $default-font-family;
     font-size: $default-font-size;
+    border: 1px solid $color-green;
+    border-top: 0;
+    border-left: 0;
     color: $color-grey-dark-1;
     height: 5rem;
   }
@@ -117,6 +103,9 @@
     width: 20%;
     font-family: $default-font-family;
     font-size: $default-font-size;
+    border: 1px solid $color-green;
+    border-top: 0;
+    border-left: 0;
     color: $color-grey-dark-1;
     height: 5rem;
   }
@@ -128,6 +117,9 @@
     width: 20%;
     font-family: $default-font-family;
     font-size: $default-font-size;
+    border: 1px solid $color-green;
+    border-top: 0;
+    border-left: 0;
     color: $color-grey-dark-1;
     height: 5rem;
   }
@@ -139,6 +131,9 @@
     width: 10%;
     font-family: $default-font-family;
     font-size: $default-font-size;
+    border: 1px solid $color-green;
+    border-top: 0;
+    border-left: 0;
     color: $color-grey-dark-1;
     height: 5rem;
   }
@@ -147,9 +142,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 10%;
+    width: 5%;
     font-family: $default-font-family;
     font-size: $default-font-size;
+    border: 1px solid $color-green;
+    border-top: 0;
+    border-left: 0;
     color: $color-grey-dark-1;
     height: 5rem;
   }
