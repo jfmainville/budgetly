@@ -12,15 +12,70 @@
   justify-content: flex-start;
   align-items: center;
   width: 95%;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 
   .MonthPickerPrevious {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid $color-green;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+
+    .Icon {
+      fill: $color-green;
+
+      &:hover {
+        fill: $color-white;
+      }
+    }
+
+    &:hover {
+      fill: $color-white;
+      background-color: $color-green;
+      border: 1px solid $color-green;
+    }
   }
 
   .MonthPickerTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    font-family: $default-font-family;
+    font-size: 2rem;
+    width: 15rem;
+    color: $color-grey-light-3;
   }
 
   .MonthPickerNext {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid $color-green;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+
+    .Icon {
+      fill: $color-green;
+
+      &:hover {
+        fill: $color-white;
+      }
+    }
+
+    &:hover {
+      fill: $color-white;
+      background-color: $color-green;
+      border: 1px solid $color-green;
+    }
   }
 }
 
