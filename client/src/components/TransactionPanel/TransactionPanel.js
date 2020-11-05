@@ -198,16 +198,20 @@ const transactionPanel = () => {
 					className={classes.MonthPickerPrevious}
 					onClick={handleMonthSelectionPrevious}
 				>
-					Previous Month
+					<svg className={classes.Icon}>
+						<use xlinkHref="/assets/sprite.svg#icon-chevron-left"/>
+					</svg>
 				</button>
-				<h2 className={classes.MonthPickerTitle}>
-					{moment(activeMonth).format("MMM YYYY")}
-				</h2>
+				<p className={classes.MonthPickerTitle}>
+					{moment(activeMonth).format("MMMM YYYY")}
+				</p>
 				<button
 					className={classes.MonthPickerNext}
 					onClick={handleMonthSelectionNext}
 				>
-					Next Month
+					<svg className={classes.Icon}>
+						<use xlinkHref="/assets/sprite.svg#icon-chevron-right"/>
+					</svg>
 				</button>
 			</div>
 			<div className={classes.NewTransactionSection}>
