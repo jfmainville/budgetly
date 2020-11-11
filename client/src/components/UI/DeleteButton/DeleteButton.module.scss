@@ -9,15 +9,14 @@
   height: 3rem;
   font-size: $default-font-size;
   font-weight: 600;
-  color: $color-white;
+  color: $color-red;
   border: 1px solid $color-red;
-  background-color: $color-red;
+  background-color: transparent;
   outline: none;
   cursor: pointer;
 
   &:hover {
-    color: $color-red;
-    border: 1px solid $color-red;
-    background-color: transparent;
+    color: $color-white;
+    background-color: $color-red;
   }
 }

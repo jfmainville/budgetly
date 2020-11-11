@@ -242,19 +242,12 @@ const transactionPanel = () => {
 				</button>
 			</div>
 			<div className={classes.TableHeader}>
-				<div className={classes.TableHeaderSelectColumn}>
-					<input className={classes.TableHeaderCheckboxInput} type="checkbox"/>
-				</div>
-				<div className={classes.TableHeaderEnterpriseColumn}>Date</div>
+				<div className={classes.TableHeaderDateColumn}>Date</div>
 				<div className={classes.TableHeaderEnterpriseColumn}>Enterprise</div>
-				<div className={classes.TableHeaderCategoryColumn}>Type</div>
+				<div className={classes.TableHeaderTypeColumn}>Type</div>
 				<div className={classes.TableHeaderCategoryColumn}>Category</div>
-				<div className={classes.TableHeaderTotalColumn}>Total</div>
-			</div>
-			<div className={classes.TotalColumnTotal}>
-				<h2 className={classes.TotalColumnTotalText}>
-					{totalFilteredTransactions}
-				</h2>
+				<div className={classes.TableHeaderTotalColumn}>Amount</div>
+				<div className={classes.TableHeaderMenuColumn}/>
 			</div>
 			<div className={classes.TableRows}>
 				{filteredTransactions.map(transaction => (

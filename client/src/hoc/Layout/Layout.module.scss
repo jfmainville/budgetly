@@ -28,7 +28,6 @@
       box-shadow: $box-shadow-right;
       font-family: $default-font-family;
       font-size: $default-font-size;
-      margin-right: 2rem;
     }
 
     @include respond(tab-portrait) {
@@ -38,8 +37,11 @@
     }
 
     .Content {
+      display: flex;
+      flex-direction: column;
       margin-top: 2rem;
       min-height: 100vh;
+      flex: 1 0;
     }
   }
 }
