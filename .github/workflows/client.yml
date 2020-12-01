@@ -29,15 +29,6 @@ jobs:
           method: kubeconfig
           kubeconfig: ${{ secrets.DIGITALOCEAN_DOKS_KUBECONFIG }}
         id: set-context
-      - name: Set imagePullSecret Kubernetes secret
-        uses: azure/k8s-create-secret@v1
-        with:
-          namespace: 'default'
-          container-registry-url: ${{ secrets.ACR_URL }}
-          container-registry-username: ${{ secrets.ACR_USERNAME }}
-          container-registry-password: ${{ secrets.ACR_PASSWORD }}
-          secret-name: acr-cae-prod-secret
-        id: create-secret
       - name: Set the kubectl command context
         uses: matootie/dokube@v1.3.3
         with:
