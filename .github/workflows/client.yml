@@ -14,13 +14,13 @@ jobs:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
       - uses: actions/checkout@v2
       - name: Build the client docker image
-        run: docker build ./client --file ./client/Dockerfile --tag ${{ secrets.ACR_URL }}/budgetly-client:latest --tag ${{ secrets.ACR_URL }}/budgetly-client:${{ github.sha }}
+        run: docker build ./client --file ./client/Dockerfile --tag ${{ secrets.DOCR_URL }}/budgetly-client:latest --tag ${{ secrets.DOCR_URL }}/budgetly-client:${{ github.sha }}
       - name: Log in to DigitalOcean Container Registry
         run: doctl registry login --expiry-seconds 600
       - name: Push the client docker latest image
-        run: docker push ${{ secrets.ACR_URL }}/budgetly-client:latest
+        run: docker push ${{ secrets.DOCR_URL }}/budgetly-client:latest
       - name: Push the client docker commit SHA image
-        run: docker push ${{ secrets.ACR_URL }}/budgetly-client:${{ github.sha }}
+        run: docker push ${{ secrets.DOCR_URL }}/budgetly-client:${{ github.sha }}
       - name: Save DigitalOcean kubeconfig
         run: doctl kubernetes cluster kubeconfig save ${{ secrets.DIGITALOCEAN_DOKS_NAME }}
       - name: Set the Kubernetes context
@@ -46,4 +46,4 @@ jobs:
       - name: Deploy the Kubernetes components
         run:  kubectl apply -f kubernetes
       - name: Create the client deployment
-        run:  kubectl set image deployments/budgetly-client-deployment budgetly-client=${{ secrets.ACR_URL }}/budgetly-client:${{ github.sha }} --record
+        run:  kubectl set image deployments/budgetly-client-deployment budgetly-client=${{ secrets.DOCR_URL }}/budgetly-client:${{ github.sha }} --record
