@@ -29,11 +29,6 @@ jobs:
           method: kubeconfig
           kubeconfig: ${{ secrets.DIGITALOCEAN_DOKS_KUBECONFIG }}
         id: set-context
-      - name: Set the kubectl command context
-        uses: matootie/dokube@v1.3.3
-        with:
-          personalAccessToken: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-          clusterName: ${{ secrets.DIGITALOCEAN_DOKS_NAME }}
       - name: Deploy the Kubernetes components
         run:  kubectl apply -f kubernetes
       - name: Create the client deployment
