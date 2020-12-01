@@ -15,11 +15,11 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
       - uses: actions/checkout@v2
-      - name: Build the React Docker image
+      - name: Build the client docker image
         run: docker build ./client --file ./client/Dockerfile --tag ${{ secrets.ACR_URL }}/budgetly-client:latest --tag ${{ secrets.ACR_URL }}/budgetly-client:${{ github.sha }}
       - name: Push the client docker latest image
         run: docker push ${{ secrets.ACR_URL }}/budgetly-client:latest
-      - name: Push the React Docker commit SHA image
+      - name: Push the client docker commit SHA image
         run: docker push ${{ secrets.ACR_URL }}/budgetly-client:${{ github.sha }}
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
