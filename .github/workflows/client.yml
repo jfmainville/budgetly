@@ -12,12 +12,6 @@ jobs:
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-      - name: Configure Azure Docker Login
-        uses: azure/docker-login@v1
-        with:
-          login-server: ${{ secrets.ACR_URL }}
-          username: ${{ secrets.ACR_USERNAME }}
-          password: ${{ secrets.ACR_PASSWORD }}
       - uses: actions/checkout@v2
       - name: Build the client docker image
         run: docker build ./client --file ./client/Dockerfile --tag ${{ secrets.ACR_URL }}/budgetly-client:latest --tag ${{ secrets.ACR_URL }}/budgetly-client:${{ github.sha }}
