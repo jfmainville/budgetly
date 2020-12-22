@@ -1,54 +1,53 @@
 @import "../../sass/variables";
 
 .Logo {
-	font-family: $logo-font-family;
-	font-size: $logo-font-size;
-	padding-bottom: 1rem;
-	margin-left: 1rem;
-	letter-spacing: 2px;
-	color: $color-white;
+  font-family: $logo-font-family;
+  font-size: $logo-font-size;
+  padding-bottom: 1rem;
+  margin-left: 1rem;
+  letter-spacing: 2px;
+  color: $color-white;
 }
 
-.UserNavigation {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
+.Logout {
+  display: flex;
 
-	.Profile {
-		margin-right: 1rem;
+  .NavigationItemLink {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    color: $color-white;
+    padding: 0 1rem 0 1rem;
+    height: 100%;
 
-		.ProfileName {
-			font-family: $default-font-family;
-			font-size: $default-font-size;
-			color: $color-white;
-		}
-	}
+    &:hover {
+      display: flex;
+      align-items: center;
+      color: $color-green;
+      background-color: $color-white;
 
-	.Settings {
-		display: flex;
-		align-items: center;
+      .Icon {
+        fill: $color-green;
+      }
+    }
 
-		.SettingsButton {
-			border: none;
-			background-color: transparent;
-			outline: none;
-			cursor: pointer;
+    .Icon {
+      width: 2rem;
+      height: 2rem;
+      padding: 0.5rem;
+      fill: $color-white;
+      background-color: transparent;
+    }
+  }
 
-			&:hover {
-				background-color: $color-white;
-			}
+  .NavigationItemLinkActive {
+    display: flex;
+    align-items: center;
+    color: $color-green;
+    background-color: $color-white;
 
-			.SettingsIcon {
-				width: 3rem;
-				height: 3rem;
-				padding: 1rem;
-				fill: $color-white;
-				background-color: transparent;
-
-				&:hover {
-					fill: $color-green;
-				}
-			}
-		}
-	}
+    .Icon {
+      fill: $color-green;
+    }
+  }
 }

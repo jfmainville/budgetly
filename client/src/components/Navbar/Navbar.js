@@ -1,30 +1,22 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import classes from "./Navbar.module.scss";
+import { NavLink } from "react-router-dom";
 
-const navbar = props => {
-	const [profileName] = useState("Jean-Frederic Mainville");
+const navbar = () => {
 	return (
 		<React.Fragment>
 			<div className={classes.Logo}>Budgetly</div>
-			<div className={classes.UserNavigation}>
-				<div className={classes.Profile}>
-					<p className={classes.ProfileName}>{profileName}</p>
-				</div>
-				<div className={classes.Settings}>
-					<button className={classes.SettingsButton}>
-						<svg className={classes.SettingsIcon}>
-							<use xlinkHref="/assets/sprite.svg#icon-cog"/>
-						</svg>
-					</button>
-				</div>
+			<div className={classes.Logout}>
+				<NavLink
+					activeClassName={classes.NavigationItemLinkActive}
+					className={classes.NavigationItemLink}
+					to={"/login"}
+				>
+					Logout
+				</NavLink>
 			</div>
 		</React.Fragment>
 	);
 };
-
-navbar.propTypes = {
-	profileName: PropTypes.string
-}
 
 export default navbar;
