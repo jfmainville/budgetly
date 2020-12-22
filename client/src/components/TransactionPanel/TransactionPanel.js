@@ -94,9 +94,8 @@ const transactionPanel = () => {
 		setShowEnterpriseDropdown(false);
 	};
 
-	const handleEnterpriseAmountInput = event => {
-		const transaction_amount = event.target.value;
-		setEnterpriseAmountInput(transaction_amount);
+	const handleEnterpriseAmountInput = amount => {
+		setEnterpriseAmountInput(amount);
 	};
 
 	const handleTransactionCardEnterpriseDropdownShowDropdown = (account) => {
@@ -225,18 +224,17 @@ const transactionPanel = () => {
 					handleTransactionDateInput={handleTransactionDateInput}
 					transactionDate={transactionDate}
 				/>
-				<TransactionEnterpriseInput
-					accounts={sortedAccounts}
-					showEnterpriseDropdown={showEnterpriseDropdown}
-					enterpriseSearchInput={enterpriseSearchInput}
-					handleShowEnterpriseDropdown={handleShowEnterpriseDropdown}
-					handleEnterpriseSearch={handleEnterpriseSearch}
-					handleClearEnterpriseSearch={handleClearEnterpriseSearch}
-					handleEnterpriseSearchSelection={handleEnterpriseSearchSelection}
+				<SearchableDropdown
+					items={sortedAccounts}
+					inputData={enterpriseSearchInput}
+					placeHolder="Enterprise"
+					handleDropdownItemSearch={handleDropdownItemSearch}
+					handleDropdownItemSelection={handleDropdownItemSelection}
 				/>
-				<TransactionAmountInput
-					enterpriseAmountInput={enterpriseAmountInput}
-					handleEnterpriseAmountInput={handleEnterpriseAmountInput}
+				<InputField
+					inputData={enterpriseAmountInput}
+					placeHolder="Amount"
+					handleInputSelection={handleEnterpriseAmountInput}
 				/>
 				<button className={classes.NewTransactionSectionButtonSave} onClick={handleTransactionCreate}>
 					Add Transaction
