@@ -8,23 +8,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Configure Azure Docker Login
-        uses: azure/docker-login@v1
-        with:
-          login-server: ${{ secrets.ACR_URL }}
-          username: ${{ secrets.ACR_USERNAME }}
-          password: ${{ secrets.ACR_PASSWORD }}
-      - uses: actions/checkout@v2
-      - name: Build the React Docker image
-        run: docker build ./client --file ./client/Dockerfile --tag ${{ secrets.ACR_URL }}/budgetly-client:latest --tag ${{ secrets.ACR_URL }}/budgetly-client:${{ github.sha }}
-      - name: Push the client docker latest image
-        run: docker push ${{ secrets.ACR_URL }}/budgetly-client:latest
-      - name: Push the React Docker commit SHA image
-        run: docker push ${{ secrets.ACR_URL }}/budgetly-client:${{ github.sha }}
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      - uses: actions/checkout@v2
+      - name: Build the client docker image
+        run: docker build ./client --file ./client/Dockerfile --tag ${{ secrets.DOCR_URL }}/budgetly-client:latest --tag ${{ secrets.DOCR_URL }}/budgetly-client:${{ github.sha }}
+      - name: Log in to DigitalOcean Container Registry
+        run: doctl registry login --expiry-seconds 600
+      - name: Push the client docker latest image
+        run: docker push ${{ secrets.DOCR_URL }}/budgetly-client:latest
+      - name: Push the client docker commit SHA image
+        run: docker push ${{ secrets.DOCR_URL }}/budgetly-client:${{ github.sha }}
       - name: Save DigitalOcean kubeconfig
         run: doctl kubernetes cluster kubeconfig save ${{ secrets.DIGITALOCEAN_DOKS_NAME }}
       - name: Set the Kubernetes context
@@ -33,21 +29,7 @@ jobs:
           method: kubeconfig
           kubeconfig: ${{ secrets.DIGITALOCEAN_DOKS_KUBECONFIG }}
         id: set-context
-      - name: Set imagePullSecret Kubernetes secret
-        uses: azure/k8s-create-secret@v1
-        with:
-          namespace: 'default'
-          container-registry-url: ${{ secrets.ACR_URL }}
-          container-registry-username: ${{ secrets.ACR_USERNAME }}
-          container-registry-password: ${{ secrets.ACR_PASSWORD }}
-          secret-name: acr-cae-prod-secret
-        id: create-secret
-      - name: Set the kubectl command context
-        uses: matootie/dokube@v1.3.3
-        with:
-          personalAccessToken: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-          clusterName: ${{ secrets.DIGITALOCEAN_DOKS_NAME }}
       - name: Deploy the Kubernetes components
         run:  kubectl apply -f kubernetes
       - name: Create the client deployment
-        run:  kubectl set image deployments/budgetly-client-deployment budgetly-client=${{ secrets.ACR_URL }}/budgetly-client:${{ github.sha }} --record
+        run:  kubectl set image deployments/budgetly-client-deployment budgetly-client=${{ secrets.DOCR_URL }}/budgetly-client:${{ github.sha }} --record
