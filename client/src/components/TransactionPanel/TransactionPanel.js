@@ -76,15 +76,16 @@ const transactionPanel = () => {
 		setShowEnterpriseDropdown(!showEnterpriseDropdown);
 	};
 
-	const handleEnterpriseSearch = event => {
-		const enterpriseSearchInput = event.target.value;
-		setShowEnterpriseDropdown(true);
-		setEnterpriseSearchInput(enterpriseSearchInput);
+	const handleDropdownItemSearch = (itemType, data) => {
+		if (itemType === "Enterprise") {
+			setEnterpriseSearchInput(data);
+		}
 	};
 
-	const handleClearEnterpriseSearch = () => {
-		setShowEnterpriseDropdown(false);
-		setEnterpriseSearchInput("");
+	const handleDropdownItemSelection = (itemType, item) => {
+		if (itemType === "Enterprise") {
+			setEnterpriseSearchInput(item[itemType.toLowerCase()]);
+		}
 	};
 
 	const handleEnterpriseSearchSelection = account => {
@@ -258,7 +259,7 @@ const transactionPanel = () => {
 						handleShowTransactionUpdateDatePicker={handleShowTransactionUpdateDatePicker}
 						showTransactionUpdateDatePicker={showTransactionUpdateDatePicker}
 						handleTransactionCardEnterpriseDropdownShowDropdown={handleTransactionCardEnterpriseDropdownShowDropdown}
-						handleEnterpriseSearch={handleEnterpriseSearch}
+						handleEnterpriseSearch={handleDropdownItemSearch}
 						handleTransactionUpdate={handleTransactionUpdate}
 						handleTransactionDelete={handleTransactionDelete}
 						showEnterpriseDropdown={showEnterpriseDropdown}
