@@ -6,9 +6,8 @@ import classes from "./TransactionPanel.module.scss";
 import PropTypes from "prop-types";
 import TransactionCard from "./TransactionCard/TransactionCard";
 import TransactionDatePicker from "./TransactionDatePicker/TransactionDatePicker";
-import TransactionDateInput from "./TransactionDateInput/TransactionDateInput";
-import TransactionEnterpriseInput from "./TransactionEnterpriseInput/TransactionEnterpriseInput";
-import TransactionAmountInput from "./TransactionAmountInput/TransactionAmountInput";
+import InputField from "../UI/InputField/InputField";
+import SearchableDropdown from "../UI/SearchableDropdown/SearchableDropdown";
 
 const transactionPanel = () => {
 	const accounts = useSelector(state => state.account.accounts);
@@ -55,9 +54,8 @@ const transactionPanel = () => {
 		}
 	};
 
-	const handleTransactionDateInput = event => {
-		const date_input = event.target.value;
-		setTransactionDate(date_input);
+	const handleTransactionDateInput = date => {
+		setTransactionDate(date);
 	};
 
 	const handleSelectedDate = date => {
@@ -220,9 +218,10 @@ const transactionPanel = () => {
 					showTransactionDatePicker={showTransactionDatePicker}
 					handleSelectedDate={handleSelectedDate}
 				/>
-				<TransactionDateInput
-					handleTransactionDateInput={handleTransactionDateInput}
-					transactionDate={transactionDate}
+				<InputField
+					inputData={transactionDate}
+					placeHolder="Date"
+					handleInputSelection={handleTransactionDateInput}
 				/>
 				<SearchableDropdown
 					items={sortedAccounts}
